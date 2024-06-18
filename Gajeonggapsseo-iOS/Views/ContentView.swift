@@ -6,19 +6,26 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct ContentView: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("\(firestoreManager.title)")
-            Text("\(firestoreManager.name)")
+        NavigationStack {
+            VStack {
+                NavigationLink {
+                    GarbageRequestView()
+                } label: {
+                    Text("배출 요청 하기")
+                }.buttonStyle(.bordered)
+                NavigationLink {
+                    GarbageRequestListView()
+                } label: {
+                    Text("배출 요청 보기")
+                }.buttonStyle(.bordered)
+            }
         }
-        .padding()
     }
 }
 
