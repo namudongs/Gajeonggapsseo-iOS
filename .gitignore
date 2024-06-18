@@ -1,8 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpm,swiftpackagemanager,macos,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,swiftpm,swiftpackagemanager,macos,firebase
 
-### Firestore ###
+### Secret ###
 GoogleService-Info.plist
+*.xcconfig
 
 ### Firebase ###
 .idea
