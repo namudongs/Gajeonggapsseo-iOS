@@ -10,23 +10,33 @@ import Firebase
 import FirebaseFirestore
 
 class FirestoreManager: ObservableObject {
+    @Published var garbageRequests = [GarbageRequest]()
     @Published var title: String = ""
     @Published var name: String = ""
+    let db = Firestore.firestore()
     
     init () {
-        fetchData()
+        fetchGarbageRequests()
     }
     
-    func fetchData() {
+    func fetchGarbageRequests() {
         let db = Firestore.firestore()
-        let docRef = db.collection("freeboard").document("abcabc")
-        docRef.getDocument { (document, error) in
-            guard error == nil else { return print(error!.localizedDescription) }
-            let data = document?.data()
-            if let data = data {
-                self.title = data["title"] as? String ?? "데이터가 없습니다."
-                self.name = data["name"] as? String ?? "데이터가 없습니다."
+        db.collection("garbageRequests").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                self.garbageRequests = snapshot?.documents.compactMap {
+                    try? $0.data(as: GarbageRequest.self)
+                } ?? []
             }
+        }
+    }
+    
+    func addGarbageRequest(_ request: GarbageRequest) {
+        do {
+            let _ = try db.collection("garbageRequests").addDocument(from: request)
+        } catch let error {
+            print("Error adding document: \(error)")
         }
     }
 }
