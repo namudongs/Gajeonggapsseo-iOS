@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
+// MARK: - 파이어스토어 데이터를 관리하는 매니저
 class FirestoreManager: ObservableObject {
     @Published var garbageRequests: [GarbageRequest] = []
     let db = Firestore.firestore()
