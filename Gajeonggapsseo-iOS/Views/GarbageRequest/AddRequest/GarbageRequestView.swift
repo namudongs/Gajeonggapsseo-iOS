@@ -21,6 +21,12 @@ struct GarbageRequestView: View {
             Form {
                 Section(header: Text("주소")) {
                     TextField("주소 입력", text: $address)
+                    NavigationLink {
+                        PickRequestAdress()
+                    } label: {
+                        Text("위치 선택하기")
+                    }.buttonStyle(.bordered)
+
                 }
                 
                 Section(header: Text("쓰레기 종류")) {

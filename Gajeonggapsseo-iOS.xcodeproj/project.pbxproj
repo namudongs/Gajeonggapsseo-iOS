@@ -18,6 +18,8 @@
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
+		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
+		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
+		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
+		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				1747B69F2C21A3C0009057D0 /* ContentView.swift */,
-				1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */,
-				1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */,
-				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
+				17B600752C231C5900F55BCB /* GarbageRequest */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1747B6C02C21A98D009057D0 /* FirestoreManager.swift */,
+				17B600732C2307D600F55BCB /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -125,6 +128,33 @@
 				1747B6A32C21A3C1009057D0 /* Preview Content */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		17B600752C231C5900F55BCB /* GarbageRequest */ = {
+			isa = PBXGroup;
+			children = (
+				17B600762C231C7B00F55BCB /* AddRequest */,
+				17B600772C231C8900F55BCB /* RequestList */,
+			);
+			path = GarbageRequest;
+			sourceTree = "<group>";
+		};
+		17B600762C231C7B00F55BCB /* AddRequest */ = {
+			isa = PBXGroup;
+			children = (
+				1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */,
+				17B600712C23067900F55BCB /* PickRequestAdress.swift */,
+			);
+			path = AddRequest;
+			sourceTree = "<group>";
+		};
+		17B600772C231C8900F55BCB /* RequestList */ = {
+			isa = PBXGroup;
+			children = (
+				1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */,
+				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
+			);
+			path = RequestList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,9 +238,11 @@
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
+				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
+				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +379,7 @@
 				DEVELOPMENT_TEAM = 47PZ53ZAF2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도에서 현재 위치를 사용하려면 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -376,6 +409,7 @@
 				DEVELOPMENT_TEAM = 47PZ53ZAF2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도에서 현재 위치를 사용하려면 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
