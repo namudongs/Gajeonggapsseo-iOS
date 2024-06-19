@@ -15,7 +15,13 @@ struct GarbageRequestListView: View {
             VStack(alignment: .leading) {
                 Text("주소: \(request.address)")
                 Text("쓰레기 종류: \(request.garbageType)")
-                Text("배출 예정 시간: \(request.preferredPickupTime.dateValue())")
+                Text("배출 요청 상태: \(request.status)")
+                if request.status == .requested {
+                    Button("수락하기") {
+                        firestoreManager.acceptGarbageRequest(request.id ?? "", helperId: "acceptedUser")
+                    }
+                    .buttonStyle(.bordered)
+                }
             }
         }
         .onAppear {

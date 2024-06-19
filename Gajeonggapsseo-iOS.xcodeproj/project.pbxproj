@@ -15,9 +15,9 @@
 		1747B6C42C21AB2C009057D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1747B6C32C21AB2C009057D0 /* FirebaseFirestore */; };
 		1747B6C82C21B6D6009057D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1747B6C72C21B6D6009057D0 /* GoogleService-Info.plist */; };
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
-		1747B6CC2C21B744009057D0 /* GarbagePickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CB2C21B744009057D0 /* GarbagePickup.swift */; };
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
+		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		1747B6C02C21A98D009057D0 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		1747B6C72C21B6D6009057D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
-		1747B6CB2C21B744009057D0 /* GarbagePickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickup.swift; sourceTree = "<group>"; };
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
+		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				1747B6C92C21B73B009057D0 /* GarbageRequest.swift */,
-				1747B6CB2C21B744009057D0 /* GarbagePickup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +96,7 @@
 				1747B69F2C21A3C0009057D0 /* ContentView.swift */,
 				1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */,
 				1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */,
+				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,11 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
+				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
-				1747B6CC2C21B744009057D0 /* GarbagePickup.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
