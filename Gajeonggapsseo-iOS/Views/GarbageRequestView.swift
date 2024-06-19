@@ -14,7 +14,7 @@ struct GarbageRequestView: View {
     @State private var garbageType: String = ""
     @State private var amount: String = ""
     @State private var preferredPickupTime: Date = Date()
-    @State private var userId: String = "user123" // 실제로는 로그인된 사용자의 ID를 사용해야 합니다.
+    @State private var userId: String = "User" // 사용자 ID
     
     var body: some View {
         NavigationView {
@@ -58,7 +58,7 @@ struct GarbageRequestView: View {
             amount: amount,
             requestTime: Timestamp(date: Date()),
             preferredPickupTime: Timestamp(date: preferredPickupTime),
-            status: "요청됨"
+            status: .requested
         )
         
         firestoreManager.addGarbageRequest(newRequest)
