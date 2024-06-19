@@ -14,7 +14,12 @@ struct GarbagePickup: Identifiable, Codable {
     var helperId: String
     var pickupStartTime: Timestamp
     var pickupEndTime: Timestamp?
-    var status: String // "진행중", "완료됨"
+    var status: PickupStatus // "진행중", "완료됨"
     var pickupPhotoUrl: String?
     var completionPhotoUrl: String?
+}
+
+enum PickupStatus: Codable {
+    case inProgress
+    case completed
 }

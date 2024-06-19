@@ -23,7 +23,7 @@ class FirestoreManager: ObservableObject {
         let db = Firestore.firestore()
         db.collection("garbageRequests").getDocuments { (snapshot, error) in
             if let error = error {
-                print("Error getting documents: \(error)")
+                print("배출 요청 불러오기 실패: \(error)")
             } else {
                 self.garbageRequests = snapshot?.documents.compactMap {
                     try? $0.data(as: GarbageRequest.self)
@@ -35,8 +35,9 @@ class FirestoreManager: ObservableObject {
     func addGarbageRequest(_ request: GarbageRequest) {
         do {
             let _ = try db.collection("garbageRequests").addDocument(from: request)
+            print("배출 요청이 성공적으로 등록되었습니다.")
         } catch let error {
-            print("Error adding document: \(error)")
+            print("배출 요청 생성 실패: \(error)")
         }
     }
 }
