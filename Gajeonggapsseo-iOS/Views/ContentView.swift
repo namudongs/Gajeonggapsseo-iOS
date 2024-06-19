@@ -24,6 +24,11 @@ struct ContentView: View {
                 } label: {
                     Text("배출 요청 보기")
                 }.buttonStyle(.bordered)
+                NavigationLink {
+                    GarbagePickupListView()
+                } label: {
+                    Text("배출 대행 수락 목록 보기")
+                }.buttonStyle(.bordered)
             }
         }
     }

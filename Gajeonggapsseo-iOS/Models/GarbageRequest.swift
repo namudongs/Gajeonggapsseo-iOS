@@ -18,11 +18,13 @@ struct GarbageRequest: Identifiable, Codable {
     var amount: String
     var requestTime: Timestamp
     var preferredPickupTime: Timestamp
-    var status: RequestStatus // "요청됨", "수락됨", "완료됨"
+    var status: RequestStatus // "요청됨", "수락됨", "픽업됨", "완료됨"
+    var helperId: String? // 수락한 경우 수락한 사람의 ID 입력
 }
 
-enum RequestStatus: Codable {
-    case requested
-    case accepted
-    case completed
+enum RequestStatus: String, Codable {
+    case requested = "requested"
+    case accepted = "accepted"
+    case pickuped = "pickuped"
+    case completed = "completed"
 }
