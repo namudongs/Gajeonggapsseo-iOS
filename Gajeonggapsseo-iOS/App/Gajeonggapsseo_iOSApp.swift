@@ -18,8 +18,11 @@ struct Gajeonggapsseo_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(firestoreManager)
+            NavigationStack {
+                ContentView()
+                //            MapView()
+                    .environmentObject(firestoreManager)
+            }
         }
     }
 }
