@@ -3,6 +3,7 @@
 
 ### Secret ###
 GoogleService-Info.plist
+*.json
 *.xcconfig
 
 ### Firebase ###
