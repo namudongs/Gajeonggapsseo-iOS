@@ -8,34 +8,9 @@
 import SwiftUI
 import FirebaseFirestore
 
-//struct ContentView: View {
-//    @EnvironmentObject var firestoreManager: FirestoreManager
-//    
-//    var body: some View {
-//        NavigationStack {
-//            VStack {
-//                NavigationLink {
-//                    GarbageRequestView()
-//                } label: {
-//                    Text("배출 요청 하기")
-//                }.buttonStyle(.bordered)
-//                NavigationLink {
-//                    GarbageRequestListView()
-//                } label: {
-//                    Text("배출 요청 보기")
-//                }.buttonStyle(.bordered)
-//                NavigationLink {
-//                    GarbagePickupListView()
-//                } label: {
-//                    Text("배출 대행 수락 목록 보기")
-//                }.buttonStyle(.bordered)
-//            }
-//        }
-//    }
-//}
-
 struct ContentView: View {
     @State private var centers: [Center] = []
+    @State private var requests: [GarbageRequest] = []
     @State private var isLoading: Bool = true
     
     var body: some View {
@@ -43,13 +18,29 @@ struct ContentView: View {
             NavigationLink {
                 MapView(centers: $centers)
             } label: {
-                Text("MAPVIEW로 이동하기")
+                Text("지도에서 찾기")
             }
             .buttonStyle(.bordered)
             .disabled(isLoading)
-
+            NavigationLink {
+                GarbageRequestView()
+            } label: {
+                Text("배출 요청 하기")
+            }.buttonStyle(.bordered)
+            NavigationLink {
+                GarbageRequestListView()
+//                OrderMapView(centers: $centers)
+            } label: {
+                Text("배출 요청 보기")
+            }.buttonStyle(.bordered)
+            NavigationLink {
+                GarbagePickupListView()
+            } label: {
+                Text("배출 대행 수락 목록 보기")
+            }.buttonStyle(.bordered)
         }
         .onAppear {
+            FirestoreManager.shared.listenToGarbageRequests()
             DataLoader.shared.loadAllData { result in
                 switch result {
                 case .success(let centers):
