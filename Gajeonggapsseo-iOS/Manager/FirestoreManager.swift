@@ -10,29 +10,12 @@ import Firebase
 import FirebaseFirestore
 
 // MARK: - 파이어스토어 데이터를 관리하는 매니저
-class FirestoreManager: ObservableObject {
-    @Published var garbageRequests: [GarbageRequest] = []
+class FirestoreManager {
+    static let shared = FirestoreManager()
+    var garbageRequests: [GarbageRequest] = []
     let db = Firestore.firestore()
     
-    init () {
-        listenToGarbageRequests()
-        fetchGarbageRequests()
-    }
-    
     // MARK: - 불러오기
-    func fetchGarbageRequests() {
-        let db = Firestore.firestore()
-        db.collection("garbageRequests").getDocuments { (snapshot, error) in
-            if let error = error {
-                print("배출 요청 불러오기 실패: \(error)")
-            } else {
-                self.garbageRequests = snapshot?.documents.compactMap {
-                    try? $0.data(as: GarbageRequest.self)
-                } ?? []
-            }
-        }
-    }
-    
     func listenToGarbageRequests() {
             db.collection("garbageRequests").addSnapshotListener { (snapshot, error) in
                 if let error = error {

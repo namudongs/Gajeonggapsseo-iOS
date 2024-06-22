@@ -11,7 +11,7 @@ import CoreLocation
 
 // MARK: - 맵에서 위치를 선택하는 뷰
 struct PickRequestAdress: View {
-    @StateObject var locationManager = LocationManager()
+    @StateObject var locationManager: LocationManager
     
     var body: some View {
         VStack {
@@ -49,7 +49,7 @@ struct PickRequestAdress: View {
             Button(action: {
                 
             }) {
-                Text("현재 위치 프린트")
+                Text("위치 선택하기")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)

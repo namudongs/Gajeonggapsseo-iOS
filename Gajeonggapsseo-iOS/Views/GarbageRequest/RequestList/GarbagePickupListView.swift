@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct GarbagePickupListView: View {
-    @EnvironmentObject var firestoreManager: FirestoreManager
     
     var body: some View {
-        List(firestoreManager.garbageRequests) { request in
+        List(FirestoreManager.shared.garbageRequests) { request in
             let isAccepted = request.status != .requested
             let isPickuped = request.status == .pickuped
             let isCompleted = request.status == .completed
@@ -26,16 +25,13 @@ struct GarbagePickupListView: View {
                     if !isCompleted {
                         Button(isPickuped ? "완료하기" : "픽업하기") {
                             isPickuped
-                            ? firestoreManager.completeGarbageRequest(request.id ?? "")
-                            : firestoreManager.pickUpGarbageRequest(request.id ?? "")
+                            ? FirestoreManager.shared.completeGarbageRequest(request.id ?? "")
+                            : FirestoreManager.shared.pickUpGarbageRequest(request.id ?? "")
                         }
                         .buttonStyle(.bordered)
                     }
                 }
             }
-        }
-        .onAppear {
-            firestoreManager.fetchGarbageRequests()
         }
     }
 }

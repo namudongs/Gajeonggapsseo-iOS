@@ -10,7 +10,6 @@ import Firebase
 
 @main
 struct Gajeonggapsseo_iOSApp: App {
-    @StateObject var firestoreManager = FirestoreManager()
     
     init() {
         FirebaseApp.configure()
@@ -20,8 +19,6 @@ struct Gajeonggapsseo_iOSApp: App {
         WindowGroup {
             NavigationStack {
                 ContentView()
-                //            MapView()
-                    .environmentObject(firestoreManager)
             }
         }
     }

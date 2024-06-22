@@ -7,10 +7,12 @@
 
 import SwiftUI
 import FirebaseFirestore
+import CoreLocation
 
 struct GarbageRequestView: View {
-    @EnvironmentObject var firestoreManager: FirestoreManager
-    @State private var address: String = ""
+    @StateObject var locationManager = LocationManager()
+    
+    @State private var geopoint: CLLocationCoordinate2D?
     @State private var garbageType: String = ""
     @State private var amount: String = ""
     @State private var preferredPickupTime: Date = Date()
@@ -19,10 +21,10 @@ struct GarbageRequestView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("주소")) {
-                    TextField("주소 입력", text: $address)
+                Section(header: Text("배출 위치")) {
+                    Text("\(locationManager.currentPlace)")
                     NavigationLink {
-                        PickRequestAdress()
+                        PickRequestAdress(locationManager: locationManager)
                     } label: {
                         Text("위치 선택하기")
                     }.buttonStyle(.bordered)
@@ -57,9 +59,9 @@ struct GarbageRequestView: View {
     func submitRequest() {
         let newRequest = GarbageRequest(
             userId: userId,
-            address: address,
-            latitude: 0.0, // 위도
-            longitude: 0.0, // 경도
+            address: locationManager.currentPlace,
+            latitude: locationManager.currentGeoPoint?.latitude ?? 0.0,
+            longitude: locationManager.currentGeoPoint?.longitude ?? 0.0,
             garbageType: garbageType,
             amount: amount,
             requestTime: Timestamp(date: Date()),
@@ -68,7 +70,7 @@ struct GarbageRequestView: View {
             helperId: nil
         )
         
-        firestoreManager.addGarbageRequest(newRequest)
+        FirestoreManager.shared.addGarbageRequest(newRequest)
     }
 }
 

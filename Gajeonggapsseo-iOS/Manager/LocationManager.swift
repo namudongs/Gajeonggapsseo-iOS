@@ -12,10 +12,11 @@ import MapKit
 class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocationManagerDelegate {
     @Published var mapView: MKMapView = .init()
     @Published var isChanging: Bool = false // 지도의 움직임 여부를 저장하는 프로퍼티
-    @Published var currentPlace: String = "" // 현재 위치의 도로명 주소를 저장하는 프로퍼티
+    @Published var currentPlace: String = "위치를 선택해주세요" // 현재 위치의 도로명 주소를 저장하는 프로퍼티
+    @Published var currentGeoPoint: CLLocationCoordinate2D? // 현재 위치를 저장하는 프로퍼티
     
     private var manager: CLLocationManager = .init()
-    private var currentGeoPoint: CLLocationCoordinate2D? // 현재 위치를 저장하는 프로퍼티
+    
     
     override init() {
         super.init()
