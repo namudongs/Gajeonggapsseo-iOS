@@ -23,11 +23,11 @@ struct GarbageRequest: Identifiable, Codable {
     var helperId: String? // 수락한 경우 수락한 사람의 ID 입력
     
     static let mock: GarbageRequest = GarbageRequest(userId: "",
-                                                     address: "",
+                                                     address: "제주시 연동 14길 32",
                                                      latitude: 0.0,
                                                      longitude: 0.0,
-                                                     garbageType: "",
-                                                     amount: "",
+                                                     garbageType: "플라스틱",
+                                                     amount: "1",
                                                      requestTime: Timestamp(date: Date()),
                                                      preferredPickupTime: Timestamp(date: Date()),
                                                      status: .requested)

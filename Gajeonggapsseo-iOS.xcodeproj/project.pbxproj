@@ -29,6 +29,8 @@
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
+		FB2435C42C2C25C1007474A9 /* GarbageRequestAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2435C32C2C25C1007474A9 /* GarbageRequestAgentView.swift */; };
+		FB2435C62C2C2E4A007474A9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2435C52C2C2E4A007474A9 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FB2435C32C2C25C1007474A9 /* GarbageRequestAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestAgentView.swift; sourceTree = "<group>"; };
+		FB2435C52C2C2E4A007474A9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 				1747B6AD2C21A55C009057D0 /* Manager */,
 				178ED91F2C2464E500EADD6D /* Service */,
 				1747B6AF2C21A66F009057D0 /* Assets */,
+				FB2435C52C2C2E4A007474A9 /* Color+Extension.swift */,
 			);
 			path = "Gajeonggapsseo-iOS";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		17B600752C231C5900F55BCB /* GarbageRequest */ = {
 			isa = PBXGroup;
 			children = (
+				FB2435C22C2C256D007474A9 /* AcceptRequest */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
 				17B600772C231C8900F55BCB /* RequestList */,
 			);
@@ -202,6 +208,14 @@
 				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
 			);
 			path = RequestList;
+			sourceTree = "<group>";
+		};
+		FB2435C22C2C256D007474A9 /* AcceptRequest */ = {
+			isa = PBXGroup;
+			children = (
+				FB2435C32C2C25C1007474A9 /* GarbageRequestAgentView.swift */,
+			);
+			path = AcceptRequest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,11 +305,13 @@
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
+				FB2435C62C2C2E4A007474A9 /* Color+Extension.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
+				FB2435C42C2C25C1007474A9 /* GarbageRequestAgentView.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
