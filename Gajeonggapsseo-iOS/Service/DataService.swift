@@ -114,7 +114,16 @@ extension CleanHouseWelcome {
                 laCrdnt: $0.laCrdnt,
                 loCrdnt: $0.loCrdnt,
                 etcCn: $0.etcCn,
-                regDt: $0.regDt
+                regDt: $0.regDt,
+                pysygClctnbxCnt: $0.pysygClctnbxCnt,
+                recycleClctnbxCnt: $0.recycleClctnbxCnt,
+                glsbtlClctnbxCnt: $0.glsbtlClctnbxCnt,
+                strfClctnbxCnt: $0.strfClctnbxCnt,
+                dscdBatteryClctnbxCnt: $0.dscdBatteryClctnbxCnt,
+                dscdFlrsclmpClctnbxCnt: $0.dscdFlrsclmpClctnbxCnt,
+                fddrnkClctnbxCnt: $0.dscdFlrsclmpClctnbxCnt,
+                fddrnkClctnbxMeterCnt: $0.fddrnkClctnbxMeterCnt,
+                uumtCn: $0.uumtCn
             )
         }
     }
@@ -131,7 +140,16 @@ extension RecycleCenterWelcome {
                 laCrdnt: $0.laCrdnt,
                 loCrdnt: $0.loCrdnt,
                 etcCn: $0.etcCn,
-                regDt: $0.regDt
+                regDt: $0.regDt,
+                pysygClctnbxCnt: nil,
+                recycleClctnbxCnt: nil,
+                glsbtlClctnbxCnt: nil,
+                strfClctnbxCnt: nil,
+                dscdBatteryClctnbxCnt: nil,
+                dscdFlrsclmpClctnbxCnt: nil,
+                fddrnkClctnbxCnt: nil,
+                fddrnkClctnbxMeterCnt: nil,
+                uumtCn: $0.operTimeInfo
             )
         }
     }
@@ -148,7 +166,16 @@ extension SeogwipoCleanHouse {
                 laCrdnt: String($0.위도),
                 loCrdnt: String($0.경도),
                 etcCn: nil,
-                regDt: nil
+                regDt: nil,
+                pysygClctnbxCnt: nil,
+                recycleClctnbxCnt: nil,
+                glsbtlClctnbxCnt: nil,
+                strfClctnbxCnt: nil,
+                dscdBatteryClctnbxCnt: nil,
+                dscdFlrsclmpClctnbxCnt: nil,
+                fddrnkClctnbxCnt: nil,
+                fddrnkClctnbxMeterCnt: nil,
+                uumtCn: nil
             )
         }
     }
@@ -165,7 +192,16 @@ extension SeogwipoRecycleCenterApiResponse {
                 laCrdnt: $0.latitude,
                 loCrdnt: $0.longitude,
                 etcCn: nil,
-                regDt: $0.dataStandardDate
+                regDt: $0.dataStandardDate,
+                pysygClctnbxCnt: nil,
+                recycleClctnbxCnt: nil,
+                glsbtlClctnbxCnt: nil,
+                strfClctnbxCnt: nil,
+                dscdBatteryClctnbxCnt: nil,
+                dscdFlrsclmpClctnbxCnt: nil,
+                fddrnkClctnbxCnt: nil,
+                fddrnkClctnbxMeterCnt: nil,
+                uumtCn: nil
             )
         }
     }
