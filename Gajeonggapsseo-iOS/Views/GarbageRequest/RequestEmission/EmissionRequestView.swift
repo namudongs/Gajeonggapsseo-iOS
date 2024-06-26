@@ -10,6 +10,7 @@ import SwiftUI
 enum GarbageCategory: String {
     case garbageBag = "종량제", plasticBag = "비닐", can = "캔", bottle = "병류", polystyrene = "스티로폼", plastic = "플라스틱", clearPet = "투명 페트병", paper = "종이"
 }
+
 struct CompletedRequest: Hashable, Identifiable {
     let id = UUID()
     var category: GarbageCategory
@@ -26,7 +27,8 @@ struct EmissionRequestView: View {
         CompletedRequest(category: .plasticBag, count: 2, date: "6.21 금요일"),
         CompletedRequest(category: .plasticBag, count: 2, date: "6.19 수요일")
     ]
-    
+    @State private var selectedCategories: Set<GarbageCategory> = []
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -42,11 +44,11 @@ struct EmissionRequestView: View {
                 .frame(height: 68)
                 .padding(.horizontal, 18)
             
+            Spacer()
+            
             Text("최근 완료된 요청")
                 .fontWeight(.semibold)
-                .padding(.top, 68)
                 .padding(.leading, 27)
-            
             
             VStack {
                 ForEach(recentlyCompletedRequestList) { request in
@@ -64,19 +66,36 @@ struct EmissionRequestView: View {
             .padding(.top, 17)
             .padding(.horizontal, 27)
             
+            Spacer()
+            
             Text("새로운 요청하기")
                 .fontWeight(.heavy)
                 .font(.system(size: 22))
-                .padding(.top, 49)
                 .padding(.leading, 27)
             
-            NewRequestSelectionView()
+            NewRequestSelectionView(selectedCategories: $selectedCategories)
                 .padding(.horizontal, 17)
+
+            Spacer()
             
+            NavigationLink {
+
+            } label: {
+                RoundedRectangle(cornerRadius: 55)
+                    .fill(selectedCategories.isEmpty ? Color(hex: "C4C4C4") : Color(hex: "2260FE"))
+                    .frame(height: 69)
+                    .padding(.horizontal, 30)
+                    .overlay(alignment: .center) {
+                        Text("요청하기")
+                            .font(.system(size: 24))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                    }
+            }
+            .disabled(selectedCategories.isEmpty)
         }
-//        .navigationBarBackButtonHidden()
-        .navigationTitle("Detail View")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("배출 대행 요청하기")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -87,7 +106,6 @@ fileprivate struct OnGoingRequestView: View {
         RoundedRectangle(cornerRadius: 10)
             .stroke(Color(hex: "D3DFFF"), lineWidth: 2)
             .overlay(alignment: .leading) {
-                
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text("배출 대행 수락을 기다리는 중 ...")
@@ -107,12 +125,12 @@ fileprivate struct OnGoingRequestView: View {
                 }
                 .padding(.leading, 24)
             }
-       
     }
 }
 
 fileprivate struct NewRequestSelectionView: View {
-     
+    @Binding var selectedCategories: Set<GarbageCategory>
+    
     let garbageCategoryList: [GarbageCategory] = [
         .garbageBag,
         .plasticBag,
@@ -129,8 +147,8 @@ fileprivate struct NewRequestSelectionView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
-        
     ]
+    
     var body: some View {
         LazyVGrid(columns: columns) {
             ForEach(garbageCategoryList, id: \.self) { item in
@@ -141,34 +159,46 @@ fileprivate struct NewRequestSelectionView: View {
     
     @ViewBuilder
     private func showGarbageCategory(item: GarbageCategory) -> some View {
+        let isSelected = selectedCategories.contains(item)
+        
         RoundedRectangle(cornerRadius: 10)
-            .fill(Color(hex:"CEDBFD"))
+            .fill(isSelected ? Color(hex: "2260FE") : Color(hex: "CEDBFD"))
             .frame(height: 84)
             .overlay(alignment: .topLeading) {
                 VStack {
-                    HStack{
+                    HStack {
                         Text(item.rawValue)
                             .fontWeight(.semibold)
                             .font(.system(size: 13))
                             .padding(.leading, 10)
+                            .foregroundColor(isSelected ? .white : .black)
                         
                         Spacer()
                     }
                     Spacer()
-                    HStack{
+                    HStack {
                         Spacer()
                         Text("아이콘 이미지")
                             .font(.system(size: 11))
                             .padding(.trailing, 10)
                             .padding(.bottom, 10)
-//                                Image(item.rawValue)
+                            .foregroundColor(isSelected ? .white : .black)
                     }
                 }
                 .padding(.top, 10)
+            }
+            .onTapGesture {
+                if isSelected {
+                    selectedCategories.remove(item)
+                } else {
+                    selectedCategories.insert(item)
+                }
             }
     }
 }
 
 #Preview {
-    EmissionRequestView()
+    NavigationView {
+        EmissionRequestView()
+    }
 }
