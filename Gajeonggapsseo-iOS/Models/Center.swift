@@ -13,11 +13,20 @@ class Center: Identifiable {
     let type: CenterType
     let dataCd: String
     let emdNm: String
-    let rnAdres: String
-    var laCrdnt: String?
-    var loCrdnt: String?
-    let etcCn: String?
-    let regDt: String?
+    let rnAdres: String // 도로명주소
+    var laCrdnt: String? // 위도
+    var loCrdnt: String? // 경도
+    let etcCn: String? // 기타 내용
+    let regDt: String? // 등록 일시
+    let pysygClctnbxCnt: String? // 종량제 수거함 수
+    let recycleClctnbxCnt: String? // 재활용 수거함 수
+    let glsbtlClctnbxCnt: String? // 유리병 수거함 수
+    let strfClctnbxCnt: String? // 스티로폼 수거함 수
+    let dscdBatteryClctnbxCnt: String? // 폐건전지 수거함 수
+    let dscdFlrsclmpClctnbxCnt: String? // 폐형광등 수거함 수
+    let fddrnkClctnbxCnt: String? // 음식물 수거함 수
+    let fddrnkClctnbxMeterCnt: String? // 음식물 계량 수거함 수
+    let uumtCn: String? // 특이사항 내용
     
     var coordinate: CLLocationCoordinate2D? {
         guard let laCrdnt = laCrdnt, let loCrdnt = loCrdnt,
@@ -27,7 +36,7 @@ class Center: Identifiable {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    init(type: CenterType, dataCd: String, emdNm: String, rnAdres: String, laCrdnt: String? = nil, loCrdnt: String? = nil, etcCn: String?, regDt: String?) {
+    init(type: CenterType, dataCd: String, emdNm: String, rnAdres: String, laCrdnt: String? = nil, loCrdnt: String? = nil, etcCn: String?, regDt: String?, pysygClctnbxCnt: String?, recycleClctnbxCnt: String?, glsbtlClctnbxCnt: String?, strfClctnbxCnt: String?, dscdBatteryClctnbxCnt: String?, dscdFlrsclmpClctnbxCnt: String?, fddrnkClctnbxCnt: String?, fddrnkClctnbxMeterCnt: String?, uumtCn: String?) {
         self.type = type
         self.dataCd = dataCd
         self.emdNm = emdNm
@@ -36,6 +45,15 @@ class Center: Identifiable {
         self.loCrdnt = loCrdnt
         self.etcCn = etcCn
         self.regDt = regDt
+        self.pysygClctnbxCnt = pysygClctnbxCnt
+        self.recycleClctnbxCnt = recycleClctnbxCnt
+        self.glsbtlClctnbxCnt = glsbtlClctnbxCnt
+        self.strfClctnbxCnt = strfClctnbxCnt
+        self.dscdBatteryClctnbxCnt = dscdBatteryClctnbxCnt
+        self.dscdFlrsclmpClctnbxCnt = dscdFlrsclmpClctnbxCnt
+        self.fddrnkClctnbxCnt = fddrnkClctnbxCnt
+        self.fddrnkClctnbxMeterCnt = fddrnkClctnbxMeterCnt
+        self.uumtCn = uumtCn
     }
 }
 
