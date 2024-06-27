@@ -109,149 +109,22 @@ struct GarbageRequestAgentView: View {
                         pickUpView
                         
                         if isPickedUpComplete {
-                            HStack {
-                                Text(!isDisposalComplete
-                                     ? "분리 배출을 기다리는 중이에요"
-                                     : "분리 배출 대행이 완료되었어요!")
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(!isDisposalComplete
-                                                     ? .requestAgent
-                                                     : .black)
-                                Spacer()
-                            } // HStack
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(height: 68)
-                                    .foregroundColor(!isPickedUpComplete
-                                                     ? Color(hex: "F2EDFF")
-                                                     : Color(hex: "EEEEEE"))
-                            )
-
-                            
-                            HStack (alignment: .center){
-                                Text("상세 정보 확인하기")
-                                    .font(.subheadline)
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(.requestAgent)
-                                
-                                Image(systemName: isDisplayedDisposalDetail
-                                      ? "minus.circle"
-                                      : "plus.circle")
-                                    .resizable()
-                                    .frame(width: 13, height: 13)
-                                    .foregroundStyle(.requestAgent)
-                                Spacer()
-                            }
-                            .onTapGesture {
-                                // TODO: 배출 디테일 뷰 추가
-                                isDisplayedDisposalDetail.toggle()
-                            }
+                            disposalView
                         }
                         
-                        // TODO: 상세 정보 추가
-                        Spacer().frame(height: 240)
+                        if !isDisplayedPickUpDetail {
+                            Spacer().frame(height: !isPickedUpComplete ? 240 : 146)
+                        }
                     }
                     
-                    
-                    // 배출 대행 수락하기
-                    Button {
-                        // TODO: 동작 추가
-                        if !isAcceptedRequest {
-                            isAcceptedRequest.toggle()
-                        }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text(isAcceptedRequest
-                                 ? "배출 대행 수락완료!"
-                                 : "배출 대행 수락하기"
-                            )
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .background(
-                            RoundedRectangle(cornerRadius: 55)
-                                .frame(height: 68)
-                                .foregroundColor(acceptButtonColor)
-                        )
-                        .shadow(radius: 1)
-                    }
-                    .disabled(!isPossibleToAcceptRequest)
-                    
-                    Image(systemName: "arrowshape.down.fill")
-                        .foregroundColor(isAcceptedRequest
-                                         ? .requestAgent
-                                         : Color(hex: "C4C4C4")
-                                        )
-                    
-                    
-                    // 수거 완료하기
-                    Button {
-                        // TODO: 동작 추가
-                        if !isPickedUpComplete {
-                            isPickedUpComplete.toggle()
-                        }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text(isPickedUpComplete
-                                 ? "수거 완료!"
-                                 : "수거 완료하기"
-                            )
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .background(
-                            RoundedRectangle(cornerRadius: 55)
-                                .frame(height: 68)
-                                .foregroundColor(pickUpButtonColor)
-                        )
-                        .shadow(radius: 1)
-                    }
-                    .disabled(!isAcceptedRequest)
-                    
-                    Image(systemName: "arrowshape.down.fill")
-                        .foregroundColor(isPickedUpComplete
-                                         ? .requestAgent
-                                         : Color(hex: "C4C4C4")
-                                        )
-                    
-                    // 배출 완료하기
-                    Button {
-                        // TODO: 동작 추가
-                        isDisposalComplete.toggle()
-                        print("hi")
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text(isDisposalComplete
-                                 ? "배출 완료!"
-                                 : "배출 완료하기"
-                            )
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .background(
-                            RoundedRectangle(cornerRadius: 55)
-                                .frame(height: 68)
-                                .foregroundColor(disposalButtonColor)
-                        )
-                        .shadow(radius: 1)
-                    }
-                    .disabled(!isPickedUpComplete)
+                    buttonsView
                     
                 } // VStack
                 .padding(.horizontal, 16)
-            }
-        }
+            } // ScrollView
+            .navigationTitle("배출 대행하기")
+            .navigationBarTitleDisplayMode(.inline)
+        } // ZStack
     }
 }
 
@@ -270,7 +143,7 @@ extension GarbageRequestAgentView {
                         .foregroundColor(.requestAgent)
                         .font(.title3)
                         .fontWeight(.bold)
-                    + Text("개")
+                    + Text("봉지")
                         .font(.title3)
                         .fontWeight(.bold)
                     Spacer()
@@ -331,11 +204,13 @@ extension GarbageRequestAgentView {
                 
             }
             
+            // TODO: 텍스트 길이에 따라 동적으로 바꾸기
             HStack(spacing: 15) {
                 HStack {
                     Text("\(garbageRequest.address) ")
                         .font(.headline)
-                        .fontWeight(.medium)
+                        .fontWeight(.bold)
+                        .foregroundColor(.requestAgent)
                     
                     Spacer()
                 } // HStack
@@ -373,6 +248,7 @@ extension GarbageRequestAgentView {
             HStack(spacing: 15) {
                 HStack {
                     // TODO: 모델 수정
+                    // TODO: 텍스트 길이에 따라 동적으로 바꾸기
                     Text("\(garbageRequest.address) ")
                         .font(.headline)
                         .fontWeight(.medium)
@@ -433,20 +309,9 @@ extension GarbageRequestAgentView {
         } // VStack
     }
     
-    
+    // MARK: - 수거 내용
     @ViewBuilder
     private var pickUpView: some View {
-        // TODO: 건수 받아오기
-        HStack {
-            Text("진행 중인 대행 ")
-                .fontWeight(.semibold)
-            + Text("1건")
-                .fontWeight(.semibold)
-                .foregroundColor(.requestAgent)
-        
-            Spacer()
-        }
-        
         HStack {
             Text(!isPickedUpComplete
                  ? "플라스틱이 수거를 기다리는 중이에요"
@@ -498,6 +363,7 @@ extension GarbageRequestAgentView {
         }
         
         HStack (alignment: .center){
+            // TODO: 상세 정보 추가
             Text("상세 정보 확인하기")
                 .font(.subheadline)
                 .fontWeight(.medium)
@@ -509,13 +375,234 @@ extension GarbageRequestAgentView {
                 .resizable()
                 .frame(width: 13, height: 13)
                 .foregroundStyle(.requestAgent)
+            
             Spacer()
         }
         .onTapGesture {
             isDisplayedPickUpDetail.toggle()
         }
         
+        if isDisplayedPickUpDetail {
+            VStack(spacing: 18) {
+                VStack {
+                    HStack {
+                        sectionHeader(title: "품목")
+                        Spacer()
+                    }
+                    
+                    sectionBody(content: "\(garbageRequest.garbageType) \(garbageRequest.amount) 봉지")
+                }
+                
+                VStack {
+                    HStack {
+                        sectionHeader(title: "요청 시간")
+                        Spacer()
+                    }
+                    
+                    // TODO: 날짜 받아오기
+                    sectionBody(content: "6월 26일 수요일 20:29")
+                }
+                
+                VStack {
+                    HStack {
+                        sectionHeader(title: "위치 정보")
+                        Spacer()
+                        
+                        Image(systemName: "location")
+                            .resizable()
+                            .frame(width: 9,height: 9)
+                        
+                        // TODO: 지도로 이동 동작 추가
+                        Text("지도에서 찾기")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(hex: "585858"))
+                            .padding(.trailing, 48)
+                    }
+                    
+                    sectionBody(content: "\(garbageRequest.address)")
+                }
+                
+                VStack {
+                    HStack {
+                        sectionHeader(title: "근처 배출 장소")
+                        Spacer()
+                        
+                        Image(systemName: "location")
+                            .resizable()
+                            .frame(width: 9,height: 9)
+                        
+                        // TODO: 지도로 이동 동작 추가
+                        Text("지도에서 찾기")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(hex: "585858"))
+                            .padding(.trailing, 48)
+                    }
+                    
+                    // TODO: 근처 주소 받아오기
+                    sectionBody(content: "\(garbageRequest.address)")
+                }
+                
+                HStack {
+                    sectionHeader(title: "배출 대행 수고비")
+                    Spacer()
+                    
+                    Text("5,000")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    Text("₩")
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color(hex: "727272"))
+                }
+                
+                Spacer().frame(height: 40)
+            }
+            
+        }
+        
     }
+    
+    // MARK: - 배출 내용
+    @ViewBuilder
+    private var disposalView: some View {
+        HStack {
+            Text(!isDisposalComplete
+                 ? "분리 배출을 기다리는 중이에요"
+                 : "분리 배출 대행이 완료되었어요!")
+                .font(.title3)
+                .fontWeight(.medium)
+                .foregroundColor(!isDisposalComplete
+                                 ? .requestAgent
+                                 : .black)
+            Spacer()
+        } // HStack
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .frame(height: 68)
+                .foregroundColor(!isPickedUpComplete
+                                 ? Color(hex: "F2EDFF")
+                                 : Color(hex: "EEEEEE"))
+        )
+
+        
+        HStack (alignment: .center){
+            Text("상세 정보 확인하기")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundStyle(.requestAgent)
+            
+            Image(systemName: isDisplayedDisposalDetail
+                  ? "minus.circle"
+                  : "plus.circle")
+                .resizable()
+                .frame(width: 13, height: 13)
+                .foregroundStyle(.requestAgent)
+            Spacer()
+        }
+        .onTapGesture {
+            // TODO: 배출 디테일 뷰 추가
+            isDisplayedDisposalDetail.toggle()
+        }
+    }
+    
+    // MARK: - 버튼들
+    @ViewBuilder
+    private var buttonsView: some View {
+        // 배출 대행 수락하기
+        Button {
+            // TODO: 동작 추가
+            if !isAcceptedRequest {
+                isAcceptedRequest.toggle()
+            }
+        } label: {
+            HStack {
+                Spacer()
+                Text(isAcceptedRequest
+                     ? "배출 대행 수락완료!"
+                     : "배출 대행 수락하기"
+                )
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                Spacer()
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 55)
+                    .frame(height: 68)
+                    .foregroundColor(acceptButtonColor)
+            )
+        }
+        .disabled(!isPossibleToAcceptRequest)
+        
+        Image(systemName: "arrowshape.down.fill")
+            .foregroundColor(isAcceptedRequest
+                             ? .requestAgent
+                             : Color(hex: "C4C4C4")
+                            )
+        
+        
+        // 수거 완료하기
+        Button {
+            // TODO: 동작 추가
+            if !isPickedUpComplete {
+                isPickedUpComplete.toggle()
+            }
+        } label: {
+            HStack {
+                Spacer()
+                Text(isPickedUpComplete
+                     ? "수거 완료!"
+                     : "수거 완료하기"
+                )
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                Spacer()
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 55)
+                    .frame(height: 68)
+                    .foregroundColor(pickUpButtonColor)
+            )
+        }
+        .disabled(!isAcceptedRequest)
+        
+        Image(systemName: "arrowshape.down.fill")
+            .foregroundColor(isPickedUpComplete
+                             ? .requestAgent
+                             : Color(hex: "C4C4C4")
+                            )
+        
+        // 배출 완료하기
+        Button {
+            // TODO: 동작 추가
+            isDisposalComplete.toggle()
+            print("hi")
+        } label: {
+            HStack {
+                Spacer()
+                Text(isDisposalComplete
+                     ? "배출 완료!"
+                     : "배출 완료하기"
+                )
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                Spacer()
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 55)
+                    .frame(height: 68)
+                    .foregroundColor(disposalButtonColor)
+            )
+        }
+        .disabled(!isPickedUpComplete)
+    }
+    
+    
     @ViewBuilder
     func sectionHeader(title: String) -> some View {
         Text("\(title)")
@@ -524,6 +611,21 @@ extension GarbageRequestAgentView {
             .font(.caption)
             .fontWeight(.semibold)
             .foregroundColor(Color(hex: "585858"))
+    }
+    
+    @ViewBuilder
+    func sectionBody(content: String) -> some View {
+        HStack {
+            Text("\(content)")
+            
+            Spacer()
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .frame(height: 54)
+                .foregroundStyle(Color(hex: "F4F4F4"))
+        )
     }
     
     @ViewBuilder
