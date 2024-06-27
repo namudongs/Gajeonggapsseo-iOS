@@ -16,7 +16,14 @@
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176C757A2C2C7460001D3102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* Extensions.swift */; };
+		176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373AF2C2E9C4700F7514D /* Color+Extension.swift */; };
+		176373B22C2E9C5600F7514D /* GarbageRequestAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B12C2E9C5600F7514D /* GarbageRequestAgentView.swift */; };
+		176373B62C2E9C6E00F7514D /* EmissionRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B32C2E9C6E00F7514D /* EmissionRequestDetailView.swift */; };
+		176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */; };
+		176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchView.swift */; };
+		176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */; };
+		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
+		176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* View+Extension.swift */; };
 		178ED90B2C24519A00EADD6D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED90A2C24519A00EADD6D /* MapView.swift */; };
 		178ED9162C24612100EADD6D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9152C24612100EADD6D /* ApiService.swift */; };
 		178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9172C24624E00EADD6D /* JejuResponse.swift */; };
@@ -29,13 +36,6 @@
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
-		E75955782C2E94E1004604BE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75955772C2E94E1004604BE /* Color+Extension.swift */; };
-		E759557F2C2E95C6004604BE /* GarbageRequestAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */; };
-		E7D187B72C2960EF005B34CB /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B52C2960EF005B34CB /* Config.xcconfig */; };
-		E7D187B82C2960EF005B34CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */; };
-		E7F35C722C2ADAC0009874B0 /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */; };
-		E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */; };
-		E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,14 @@
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176C75792C2C7460001D3102 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		176373AF2C2E9C4700F7514D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		176373B12C2E9C5600F7514D /* GarbageRequestAgentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarbageRequestAgentView.swift; sourceTree = "<group>"; };
+		176373B32C2E9C6E00F7514D /* EmissionRequestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmissionRequestDetailView.swift; sourceTree = "<group>"; };
+		176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
+		176373B52C2E9C6E00F7514D /* AddressSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
+		176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		176C75792C2C7460001D3102 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		178ED90A2C24519A00EADD6D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		178ED9152C24612100EADD6D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		178ED9172C24624E00EADD6D /* JejuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuResponse.swift; sourceTree = "<group>"; };
@@ -62,13 +69,6 @@
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		E75955772C2E94E1004604BE /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarbageRequestAgentView.swift; sourceTree = "<group>"; };
-		E7D187B52C2960EF005B34CB /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
-		E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestDetailView.swift; sourceTree = "<group>"; };
-		E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,6 @@
 		1747B69C2C21A3C0009057D0 /* Gajeonggapsseo-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				176C75782C2C7458001D3102 /* Helpers */,
 				178ED9222C2465E900EADD6D /* Info.plist */,
 				1747B6AE2C21A564009057D0 /* App */,
 				1747B6AB2C21A54F009057D0 /* Models */,
@@ -164,21 +163,13 @@
 		1747B6AF2C21A66F009057D0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				E7D187B52C2960EF005B34CB /* Config.xcconfig */,
-				E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */,
+				176373BA2C2E9C8E00F7514D /* Config.xcconfig */,
+				176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */,
 				178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */,
 				1747B6A12C21A3C1009057D0 /* Assets.xcassets */,
 				1747B6A32C21A3C1009057D0 /* Preview Content */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		176C75782C2C7458001D3102 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				176C75792C2C7460001D3102 /* Extensions.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		178ED90C2C245CB700EADD6D /* Response */ = {
@@ -232,7 +223,8 @@
 		E75955762C2E94C8004604BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E75955772C2E94E1004604BE /* Color+Extension.swift */,
+				176C75792C2C7460001D3102 /* View+Extension.swift */,
+				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,7 +232,7 @@
 		E759557D2C2E95B3004604BE /* AcceptRequest */ = {
 			isa = PBXGroup;
 			children = (
-				E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */,
+				176373B12C2E9C5600F7514D /* GarbageRequestAgentView.swift */,
 			);
 			path = AcceptRequest;
 			sourceTree = "<group>";
@@ -248,9 +240,9 @@
 		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
 			isa = PBXGroup;
 			children = (
-				E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */,
-				E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */,
-				E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */,
+				176373B52C2E9C6E00F7514D /* AddressSearchView.swift */,
+				176373B32C2E9C6E00F7514D /* EmissionRequestDetailView.swift */,
+				176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */,
 			);
 			path = RequestEmission;
 			sourceTree = "<group>";
@@ -319,9 +311,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7D187B72C2960EF005B34CB /* Config.xcconfig in Resources */,
 				1747B6A52C21A3C1009057D0 /* Preview Assets.xcassets in Resources */,
-				E7D187B82C2960EF005B34CB /* GoogleService-Info.plist in Resources */,
+				176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */,
+				176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */,
 				1747B6A22C21A3C1009057D0 /* Assets.xcassets in Resources */,
 				178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */,
 			);
@@ -335,24 +327,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
-				176C757A2C2C7460001D3102 /* Extensions.swift in Sources */,
+				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
+				176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
+				176373B22C2E9C5600F7514D /* GarbageRequestAgentView.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
-				E7F35C722C2ADAC0009874B0 /* EmissionRequestView.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
+				176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
+				176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
-				E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */,
-				E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
+				176373B62C2E9C6E00F7514D /* EmissionRequestDetailView.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
-				E759557F2C2E95C6004604BE /* GarbageRequestAgentView.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
@@ -364,7 +357,6 @@
 /* Begin XCBuildConfiguration section */
 		1747B6A62C21A3C1009057D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7D187B52C2960EF005B34CB /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -484,7 +476,6 @@
 		};
 		1747B6A92C21A3C1009057D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7D187B52C2960EF005B34CB /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
