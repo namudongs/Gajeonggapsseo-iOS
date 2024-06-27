@@ -6,19 +6,16 @@
 //
 
 import SwiftUI
-import Firebase
 
 @main
 struct Gajeonggapsseo_iOSApp: App {
     
-    init() {
-        FirebaseApp.configure()
-    }
-    
+    @State private var centers: [Center] = []
+
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                MapView(centers: $centers)
             }
         }
     }

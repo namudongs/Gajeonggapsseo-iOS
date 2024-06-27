@@ -8,16 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B69D2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift */; };
-		1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B69F2C21A3C0009057D0 /* ContentView.swift */; };
 		1747B6A22C21A3C1009057D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1747B6A12C21A3C1009057D0 /* Assets.xcassets */; };
 		1747B6A52C21A3C1009057D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1747B6A42C21A3C1009057D0 /* Preview Assets.xcassets */; };
-		1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C02C21A98D009057D0 /* FirestoreManager.swift */; };
-		1747B6C42C21AB2C009057D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1747B6C32C21AB2C009057D0 /* FirebaseFirestore */; };
-		1747B6C82C21B6D6009057D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1747B6C72C21B6D6009057D0 /* GoogleService-Info.plist */; };
-		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
-		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
-		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176C757A2C2C7460001D3102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* Extensions.swift */; };
 		178ED90B2C24519A00EADD6D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED90A2C24519A00EADD6D /* MapView.swift */; };
 		178ED9162C24612100EADD6D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9152C24612100EADD6D /* ApiService.swift */; };
 		178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9172C24624E00EADD6D /* JejuResponse.swift */; };
@@ -27,23 +19,14 @@
 		178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9202C24651A00EADD6D /* DataLoader.swift */; };
 		178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9262C24719600EADD6D /* MapViewRepresentable.swift */; };
 		178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */; };
-		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
-		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1747B69A2C21A3C0009057D0 /* Gajeonggapsseo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gajeonggapsseo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1747B69D2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gajeonggapsseo_iOSApp.swift; sourceTree = "<group>"; };
-		1747B69F2C21A3C0009057D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1747B6A12C21A3C1009057D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1747B6A42C21A3C1009057D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1747B6C02C21A98D009057D0 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
-		1747B6C72C21B6D6009057D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
-		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
-		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176C75792C2C7460001D3102 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		178ED90A2C24519A00EADD6D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		178ED9152C24612100EADD6D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		178ED9172C24624E00EADD6D /* JejuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuResponse.swift; sourceTree = "<group>"; };
@@ -55,8 +38,6 @@
 		178ED9252C2466BA00EADD6D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		178ED9262C24719600EADD6D /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwipoCleanHouse.json; sourceTree = "<group>"; };
-		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
-		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1747B6C42C21AB2C009057D0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +71,6 @@
 		1747B69C2C21A3C0009057D0 /* Gajeonggapsseo-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				176C75782C2C7458001D3102 /* Helpers */,
 				178ED9222C2465E900EADD6D /* Info.plist */,
 				1747B6AE2C21A564009057D0 /* App */,
 				1747B6AB2C21A54F009057D0 /* Models */,
@@ -115,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				178ED90C2C245CB700EADD6D /* Response */,
-				1747B6C92C21B73B009057D0 /* GarbageRequest.swift */,
 				178ED91D2C24631B00EADD6D /* Center.swift */,
 			);
 			path = Models;
@@ -124,10 +102,8 @@
 		1747B6AC2C21A558009057D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1747B69F2C21A3C0009057D0 /* ContentView.swift */,
 				178ED90A2C24519A00EADD6D /* MapView.swift */,
 				178ED9262C24719600EADD6D /* MapViewRepresentable.swift */,
-				17B600752C231C5900F55BCB /* GarbageRequest */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,7 +111,6 @@
 		1747B6AD2C21A55C009057D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				1747B6C02C21A98D009057D0 /* FirestoreManager.swift */,
 				17B600732C2307D600F55BCB /* LocationManager.swift */,
 			);
 			path = Manager;
@@ -153,20 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */,
-				1747B6C72C21B6D6009057D0 /* GoogleService-Info.plist */,
 				1747B6A12C21A3C1009057D0 /* Assets.xcassets */,
-				1747B6A32C21A3C1009057D0 /* Preview Content */,
 				178ED9252C2466BA00EADD6D /* Config.xcconfig */,
+				1747B6A32C21A3C1009057D0 /* Preview Content */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		176C75782C2C7458001D3102 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				176C75792C2C7460001D3102 /* Extensions.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		178ED90C2C245CB700EADD6D /* Response */ = {
@@ -188,33 +154,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		17B600752C231C5900F55BCB /* GarbageRequest */ = {
-			isa = PBXGroup;
-			children = (
-				17B600762C231C7B00F55BCB /* AddRequest */,
-				17B600772C231C8900F55BCB /* RequestList */,
-			);
-			path = GarbageRequest;
-			sourceTree = "<group>";
-		};
-		17B600762C231C7B00F55BCB /* AddRequest */ = {
-			isa = PBXGroup;
-			children = (
-				1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */,
-				17B600712C23067900F55BCB /* PickRequestAdress.swift */,
-			);
-			path = AddRequest;
-			sourceTree = "<group>";
-		};
-		17B600772C231C8900F55BCB /* RequestList */ = {
-			isa = PBXGroup;
-			children = (
-				1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */,
-				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
-			);
-			path = RequestList;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,7 +171,6 @@
 			);
 			name = "Gajeonggapsseo-iOS";
 			packageProductDependencies = (
-				1747B6C32C21AB2C009057D0 /* FirebaseFirestore */,
 			);
 			productName = "Gajeonggapsseo-iOS";
 			productReference = 1747B69A2C21A3C0009057D0 /* Gajeonggapsseo-iOS.app */;
@@ -263,7 +201,6 @@
 			);
 			mainGroup = 1747B6912C21A3C0009057D0;
 			packageReferences = (
-				1747B6C22C21AB2C009057D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 1747B69B2C21A3C0009057D0 /* Products */;
 			projectDirPath = "";
@@ -281,7 +218,6 @@
 			files = (
 				1747B6A52C21A3C1009057D0 /* Preview Assets.xcassets in Resources */,
 				1747B6A22C21A3C1009057D0 /* Assets.xcassets in Resources */,
-				1747B6C82C21B6D6009057D0 /* GoogleService-Info.plist in Resources */,
 				178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,23 +229,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
-				176C757A2C2C7460001D3102 /* Extensions.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
-				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,
-				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
-				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
-				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
-				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
-				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,12 +379,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gajeonggapsseo-iOS/Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도에서 현재 위치를 사용하려면 권한이 필요합니다.";
+				INFOPLIST_KEY_CFBundleDisplayName = "가정갑써";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 서비스를 켜면 근처의 센터와 배출 요청을 확인할 수 있습니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,9 +395,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.namudi.Gajeonggapsseo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -484,12 +418,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gajeonggapsseo-iOS/Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도에서 현재 위치를 사용하려면 권한이 필요합니다.";
+				INFOPLIST_KEY_CFBundleDisplayName = "가정갑써";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 서비스를 켜면 근처의 센터와 배출 요청을 확인할 수 있습니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,9 +434,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.namudi.Gajeonggapsseo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -526,25 +466,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1747B6C22C21AB2C009057D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.28.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1747B6C32C21AB2C009057D0 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1747B6C22C21AB2C009057D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1747B6922C21A3C0009057D0 /* Project object */;
 }

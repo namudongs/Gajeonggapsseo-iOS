@@ -12,7 +12,6 @@ import CoreLocation
 struct MapViewRepresentable: UIViewRepresentable {
     @Binding var centers: [Center]
     @Binding var region: MKCoordinateRegion
-    @Binding var selectedCenter: Center?
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -27,19 +26,15 @@ struct MapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        if uiView.annotations.isEmpty {
-            let annotations = centers.compactMap { center -> MKPointAnnotation? in
-                guard let coordinate = center.coordinate else { return nil }
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = center.rnAdres
-                return annotation
-            }
-            uiView.addAnnotations(annotations)
-        } else {
-            // centers 배열이 변경된 경우 업데이트 로직
+        let annotations = centers.compactMap { center -> MKPointAnnotation? in
+            guard let coordinate = center.coordinate else { return nil }
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = center.type.rawValue
+            annotation.subtitle = center.rnAdres
+            return annotation
         }
-        //        uiView.setRegion(region, animated: true)
+        uiView.addAnnotations(annotations)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -93,17 +88,15 @@ struct MapViewRepresentable: UIViewRepresentable {
             
             let identifier = NSStringFromClass(MKPointAnnotation.self)
             var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
-            view?.canShowCallout = true
-            view?.titleVisibility = .hidden
-            view?.subtitleVisibility = .hidden
             
             if view == nil {
                 view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view?.canShowCallout = true
             } else {
                 view?.annotation = annotation
             }
             
-            if let title = annotation.title as? String, let center = parent.centers.first(where: { $0.rnAdres == title }) {
+            if let title = annotation.title as? String, let center = parent.centers.first(where: { $0.type.rawValue == title }) {
                 view?.markerTintColor = parent.colorForCenterType(center.type)
             }
             
@@ -112,15 +105,8 @@ struct MapViewRepresentable: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let annotation = view.annotation as? MKPointAnnotation {
-                if let title = annotation.title, let center = parent.centers.first(where: { $0.rnAdres == title }) {
-                    parent.selectedCenter = center
-                }
                 mapView.setCenter(annotation.coordinate, animated: true)
             }
-        }
-        
-        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-            
         }
         
         func mapView(_ mapView: MKMapView, clusterAnnotationFor memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
