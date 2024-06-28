@@ -18,6 +18,9 @@ struct AcceptionRequestView: View {
     // TODO: 변수명 변경
     @State private var isAgentFeeChecked: Bool = false
     
+    
+    @State private var requestStatus: RequestStatus = .accepted
+    
     // Buttons
     /// 배출 대행
     var isPossibleToAcceptRequest: Bool {
@@ -25,9 +28,20 @@ struct AcceptionRequestView: View {
         && isRequestTimeChecked
         && isAddressChecked
         && isNearbyCenterChecked
-        && isAgentFeeChecked
+//        && isAgentFeeChecked
     }
-    @State private var isAcceptedRequest: Bool = false
+    var isAcceptedRequest: Bool {
+        switch requestStatus {
+        case .requested:
+            false
+        case .accepted:
+            true
+        case .pickuped:
+            true
+        case .completed:
+            true
+        }
+    }
     var acceptButtonColor: Color {
         if isAcceptedRequest {
             .subRequestAgent
@@ -39,7 +53,18 @@ struct AcceptionRequestView: View {
     }
     
     /// 수거
-    @State private var isPickedUpComplete: Bool = false
+    var isPickedUpComplete: Bool {
+        switch requestStatus {
+        case .requested:
+            false
+        case .accepted:
+            false
+        case .pickuped:
+            true
+        case .completed:
+            true
+        }
+    }
     var pickUpButtonColor: Color {
         if isPickedUpComplete {
             .subRequestAgent
@@ -52,7 +77,18 @@ struct AcceptionRequestView: View {
     @State private var isDisplayedPickUpDetail: Bool = false
     
     /// 배출
-    @State private var isDisposalComplete: Bool = false
+    var isDisposalComplete: Bool {
+        switch requestStatus {
+        case .requested:
+            false
+        case .accepted:
+            false
+        case .pickuped:
+            false
+        case .completed:
+            true
+        }
+    }
     var disposalButtonColor: Color {
         if isDisposalComplete {
             .subRequestAgent
@@ -70,7 +106,7 @@ struct AcceptionRequestView: View {
             
             ScrollView {
                 VStack(spacing: 28) {
-                    if !isAcceptedRequest {
+                    if requestStatus == .requested {
                         garbageTypeRow
                         
                         requestTimeRow
@@ -79,22 +115,62 @@ struct AcceptionRequestView: View {
                         
                         nearbyCenterRow
                         
-                        agentFeeRow
+//                        agentFeeRow
                         
                         Spacer().frame(height: 14)
-                    } else {
+                    } else if requestStatus == .accepted {
                         pickUpView
                         
-                        if isPickedUpComplete {
-                            disposalView
-                        }
-                        
                         if !isDisplayedPickUpDetail {
-                            Spacer().frame(height: !isPickedUpComplete ? 240 : 146)
+                            Spacer().frame(height: 280)
+                        }
+                    } else if requestStatus == .pickuped {
+                        pickUpView
+                        
+                        disposalView
+                        
+                        if !isDisplayedPickUpDetail && !isDisplayedDisposalDetail {
+                            Spacer().frame(height: 226)
+                        }
+                    } else if requestStatus == .completed {
+                        pickUpView
+                        
+                        disposalView
+                        
+                        completeView
+                        
+                        if !isDisplayedPickUpDetail && !isDisplayedDisposalDetail {
+                            Spacer().frame(height: 142)
                         }
                     }
                     
                     buttonsView
+                    
+//                    if !isAcceptedRequest {
+//                        garbageTypeRow
+//                        
+//                        requestTimeRow
+//                        
+//                        adressRow
+//                        
+//                        nearbyCenterRow
+//                        
+//                        agentFeeRow
+//                        
+//                        Spacer().frame(height: 14)
+//                    } else {
+//                        pickUpView
+//                        
+//                        if isPickedUpComplete {
+//                            disposalView
+//                        }
+//                        
+//                        if !isDisplayedPickUpDetail {
+//                            Spacer().frame(height: !isPickedUpComplete ? 240 : 146)
+//                        }
+//                    }
+//                    
+//                    buttonsView
                     
                 } // VStack
                 .padding(.horizontal, 16)
@@ -421,18 +497,18 @@ extension AcceptionRequestView {
                     sectionBody(content: "\(garbageRequest.address)")
                 }
                 
-                HStack {
-                    sectionHeader(title: "배출 대행 수고비")
-                    Spacer()
-                    
-                    Text("5,000")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                    Text("₩")
-                        .font(.subheadline)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(hex: "727272"))
-                }
+//                HStack {
+//                    sectionHeader(title: "배출 대행 수고비")
+//                    Spacer()
+//                    
+//                    Text("5,000")
+//                        .font(.subheadline)
+//                        .fontWeight(.medium)
+//                    Text("₩")
+//                        .font(.subheadline)
+//                        .fontWeight(.regular)
+//                        .foregroundColor(Color(hex: "727272"))
+//                }
                 
                 Spacer().frame(height: 40)
             }
@@ -485,15 +561,31 @@ extension AcceptionRequestView {
         }
     }
     
+    @ViewBuilder
+    private var completeView: some View {
+        HStack {
+            Text("대행비 정산 완료!")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.requestAgent)
+            Spacer()
+        } // HStack
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .frame(height: 68)
+                .foregroundColor(.subRequestAgent)
+        )
+    }
+    
     // MARK: - 버튼들
     @ViewBuilder
     private var buttonsView: some View {
         // 배출 대행 수락하기
         Button {
-            // TODO: 동작 추가
-            if !isAcceptedRequest {
-                isAcceptedRequest.toggle()
-            }
+            // TODO: 서버에 요청 보내는 동작 추가
+            self.requestStatus = .accepted
+            
         } label: {
             HStack {
                 Spacer()
@@ -512,7 +604,10 @@ extension AcceptionRequestView {
                     .foregroundColor(acceptButtonColor)
             )
         }
-        .disabled(!isPossibleToAcceptRequest)
+        .disabled(
+            !isPossibleToAcceptRequest
+            || requestStatus != .requested
+        )
         
         Image(systemName: "arrowshape.down.fill")
             .foregroundColor(isAcceptedRequest
@@ -523,10 +618,8 @@ extension AcceptionRequestView {
         
         // 수거 완료하기
         Button {
-            // TODO: 동작 추가
-            if !isPickedUpComplete {
-                isPickedUpComplete.toggle()
-            }
+            // TODO: 서버에 요청 보내는 동작 추가
+            self.requestStatus = .pickuped
         } label: {
             HStack {
                 Spacer()
@@ -545,7 +638,7 @@ extension AcceptionRequestView {
                     .foregroundColor(pickUpButtonColor)
             )
         }
-        .disabled(!isAcceptedRequest)
+        .disabled(requestStatus != .accepted)
         
         Image(systemName: "arrowshape.down.fill")
             .foregroundColor(isPickedUpComplete
@@ -555,9 +648,8 @@ extension AcceptionRequestView {
         
         // 배출 완료하기
         Button {
-            // TODO: 동작 추가
-            isDisposalComplete.toggle()
-            print("hi")
+            // TODO: 서버에 요청 보내는 동작 추가
+            self.requestStatus = .completed
         } label: {
             HStack {
                 Spacer()
@@ -576,7 +668,7 @@ extension AcceptionRequestView {
                     .foregroundColor(disposalButtonColor)
             )
         }
-        .disabled(!isPickedUpComplete)
+        .disabled(requestStatus != .pickuped)
     }
     
     
