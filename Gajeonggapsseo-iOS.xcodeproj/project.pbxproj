@@ -28,10 +28,11 @@
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
+		E75955782C2E94E1004604BE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75955772C2E94E1004604BE /* Color+Extension.swift */; };
+		E759557F2C2E95C6004604BE /* GarbageRequestAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */; };
 		E7D187B72C2960EF005B34CB /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B52C2960EF005B34CB /* Config.xcconfig */; };
 		E7D187B82C2960EF005B34CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */; };
 		E7F35C722C2ADAC0009874B0 /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */; };
-		E7F35C752C2ADEB6009874B0 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */; };
 		E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */; };
 		E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */; };
 /* End PBXBuildFile section */
@@ -59,10 +60,11 @@
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E75955772C2E94E1004604BE /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarbageRequestAgentView.swift; sourceTree = "<group>"; };
 		E7D187B52C2960EF005B34CB /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
-		E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestDetailView.swift; sourceTree = "<group>"; };
 		E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,8 +106,8 @@
 				1747B6AC2C21A558009057D0 /* Views */,
 				1747B6AD2C21A55C009057D0 /* Manager */,
 				178ED91F2C2464E500EADD6D /* Service */,
+				E75955762C2E94C8004604BE /* Extensions */,
 				1747B6AF2C21A66F009057D0 /* Assets */,
-				E7F35C732C2ADE91009874B0 /* Extensions */,
 			);
 			path = "Gajeonggapsseo-iOS";
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 		17B600752C231C5900F55BCB /* GarbageRequest */ = {
 			isa = PBXGroup;
 			children = (
+				E759557D2C2E95B3004604BE /* AcceptRequest */,
 				E7650B6A2C2AD9CC001D9971 /* RequestEmission */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
 				17B600772C231C8900F55BCB /* RequestList */,
@@ -215,6 +218,22 @@
 			path = RequestList;
 			sourceTree = "<group>";
 		};
+		E75955762C2E94C8004604BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E75955772C2E94E1004604BE /* Color+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E759557D2C2E95B3004604BE /* AcceptRequest */ = {
+			isa = PBXGroup;
+			children = (
+				E759557E2C2E95C6004604BE /* GarbageRequestAgentView.swift */,
+			);
+			path = AcceptRequest;
+			sourceTree = "<group>";
+		};
 		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,14 +242,6 @@
 				E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */,
 			);
 			path = RequestEmission;
-			sourceTree = "<group>";
-		};
-		E7F35C732C2ADE91009874B0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
+				E75955782C2E94E1004604BE /* Color+Extension.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
@@ -322,16 +334,14 @@
 				E7F35C722C2ADAC0009874B0 /* EmissionRequestView.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
-				FB2435C62C2C2E4A007474A9 /* Color+Extension.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */,
-				E7F35C752C2ADEB6009874B0 /* Color+Extension.swift in Sources */,
 				E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
-				FB2435C42C2C25C1007474A9 /* GarbageRequestAgentView.swift in Sources */,
+				E759557F2C2E95C6004604BE /* GarbageRequestAgentView.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
