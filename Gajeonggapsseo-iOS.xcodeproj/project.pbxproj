@@ -31,7 +31,9 @@
 		E7D187B72C2960EF005B34CB /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B52C2960EF005B34CB /* Config.xcconfig */; };
 		E7D187B82C2960EF005B34CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */; };
 		E7F35C722C2ADAC0009874B0 /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */; };
-		E7F35C752C2ADEB6009874B0 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C742C2ADEB6009874B0 /* Color+.swift */; };
+		E7F35C752C2ADEB6009874B0 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */; };
+		E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */; };
+		E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +62,9 @@
 		E7D187B52C2960EF005B34CB /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E7D187B62C2960EF005B34CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
-		E7F35C742C2ADEB6009874B0 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionRequestDetailView.swift; sourceTree = "<group>"; };
+		E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				E7F35C712C2ADAC0009874B0 /* EmissionRequestView.swift */,
+				E7F35C762C2BA1B5009874B0 /* EmissionRequestDetailView.swift */,
+				E7F35C782C2D55D6009874B0 /* AddressSearchView.swift */,
 			);
 			path = RequestEmission;
 			sourceTree = "<group>";
@@ -222,7 +228,7 @@
 		E7F35C732C2ADE91009874B0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E7F35C742C2ADEB6009874B0 /* Color+.swift */,
+				E7F35C742C2ADEB6009874B0 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,7 +325,9 @@
 				FB2435C62C2C2E4A007474A9 /* Color+Extension.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
-				E7F35C752C2ADEB6009874B0 /* Color+.swift in Sources */,
+				E7F35C772C2BA1B5009874B0 /* EmissionRequestDetailView.swift in Sources */,
+				E7F35C752C2ADEB6009874B0 /* Color+Extension.swift in Sources */,
+				E7F35C792C2D55D6009874B0 /* AddressSearchView.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
