@@ -122,7 +122,7 @@ struct AcceptionRequestView: View {
                         pickUpView
                         
                         if !isDisplayedPickUpDetail {
-                            Spacer().frame(height: 280)
+                            Spacer().frame(height: 260)
                         }
                     } else if requestStatus == .pickuped {
                         pickUpView
@@ -130,7 +130,7 @@ struct AcceptionRequestView: View {
                         disposalView
                         
                         if !isDisplayedPickUpDetail && !isDisplayedDisposalDetail {
-                            Spacer().frame(height: 226)
+                            Spacer().frame(height: 206)
                         }
                     } else if requestStatus == .completed {
                         pickUpView
@@ -140,7 +140,7 @@ struct AcceptionRequestView: View {
                         completeView
                         
                         if !isDisplayedPickUpDetail && !isDisplayedDisposalDetail {
-                            Spacer().frame(height: 142)
+                            Spacer().frame(height: 122)
                         }
                     }
                     
