@@ -79,7 +79,7 @@ struct EmissionRequestView: View {
             Spacer()
             
             NavigationLink {
-
+                EmissionRequestDetailView()
             } label: {
                 RoundedRectangle(cornerRadius: 55)
                     .fill(selectedCategories.isEmpty ? Color(hex: "C4C4C4") : Color(hex: "2260FE"))
