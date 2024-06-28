@@ -15,6 +15,9 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     @Published var currentPlace: String = "위치를 선택해주세요" // 현재 위치의 도로명 주소를 저장하는 프로퍼티
     @Published var currentGeoPoint: CLLocationCoordinate2D? // 현재 위치를 저장하는 프로퍼티
     
+    @Published var currentLocation: CLLocation? = nil
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    
     private var manager: CLLocationManager = .init()
     
     
@@ -82,6 +85,9 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     /// startUpdatingLocation 메서드 또는 requestLocation 메서드를 호출했을 때에만 이 메서드가 호출
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("[SUCCESS] Did Update Locations")
+        if let location = locations.last {
+            self.currentLocation = location
+        }
     }
     
     // MARK: - 사용자의 현재 위치를 가져오는 것을 실패했을 때 호출되는 메서드
@@ -102,5 +108,10 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
             
             self.currentPlace = "\(placemark.country ?? "") \(placemark.locality ?? "") \(placemark.name ?? "")"
         }
+    }
+    
+    func requestLocation() {
+        manager.startUpdatingLocation()
+    
     }
 }
