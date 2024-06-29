@@ -17,9 +17,9 @@ struct ButtonLabel: View {
             Color(hex: "C4C4C4")
         } else {
             if isAgentRequst {
-                .blue
+                .requestAccent
             } else {
-                .requestAgent
+                .acceptanceAccent
             }
         }
     }
