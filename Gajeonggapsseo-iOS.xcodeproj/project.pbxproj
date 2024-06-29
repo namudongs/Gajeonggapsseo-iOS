@@ -40,6 +40,7 @@
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
 		FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E972C30554300143970 /* ProgressStatusView.swift */; };
+		FB7A5E9C2C3078D900143970 /* ButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
 		FB7A5E972C30554300143970 /* ProgressStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStatusView.swift; sourceTree = "<group>"; };
+		FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				FB7A5E972C30554300143970 /* ProgressStatusView.swift */,
+				FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
+				FB7A5E9C2C3078D900143970 /* ButtonLabel.swift in Sources */,
 				FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */,
 				FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,

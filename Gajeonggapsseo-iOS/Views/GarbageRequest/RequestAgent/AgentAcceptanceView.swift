@@ -267,21 +267,7 @@ extension AgentAcceptanceView {
         Button {
             // TODO: 서버에 요청 보내는 동작 추가
         } label: {
-            HStack {
-                Spacer()
-                Text("배출 대행 수락하기")
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                Spacer()
-            }
-            .background(
-                RoundedRectangle(cornerRadius: 55)
-                    .frame(height: 68)
-                    .foregroundColor(isPossibleToAcceptRequest
-                                     ? .requestAgent
-                                     : Color(hex: "C4C4C4"))
-            )
+            ButtonLabel(content: "배출 대행 수락하기", isAgentRequst: false, isDisabled: !isPossibleToAcceptRequest)
         }
         .disabled(
             !isPossibleToAcceptRequest
