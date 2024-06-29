@@ -38,6 +38,7 @@
 		E759557F2C2E95C6004604BE /* AcceptionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */; };
 		FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
+		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptionRequestView.swift; sourceTree = "<group>"; };
 		FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
+		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 				FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */,
 				E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */,
 				FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */,
+				FB7A5E942C302AD700143970 /* AgentExecutionView.swift */,
 			);
 			path = RequestAgent;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
+				FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */,
 				FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
