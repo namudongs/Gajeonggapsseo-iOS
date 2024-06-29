@@ -90,6 +90,19 @@ class Request: Center, Codable {
 enum RequestStatus: String, Codable {
     case requested = "requested"
     case accepted = "accepted"
-    case pickuped = "pickuped"
+    case pickedUp = "pickedUp"
     case completed = "completed"
+    
+//    func getStatusContent() -> String {
+//            switch self {
+//            case .requested:
+//                return "Request is pending."
+//            case .accepted:
+//                return "플라스틱이 수거를 기다리는 중이에요"
+//            case .pickedUp:
+//                return ""
+//            case .completed:
+//                return "Request has been completed."
+//            }
+//        }
 }
