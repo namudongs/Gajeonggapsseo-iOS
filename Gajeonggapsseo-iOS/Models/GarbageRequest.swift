@@ -13,9 +13,8 @@ class Request: Center, Codable {
     var id: UUID
     var type: CenterType
     var address: String
-    var latitude: Double
-    var longitude: Double
-    var garbageType: String //
+    var coordinate: CLLocationCoordinate2D
+    var garbageType: String
     var amount: String
     var requestTime: Timestamp
     var preferredPickupTime: Timestamp
@@ -35,16 +34,57 @@ class Request: Center, Codable {
         self.helperId = helperId
     }
     
-    static let mock: GarbageRequest = GarbageRequest(userId: "",
-                                                     address: "제주시 연동 14길 32",
-                                                     latitude: 0.0,
-                                                     longitude: 0.0,
-                                                     garbageType: "플라스틱",
-                                                     amount: "1",
-                                                     requestTime: Timestamp(date: Date()),
-                                                     preferredPickupTime: Timestamp(date: Date()),
-                                                     status: .requested)
+    enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case address
+        case latitude
+        case longitude
+        case garbageType
+        case amount
+        case requestTime
+        case preferredPickupTime
+        case status
+        case helperId
+    }
     
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.type = try container.decode(CenterType.self, forKey: .type)
+        self.address = try container.decode(String.self, forKey: .address)
+        
+        let latitude = try container.decode(CLLocationDegrees.self, forKey: .latitude)
+        let longitude = try container.decode(CLLocationDegrees.self, forKey: .longitude)
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        self.garbageType = try container.decode(String.self, forKey: .garbageType)
+        self.amount = try container.decode(String.self, forKey: .amount)
+        
+        let requestTimeDouble = try container.decode(Double.self, forKey: .requestTime)
+        self.requestTime = Timestamp(seconds: Int64(requestTimeDouble), nanoseconds: 0)
+        
+        let preferredPickupTimeDouble = try container.decode(Double.self, forKey: .preferredPickupTime)
+        self.preferredPickupTime = Timestamp(seconds: Int64(preferredPickupTimeDouble), nanoseconds: 0)
+        
+        self.status = try container.decode(RequestStatus.self, forKey: .status)
+        self.helperId = try container.decodeIfPresent(String.self, forKey: .helperId)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(type, forKey: .type)
+        try container.encode(address, forKey: .address)
+        try container.encode(coordinate.latitude, forKey: .latitude)
+        try container.encode(coordinate.longitude, forKey: .longitude)
+        try container.encode(garbageType, forKey: .garbageType)
+        try container.encode(amount, forKey: .amount)
+        try container.encode(requestTime.seconds, forKey: .requestTime)
+        try container.encode(preferredPickupTime.seconds, forKey: .preferredPickupTime)
+        try container.encode(status, forKey: .status)
+        try container.encodeIfPresent(helperId, forKey: .helperId)
+    }
 }
 
 enum GarbageType: String {
@@ -63,17 +103,4 @@ enum RequestStatus: String, Codable {
     case accepted = "accepted"
     case pickedUp = "pickedUp"
     case completed = "completed"
-    
-//    func getStatusContent() -> String {
-//            switch self {
-//            case .requested:
-//                return "Request is pending."
-//            case .accepted:
-//                return "플라스틱이 수거를 기다리는 중이에요"
-//            case .pickedUp:
-//                return ""
-//            case .completed:
-//                return "Request has been completed."
-//            }
-//        }
 }

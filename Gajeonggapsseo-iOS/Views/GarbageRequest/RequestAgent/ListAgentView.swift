@@ -9,59 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 
 struct ListAgentView: View {
-    // onAppear로 서버에서 받아오기
-    var garbageRequestList: [GarbageRequest] = [
-        GarbageRequest(
-            userId: "1",
-            address: "제주시 연동 14길 32",
-            latitude: 0.0,
-            longitude: 0.0,
-            garbageType: "플라스틱",
-            amount: "1",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .requested),
-        GarbageRequest(
-            userId: "2",
-            address: "제주시 연동 14길 32",
-            latitude: 0.0,
-            longitude: 0.0,
-            garbageType: "유리",
-            amount: "1",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .accepted),
-        GarbageRequest(
-            userId: "3",
-            address: "제주시 연동 14길 32",
-            latitude: 0.0,
-            longitude: 0.0,
-            garbageType: "플라스틱",
-            amount: "1",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .accepted),
-        GarbageRequest(
-            userId: "4",
-            address: "제주시 연동 14길 32",
-            latitude: 0.0,
-            longitude: 0.0,
-            garbageType: "플라스틱",
-            amount: "1",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .pickedUp),
-        GarbageRequest(
-            userId: "5",
-            address: "제주시 연동 14길 32",
-            latitude: 0.0,
-            longitude: 0.0,
-            garbageType: "플라스틱",
-            amount: "1",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .completed)
-    ]
+    @EnvironmentObject var manager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
     //    @State private var selectedYear: Int = 2024
@@ -76,7 +24,7 @@ struct ListAgentView: View {
             VStack {
                 requestCountView
                 
-                ForEach(garbageRequestList, id: \.id) { request in
+                ForEach(manager.garbageRequests, id: \.id) { request in
                     requestAgentRow(for: request)
                         .padding(.bottom, 7)
                 }
@@ -86,7 +34,7 @@ struct ListAgentView: View {
                 
                 datePickerView
                 
-                ForEach(garbageRequestList, id: \.id) { request in
+                ForEach(manager.garbageRequests, id: \.id) { request in
                     completedRequestRow(for: request)
                         .padding(.vertical, 10)
                     Divider()
@@ -108,7 +56,7 @@ extension ListAgentView {
             Text("진행 중인 요청")
                 .font(.title3)
                 .fontWeight(.medium)
-            + Text(" \(garbageRequestList.count)건")
+            + Text(" \(manager.garbageRequests.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(.requestAgent)
@@ -118,7 +66,7 @@ extension ListAgentView {
     }
     
     @ViewBuilder
-    private func requestAgentRow(for request: GarbageRequest) -> some View {
+    private func requestAgentRow(for request: Request) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 // TODO: 아이콘 추가
@@ -186,7 +134,7 @@ extension ListAgentView {
         }
     }
     @ViewBuilder
-    private func completedRequestRow(for request: GarbageRequest) -> some View {
+    private func completedRequestRow(for request: Request) -> some View {
         // TODO: 값 불러와서 띄우기
         HStack {
             Text("클린하우스 01")
