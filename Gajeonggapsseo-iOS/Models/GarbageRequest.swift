@@ -10,6 +10,8 @@ import FirebaseFirestore
 import MapKit
 
 class Request: Center, Codable {
+    var description: String
+    
     var id: UUID
     var type: CenterType
     var address: String
@@ -21,7 +23,7 @@ class Request: Center, Codable {
     var status: RequestStatus
     var helperId: String?
 
-    init(id: UUID, type: CenterType, address: String, coordinate: CLLocationCoordinate2D, garbageType: String, amount: String, requestTime: Timestamp, preferredPickupTime: Timestamp, status: RequestStatus, helperId: String? = nil) {
+    init(id: UUID, type: CenterType, address: String, coordinate: CLLocationCoordinate2D, garbageType: String, amount: String, requestTime: Timestamp, preferredPickupTime: Timestamp, status: RequestStatus, helperId: String? = nil, description: String) {
         self.id = id
         self.type = type
         self.address = address
@@ -32,6 +34,7 @@ class Request: Center, Codable {
         self.preferredPickupTime = preferredPickupTime
         self.status = status
         self.helperId = helperId
+        self.description = description
     }
     
     enum CodingKeys: String, CodingKey {
@@ -46,6 +49,7 @@ class Request: Center, Codable {
         case preferredPickupTime
         case status
         case helperId
+        case description
     }
     
     required init(from decoder: Decoder) throws {
@@ -69,6 +73,7 @@ class Request: Center, Codable {
         
         self.status = try container.decode(RequestStatus.self, forKey: .status)
         self.helperId = try container.decodeIfPresent(String.self, forKey: .helperId)
+        self.description = try container.decode(String.self, forKey: .description)
     }
     
     func encode(to encoder: Encoder) throws {

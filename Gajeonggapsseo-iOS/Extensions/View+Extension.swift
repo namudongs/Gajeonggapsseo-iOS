@@ -14,7 +14,7 @@ extension View {
         dragIndicator: Visibility = .hidden,
         sheetCornerRadius: CGFloat?,
         isTransparentBG: Bool = true,
-        interactiveDisabled: Bool = false,
+        interactiveDisabled: Bool = true,
         @ViewBuilder content: @escaping () -> Content,
         onDismiss: @escaping () -> ()
     ) -> some View {
@@ -24,11 +24,11 @@ extension View {
             } content: {
                 if #available(iOS 16.4, *) {
                     content()
-                        .presentationDetents([.height(230)])
+                        .presentationDetents([.height(240)])
                         .presentationDragIndicator(dragIndicator)
                         .interactiveDismissDisabled(interactiveDisabled)
                         .presentationCornerRadius(sheetCornerRadius)
-                        .presentationBackgroundInteraction(.enabled(upThrough: .height(230)))
+                        .presentationBackgroundInteraction(.enabled(upThrough: .height(260)))
                         .presentationBackground(.clear)
                 } else {
                     content()

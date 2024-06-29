@@ -33,7 +33,7 @@ struct MapView: View {
             .bottomSheet(isPresented: $sheetPresent,
                          sheetCornerRadius: 15,
                          isTransparentBG: false) {
-                CustomSheetView(selectedCenter: $selectedCenter)
+                CustomSheetView(sheetPresent: $sheetPresent, selectedCenter: $selectedCenter)
             } onDismiss: {
                 selectedCenter = nil
             }
@@ -92,7 +92,10 @@ struct MapView: View {
                                         .opacity(selectedCleanHouse ? 1 : 0.3)
                                 }
                                 .onTapGesture {
-                                    selectedCleanHouse.toggle()
+                                    withAnimation(.easeInOut) {
+                                        selectedCleanHouse.toggle()
+                                    }
+                                    
                                 }
                             RoundedRectangle(cornerRadius: 18)
                                 .foregroundColor(selectedRecycleCenter ? Color(hex: "B3C8FF") : .white)
@@ -108,7 +111,9 @@ struct MapView: View {
                                         .opacity(selectedRecycleCenter ? 1 : 0.3)
                                 }
                                 .onTapGesture {
-                                    selectedRecycleCenter.toggle()
+                                    withAnimation(.easeInOut) {
+                                        selectedRecycleCenter.toggle()
+                                    }
                                 }
                             RoundedRectangle(cornerRadius: 18)
                                 .foregroundColor(selectedGarbageRequest ? Color(hex: "B3C8FF") : .white)
@@ -124,7 +129,9 @@ struct MapView: View {
                                         .opacity(selectedGarbageRequest ? 1 : 0.3)
                                 }
                                 .onTapGesture {
-                                    selectedGarbageRequest.toggle()
+                                    withAnimation(.easeInOut) {
+                                        selectedGarbageRequest.toggle()
+                                    }
                                 }
                         }
                     }
@@ -174,6 +181,7 @@ struct MapView: View {
 }
 
 struct CustomSheetView: View {
+    @Binding var sheetPresent: Bool
     @Binding var selectedCenter: (any Center)?
     
     var body: some View {
@@ -182,29 +190,22 @@ struct CustomSheetView: View {
                 .fill(.white)
                 .ignoresSafeArea()
             
-            VStack {
-                if let jejuClean = selectedCenter as? JejuClean {
-                    Text("\(jejuClean.description)")
-                }
-                
-                if let jejuRecycle = selectedCenter as? JejuRecycle {
-                    Text("\(jejuRecycle.description)")
-                }
-                
-                if let seogwipoClean = selectedCenter as? SeogwipoClean {
-                    Text("\(seogwipoClean.description)")
-                }
-                
-                if let seogwipoRecycle = selectedCenter as? SeogwipoRecycle {
-                    Text("\(seogwipoRecycle.description)")
-                }
-                
-                if let request = selectedCenter as? Request {
-                    Text("\(request.address)")
-                }
-                Spacer()
+            if selectedCenter is JejuClean || selectedCenter is SeogwipoClean {
+                CleanHouseSheetView(sheetPresent: $sheetPresent, center: selectedCenter)
             }
-            .padding(.top)
+            if selectedCenter is JejuRecycle || selectedCenter is SeogwipoRecycle {
+                if let jejyRecycle = selectedCenter as? JejuRecycle {
+                    JejuRecycleSheetView(sheetPresent: $sheetPresent, center: jejyRecycle)
+                }
+                if let seogwipoRecycle = selectedCenter as? SeogwipoRecycle {
+                    SeogwipoRecycleSheetView(sheetPresent: $sheetPresent, center: seogwipoRecycle)
+                }
+            }
+            if selectedCenter is Request {
+                if let request = selectedCenter as? Request {
+                    RequestSheetView(sheetPresent: $sheetPresent, center: request)
+                }
+            }
         }
     }
 }

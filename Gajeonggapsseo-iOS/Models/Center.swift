@@ -13,6 +13,7 @@ protocol Center: Identifiable {
     var type: CenterType { get }
     var address: String { get set }
     var coordinate: CLLocationCoordinate2D { get set }
+    var description: String { get set }
 }
 
 class JejuClean: Center {
@@ -124,6 +125,16 @@ class SeogwipoClean: Center {
         self.nearbyAddress = nearbyAddress
         self.dataStandardDate = dataStandardDate
     }
+    
+    static let mock = SeogwipoClean(id: UUID(),
+                                    type: .seogwipoCleanHouse,
+                                    address: "",
+                                    coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                                    description: "",
+                                    townName: "",
+                                    location: "",
+                                    nearbyAddress: "",
+                                    dataStandardDate: Date())
 }
 
 class SeogwipoRecycle: Center {
