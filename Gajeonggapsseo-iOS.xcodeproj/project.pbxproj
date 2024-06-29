@@ -36,6 +36,7 @@
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 		E759557F2C2E95C6004604BE /* AcceptionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */; };
+		FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptionRequestView.swift; sourceTree = "<group>"; };
+		FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +196,7 @@
 		17B600752C231C5900F55BCB /* GarbageRequest */ = {
 			isa = PBXGroup;
 			children = (
-				E759557D2C2E95B3004604BE /* RequestAcception */,
+				E759557D2C2E95B3004604BE /* RequestAgent */,
 				E7650B6A2C2AD9CC001D9971 /* RequestEmission */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
 				17B600772C231C8900F55BCB /* RequestList */,
@@ -229,12 +231,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E759557D2C2E95B3004604BE /* RequestAcception */ = {
+		E759557D2C2E95B3004604BE /* RequestAgent */ = {
 			isa = PBXGroup;
 			children = (
 				E759557E2C2E95C6004604BE /* AcceptionRequestView.swift */,
+				FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */,
 			);
-			path = RequestAcception;
+			path = RequestAgent;
 			sourceTree = "<group>";
 		};
 		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
@@ -342,7 +345,7 @@
 				176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
-				176373B62C2E9C6E00F7514D /* EmissionRequestDetailView.swift in Sources */,
+				FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				E759557F2C2E95C6004604BE /* AcceptionRequestView.swift in Sources */,

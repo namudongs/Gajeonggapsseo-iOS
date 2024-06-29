@@ -53,7 +53,7 @@ class FirestoreManager: ObservableObject {
     func pickUpGarbageRequest(_ requestId: String) {
         let requestRef = db.collection("garbageRequests").document(requestId)
         let updateData: [String: String] = [
-            "status": RequestStatus.pickuped.rawValue
+            "status": RequestStatus.pickedUp.rawValue
         ]
         
         requestRef.updateData(updateData) { error in

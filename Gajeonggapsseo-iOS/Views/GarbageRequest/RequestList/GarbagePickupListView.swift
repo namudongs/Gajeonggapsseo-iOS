@@ -13,7 +13,7 @@ struct GarbagePickupListView: View {
     var body: some View {
         List(manager.garbageRequests) { request in
             let isAccepted = request.status != .requested
-            let isPickuped = request.status == .pickuped
+            let isPickuped = request.status == .pickedUp
             let isCompleted = request.status == .completed
             
             VStack(alignment: .leading) {
