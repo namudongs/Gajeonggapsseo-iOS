@@ -18,37 +18,19 @@ struct MapView: View {
     
     var body: some View {
         ZStack {
-            MapViewRepresentable(centers: $centers, 
+            MapViewRepresentable(centers: $centers,
                                  region: $region,
                                  selectedCenter: $selectedCenter,
                                  sheetPresent: $sheetPresent)
-                .edgesIgnoringSafeArea(.all)
-                .sheet(isPresented: $sheetPresent) {
-                    selectedCenter = nil
-                } content : {
-                    VStack {
-                        if let jejuClean = selectedCenter as? JejuClean {
-                            Text("\(jejuClean.description)")
-                        }
-                        
-                        if let jejuRecycle = selectedCenter as? JejuRecycle {
-                            Text("\(jejuRecycle.description)")
-                        }
-                        
-                        if let seogwipoClean = selectedCenter as? SeogwipoClean {
-                            Text("\(seogwipoClean.description)")
-                        }
-                        
-                        if let seogwipoRecycle = selectedCenter as? SeogwipoRecycle {
-                            Text("\(seogwipoRecycle.description)")
-                        }
-                        
-                        if let request = selectedCenter as? Request {
-                            Text("\(request.requestTime)")
-                        }
-                    }
-                    .presentationDetents([.height(260)])
-                }
+            .edgesIgnoringSafeArea(.all)
+            .bottomSheet(isPresented: $sheetPresent,
+                         sheetCornerRadius: 15,
+                         isTransparentBG: false) {
+                CustomSheetView(selectedCenter: $selectedCenter)
+            } onDismiss: {
+                selectedCenter = nil
+            }
+
             GeometryReader { geo in
                 VStack(spacing: 0) {
                     // 배출 대행 수행 중 컴포넌트
@@ -156,4 +138,40 @@ struct MapView: View {
 
 #Preview {
     MapView(centers: .constant([]))
+}
+
+struct CustomSheetView: View {
+    @Binding var selectedCenter: (any Center)?
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.white)
+                .ignoresSafeArea()
+            
+            VStack {
+                if let jejuClean = selectedCenter as? JejuClean {
+                    Text("\(jejuClean.description)")
+                }
+                
+                if let jejuRecycle = selectedCenter as? JejuRecycle {
+                    Text("\(jejuRecycle.description)")
+                }
+                
+                if let seogwipoClean = selectedCenter as? SeogwipoClean {
+                    Text("\(seogwipoClean.description)")
+                }
+                
+                if let seogwipoRecycle = selectedCenter as? SeogwipoRecycle {
+                    Text("\(seogwipoRecycle.description)")
+                }
+                
+                if let request = selectedCenter as? Request {
+                    Text("\(request.address)")
+                }
+                Spacer()
+            }
+            .padding(.top)
+        }
+    }
 }

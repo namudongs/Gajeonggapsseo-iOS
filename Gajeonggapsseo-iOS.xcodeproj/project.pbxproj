@@ -234,6 +234,7 @@
 			children = (
 				176C75792C2C7460001D3102 /* View+Extension.swift */,
 				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
+				17EB419B2C304292005FFE5E /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EB419C2C304292005FFE5E /* Date+Extension.swift in Sources */,
 				17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */,
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
