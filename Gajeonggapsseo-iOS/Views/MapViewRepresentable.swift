@@ -15,6 +15,10 @@ struct MapViewRepresentable: UIViewRepresentable {
     @Binding var selectedCenter: (any Center)?
     @Binding var sheetPresent: Bool
     
+    @Binding var selectedCleanHouse: Bool
+    @Binding var selectedRecycleCenter: Bool
+    @Binding var selectedGarbageRequest: Bool
+    
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
         mapView.delegate = context.coordinator
@@ -33,13 +37,22 @@ struct MapViewRepresentable: UIViewRepresentable {
             }
             uiView.addAnnotations(annotations)
         } else {
-            
-        }
-        
-        if !sheetPresent {
-            uiView.selectedAnnotations.forEach { annotation in
-                uiView.deselectAnnotation(annotation, animated: true)
+            uiView.removeAnnotations(uiView.annotations)
+            let filteredAnnotations = centers.filter { center in
+                
+                switch center.type {
+                case .cleanHouse, .seogwipoCleanHouse:
+                    return selectedCleanHouse
+                case .recycleCenter, .seogwipoRecycleCenter:
+                    return selectedRecycleCenter
+                case .garbageRequest:
+                    return selectedGarbageRequest
+                }
+            }.compactMap { center -> CustomAnnotation in
+                CustomAnnotation(title: center.address, coordinate: center.coordinate, type: center.type)
             }
+            
+            uiView.addAnnotations(filteredAnnotations)
         }
     }
     
@@ -132,8 +145,8 @@ struct MapViewRepresentable: UIViewRepresentable {
                 if let center = parent.centers.first(where: { $0.address == customAnnotation.title }) {
                     parent.selectedCenter = center
                     parent.sheetPresent = true
+                    print(parent.selectedCenter, parent.sheetPresent)
                 }
-                let originalAnnotationSize = view.frame.size
                 
                 UIView.animate(withDuration: 0.3) {
                     view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
@@ -145,6 +158,8 @@ struct MapViewRepresentable: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            print("deselect")
+            
             UIView.animate(withDuration: 0.3) {
                 view.transform = .identity
                 view.zPriority = .defaultUnselected
