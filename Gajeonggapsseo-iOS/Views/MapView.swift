@@ -14,6 +14,10 @@ struct MapView: View {
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @Binding var centers: [any Center]
     @State private var selectedCenter: (any Center)?
+    @State private var selectedCleanHouse = true
+    @State private var selectedRecycleCenter = true
+    @State private var selectedGarbageRequest = true
+    @State private var selectedCenters: [any Center] = []
     @State private var sheetPresent: Bool = false
     
     var body: some View {
@@ -21,7 +25,10 @@ struct MapView: View {
             MapViewRepresentable(centers: $centers,
                                  region: $region,
                                  selectedCenter: $selectedCenter,
-                                 sheetPresent: $sheetPresent)
+                                 sheetPresent: $sheetPresent, 
+                                 selectedCleanHouse: $selectedCleanHouse,
+                                 selectedRecycleCenter: $selectedRecycleCenter,
+                                 selectedGarbageRequest: $selectedGarbageRequest)
             .edgesIgnoringSafeArea(.all)
             .bottomSheet(isPresented: $sheetPresent,
                          sheetCornerRadius: 15,
@@ -40,11 +47,13 @@ struct MapView: View {
                         .padding(.horizontal, 16)
                         .shadow(color: .black.opacity(0.1), radius: 4, y: 4)
                         .overlay {
-                            HStack {
-                                Image(systemName: "trash.circle.fill")
+                            HStack(spacing: 0) {
+                                Spacer()
+                                Image("PurpleMapPin")
                                     .resizable()
-                                    .frame(width: 25.96, height: 26.65)
-                                    .padding(.leading, 41)
+                                    .frame(width: 35, height: 35)
+                                    .padding(.leading, 25)
+                                    .padding(.top, 5)
                                 Spacer()
                                 Text("배출 대행 1건 수행중")
                                     .font(.system(size: 20, weight: .semibold))
@@ -70,28 +79,52 @@ struct MapView: View {
                         Spacer()
                         VStack(spacing: 12) {
                             RoundedRectangle(cornerRadius: 18)
-                                .foregroundColor(.white)
+                                .foregroundColor(selectedCleanHouse ? Color(hex: "B3C8FF") : .white)
                                 .frame(width: 51, height: 51)
                                 .padding(.trailing, 16)
                                 .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
+                                .overlay {
+                                    Image("LightblueMapPin")
+                                        .resizable()
+                                        .frame(width: 32, height: 38)
+                                        .padding(.trailing, 16)
+                                        .padding(.top, 5)
+                                        .opacity(selectedCleanHouse ? 1 : 0.3)
+                                }
                                 .onTapGesture {
-                                    
+                                    selectedCleanHouse.toggle()
                                 }
                             RoundedRectangle(cornerRadius: 18)
-                                .foregroundColor(.white)
+                                .foregroundColor(selectedRecycleCenter ? Color(hex: "B3C8FF") : .white)
                                 .frame(width: 51, height: 51)
                                 .padding(.trailing, 16)
                                 .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
+                                .overlay {
+                                    Image("BlueMapPin")
+                                        .resizable()
+                                        .frame(width: 32, height: 38)
+                                        .padding(.trailing, 16)
+                                        .padding(.top, 5)
+                                        .opacity(selectedRecycleCenter ? 1 : 0.3)
+                                }
                                 .onTapGesture {
-                                    
+                                    selectedRecycleCenter.toggle()
                                 }
                             RoundedRectangle(cornerRadius: 18)
-                                .foregroundColor(.white)
+                                .foregroundColor(selectedGarbageRequest ? Color(hex: "B3C8FF") : .white)
                                 .frame(width: 51, height: 51)
                                 .padding(.trailing, 16)
                                 .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
+                                .overlay {
+                                    Image("PurpleMapPin")
+                                        .resizable()
+                                        .frame(width: 35, height: 35)
+                                        .padding(.trailing, 16)
+                                        .padding(.top, 5)
+                                        .opacity(selectedGarbageRequest ? 1 : 0.3)
+                                }
                                 .onTapGesture {
-                                    
+                                    selectedGarbageRequest.toggle()
                                 }
                         }
                     }
