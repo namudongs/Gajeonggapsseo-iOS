@@ -12,8 +12,8 @@ struct MapView: View {
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 33.4996213, longitude: 126.5311884),
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    @Binding var centers: [Center]
-    @State private var selectedCenter: Center?
+    @Binding var centers: [any Center]
+    @State private var selectedCenter: (any Center)?
     
     var body: some View {
         ZStack {
@@ -29,13 +29,29 @@ struct MapView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 15){
                             let center = selectedCenter
-                            TextField("\(center?.rnAdres ?? "Select Center")", text: .constant(""))
+                            TextField("\(center?.address ?? "Select Center")", text: .constant(""))
                                 .padding(.vertical,10)
                                 .padding(.horizontal)
                                 .background {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                                         .fill(.ultraThickMaterial)
                                 }
+                            
+                            if let jejuClean = center as? JejuClean {
+                                Text("\(jejuClean.description)")
+                            }
+                            
+                            if let jejuRecycle = center as? JejuRecycle {
+                                Text("\(jejuRecycle.description)")
+                            }
+                            
+                            if let seogwipoClean = center as? SeogwipoClean {
+                                Text("\(seogwipoClean.description)")
+                            }
+                            
+                            if let seogwipoRecycle = center as? SeogwipoRecycle {
+                                Text("\(seogwipoRecycle.description)")
+                            }
                         }
                         .padding()
                         .padding(.top)

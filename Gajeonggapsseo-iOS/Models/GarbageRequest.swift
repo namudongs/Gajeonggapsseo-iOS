@@ -9,28 +9,82 @@ import Foundation
 import FirebaseFirestore
 import MapKit
 
-struct GarbageRequest: Identifiable, Codable {
-    @DocumentID var id: String?
-    var userId: String
+class Request: Center, Codable {
+    var id: UUID
+    var type: CenterType
     var address: String
-    var latitude: Double
-    var longitude: Double
+    var coordinate: CLLocationCoordinate2D
     var garbageType: String
     var amount: String
     var requestTime: Timestamp
     var preferredPickupTime: Timestamp
-    var status: RequestStatus // "요청됨", "수락됨", "픽업됨", "완료됨"
-    var helperId: String? // 수락한 경우 수락한 사람의 ID 입력
+    var status: RequestStatus
+    var helperId: String?
+
+    init(id: UUID, type: CenterType, address: String, coordinate: CLLocationCoordinate2D, garbageType: String, amount: String, requestTime: Timestamp, preferredPickupTime: Timestamp, status: RequestStatus, helperId: String? = nil) {
+        self.id = id
+        self.type = type
+        self.address = address
+        self.coordinate = coordinate
+        self.garbageType = garbageType
+        self.amount = amount
+        self.requestTime = requestTime
+        self.preferredPickupTime = preferredPickupTime
+        self.status = status
+        self.helperId = helperId
+    }
     
-    static let mock: GarbageRequest = GarbageRequest(userId: "",
-                                                     address: "제주시 연동 14길 32",
-                                                     latitude: 0.0,
-                                                     longitude: 0.0,
-                                                     garbageType: "플라스틱",
-                                                     amount: "1",
-                                                     requestTime: Timestamp(date: Date()),
-                                                     preferredPickupTime: Timestamp(date: Date()),
-                                                     status: .requested)
+    enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case address
+        case latitude
+        case longitude
+        case garbageType
+        case amount
+        case requestTime
+        case preferredPickupTime
+        case status
+        case helperId
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.type = try container.decode(CenterType.self, forKey: .type)
+        self.address = try container.decode(String.self, forKey: .address)
+        
+        let latitude = try container.decode(CLLocationDegrees.self, forKey: .latitude)
+        let longitude = try container.decode(CLLocationDegrees.self, forKey: .longitude)
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        self.garbageType = try container.decode(String.self, forKey: .garbageType)
+        self.amount = try container.decode(String.self, forKey: .amount)
+        
+        let requestTimeDouble = try container.decode(Double.self, forKey: .requestTime)
+        self.requestTime = Timestamp(seconds: Int64(requestTimeDouble), nanoseconds: 0)
+        
+        let preferredPickupTimeDouble = try container.decode(Double.self, forKey: .preferredPickupTime)
+        self.preferredPickupTime = Timestamp(seconds: Int64(preferredPickupTimeDouble), nanoseconds: 0)
+        
+        self.status = try container.decode(RequestStatus.self, forKey: .status)
+        self.helperId = try container.decodeIfPresent(String.self, forKey: .helperId)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(type, forKey: .type)
+        try container.encode(address, forKey: .address)
+        try container.encode(coordinate.latitude, forKey: .latitude)
+        try container.encode(coordinate.longitude, forKey: .longitude)
+        try container.encode(garbageType, forKey: .garbageType)
+        try container.encode(amount, forKey: .amount)
+        try container.encode(requestTime.seconds, forKey: .requestTime)
+        try container.encode(preferredPickupTime.seconds, forKey: .preferredPickupTime)
+        try container.encode(status, forKey: .status)
+        try container.encodeIfPresent(helperId, forKey: .helperId)
+    }
 }
 
 enum RequestStatus: String, Codable {
@@ -38,25 +92,4 @@ enum RequestStatus: String, Codable {
     case accepted = "accepted"
     case pickuped = "pickuped"
     case completed = "completed"
-}
-
-class GarbageRequestAnnotation: NSObject, MKAnnotation {
-    let garbageRequest: GarbageRequest
-    
-    var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: garbageRequest.latitude, longitude: garbageRequest.longitude)
-    }
-    
-    var title: String? {
-        return garbageRequest.address
-    }
-    
-    var subtitle: String? {
-        return garbageRequest.garbageType
-    }
-    
-    init(garbageRequest: GarbageRequest) {
-        self.garbageRequest = garbageRequest
-        super.init()
-    }
 }

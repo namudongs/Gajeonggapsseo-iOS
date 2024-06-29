@@ -31,7 +31,7 @@ struct GarbageRequestAgentView: View {
     //preferredPickupTime: Timestamp(date: Date()),
     //status: .requested
     
-    var garbageRequest: GarbageRequest = GarbageRequest.mock
+    var garbageRequest: Request
     
     // Section Row
     @State private var isGarbageTypeChecked: Bool = false
@@ -648,6 +648,6 @@ extension GarbageRequestAgentView {
     }
 }
 
-#Preview {
-    GarbageRequestAgentView()
-}
+//#Preview {
+//    GarbageRequestAgentView()
+//}

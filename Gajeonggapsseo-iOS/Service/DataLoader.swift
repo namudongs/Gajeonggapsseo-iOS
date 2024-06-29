@@ -11,7 +11,7 @@ class DataLoader {
     static let shared = DataLoader()
     private init() { }
     
-    func loadData(for centerType: CenterType, completion: @escaping (Result<[Center], Error>) -> Void) {
+    func loadData(for centerType: CenterType, completion: @escaping (Result<[any Center], Error>) -> Void) {
         switch centerType {
         case .cleanHouse:
             let service = CleanHouseService()
@@ -29,8 +29,10 @@ class DataLoader {
                 switch result {
                 case .success(let response):
                     completion(.success(response.toCenters()))
+                    break
                 case .failure(let error):
                     completion(.failure(error))
+                    break
                 }
             }
         case .seogwipoCleanHouse:
@@ -41,6 +43,7 @@ class DataLoader {
                     completion(.success(SeogwipoCleanHouse.toCenters(from: response)))
                 case .failure(let error):
                     completion(.failure(error))
+                    break
                 }
             }
         case .seogwipoRecycleCenter:
@@ -49,16 +52,20 @@ class DataLoader {
                 switch result {
                 case .success(let response):
                     completion(.success(response.toCenters()))
+                    break
                 case .failure(let error):
                     completion(.failure(error))
+                    break
                 }
             }
+        case .garbageRequest:
+            break
         }
     }
     
-    func loadAllData(completion: @escaping (Result<[Center], Error>) -> Void) {
+    func loadAllData(completion: @escaping (Result<[any Center], Error>) -> Void) {
         let dispatchGroup = DispatchGroup()
-        var allCenters: [Center] = []
+        var allCenters: [any Center] = []
         var fetchError: Error?
         
         dispatchGroup.enter()

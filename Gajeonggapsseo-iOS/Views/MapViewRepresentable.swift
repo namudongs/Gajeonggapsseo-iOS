@@ -10,9 +10,9 @@ import MapKit
 import CoreLocation
 
 struct MapViewRepresentable: UIViewRepresentable {
-    @Binding var centers: [Center]
+    @Binding var centers: [any Center]
     @Binding var region: MKCoordinateRegion
-    @Binding var selectedCenter: Center?
+    @Binding var selectedCenter: (any Center)?
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -29,17 +29,15 @@ struct MapViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: MKMapView, context: Context) {
         if uiView.annotations.isEmpty {
             let annotations = centers.compactMap { center -> MKPointAnnotation? in
-                guard let coordinate = center.coordinate else { return nil }
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = center.rnAdres
+                annotation.coordinate = center.coordinate
+                annotation.title = center.address
                 return annotation
             }
             uiView.addAnnotations(annotations)
         } else {
             // centers 배열이 변경된 경우 업데이트 로직
         }
-        //        uiView.setRegion(region, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -52,6 +50,8 @@ struct MapViewRepresentable: UIViewRepresentable {
             return UIColor.blue
         case .recycleCenter, .seogwipoRecycleCenter:
             return UIColor.green
+        case .garbageRequest:
+            return UIColor.systemPink
         }
     }
     
@@ -103,7 +103,7 @@ struct MapViewRepresentable: UIViewRepresentable {
                 view?.annotation = annotation
             }
             
-            if let title = annotation.title as? String, let center = parent.centers.first(where: { $0.rnAdres == title }) {
+            if let title = annotation.title as? String, let center = parent.centers.first(where: { $0.address == title }) {
                 view?.markerTintColor = parent.colorForCenterType(center.type)
             }
             
@@ -112,7 +112,7 @@ struct MapViewRepresentable: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let annotation = view.annotation as? MKPointAnnotation {
-                if let title = annotation.title, let center = parent.centers.first(where: { $0.rnAdres == title }) {
+                if let title = annotation.title, let center = parent.centers.first(where: { $0.address == title }) {
                     parent.selectedCenter = center
                 }
                 mapView.setCenter(annotation.coordinate, animated: true)
@@ -128,15 +128,15 @@ struct MapViewRepresentable: UIViewRepresentable {
         }
         
         // MARK: - 제주도 밖으로 지도가 이동하지 않게 하는 메소드
-        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-            let jejuCenter = CLLocationCoordinate2D(latitude: 33.3628, longitude: 126.5334)
-            let jejuRegionRadius: CLLocationDistance = 75000
-            let jejuRegion = MKCoordinateRegion(center: jejuCenter, latitudinalMeters: jejuRegionRadius * 2, longitudinalMeters: jejuRegionRadius * 2)
-            
-            if !jejuRegion.contains(mapView.centerCoordinate) {
-                mapView.setRegion(jejuRegion, animated: true)
-            }
-        }
+//        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//            let jejuCenter = CLLocationCoordinate2D(latitude: 33.3628, longitude: 126.5334)
+//            let jejuRegionRadius: CLLocationDistance = 75000
+//            let jejuRegion = MKCoordinateRegion(center: jejuCenter, latitudinalMeters: jejuRegionRadius * 2, longitudinalMeters: jejuRegionRadius * 2)
+//            
+//            if !jejuRegion.contains(mapView.centerCoordinate) {
+//                mapView.setRegion(jejuRegion, animated: true)
+//            }
+//        }
     }
 }
 
