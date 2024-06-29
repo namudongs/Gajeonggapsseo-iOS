@@ -1,5 +1,5 @@
 //
-//  ListAgentView.swift
+//  ListAgentAcceptanceView.swift
 //  Gajeonggapsseo-iOS
 //
 //  Created by sseungwonnn on 6/29/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseFirestore
 
-struct ListAgentView: View {
+struct ListAgentAcceptanceView: View {
     @EnvironmentObject var manager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
@@ -41,14 +41,14 @@ struct ListAgentView: View {
                 }
                 .padding(.horizontal, 16)
             } // VStack
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 20)
             .navigationTitle("대행 수행")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-extension ListAgentView {
+extension ListAgentAcceptanceView {
     // MARK: - 진행 중인 대행 뷰
     @ViewBuilder
     private var requestCountView: some View {
@@ -178,5 +178,5 @@ extension ListAgentView {
 //}
 
 #Preview {
-    ListAgentView()
+    ListAgentAcceptanceView()
 }
