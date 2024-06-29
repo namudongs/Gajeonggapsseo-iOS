@@ -11,11 +11,11 @@ import CoreLocation
 
 // MARK: - 맵에서 위치를 선택하는 뷰
 struct PickRequestAdress: View {
-    @StateObject var locationManager: LocationManager
+    @EnvironmentObject var locationManager: LocationManager
     
     var body: some View {
         VStack {
-            MapViewCoordinator(locationManager: locationManager)
+            MapViewCoordinator()
                 .ignoresSafeArea(edges: .top)
                 .overlay {
                     VStack(spacing: 0) {
@@ -60,7 +60,7 @@ struct PickRequestAdress: View {
 }
 
 struct MapViewCoordinator: UIViewRepresentable {
-    @StateObject var locationManager: LocationManager
+    @EnvironmentObject var locationManager: LocationManager
     
     func makeUIView(context: Context) -> some UIView {
         return locationManager.mapView

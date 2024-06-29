@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct JejuRecycleSheetView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @Binding var sheetPresent: Bool
     var center: JejuRecycle
     
@@ -56,6 +57,11 @@ struct JejuRecycleSheetView: View {
                 .overlay {
                     Text("길찾기").font(.system(size: 22, weight: .bold))
                         .foregroundColor(Color(hex: "0C4DF5"))
+                }
+                .onTapGesture {
+                    if let currentLocation = locationManager.currentLocation {
+                        locationManager.openDirections(from: currentLocation.coordinate, to: center.coordinate, for: "재활용도움센터\(center.dataCode)")
+                    }
                 }
                 .padding(.horizontal, 30)
             Spacer()

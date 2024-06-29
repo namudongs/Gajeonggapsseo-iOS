@@ -18,7 +18,7 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     @Published var currentLocation: CLLocation? = nil
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
-    private var manager: CLLocationManager = .init()
+    var manager: CLLocationManager = .init()
     
     
     override init() {
@@ -112,6 +112,32 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     
     func requestLocation() {
         manager.startUpdatingLocation()
+        
+    }
     
+    func getCurrentLocation() -> CLLocationCoordinate2D? {
+        return currentLocation?.coordinate
+    }
+    
+    func openDirections(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, for name: String) {
+        let sourcePlacemark = MKPlacemark(coordinate: source)
+        let destinationPlacemark = MKPlacemark(coordinate: destination)
+        
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        
+        let directionsRequest = MKDirections.Request()
+        directionsRequest.source = sourceMapItem
+        directionsRequest.destination = destinationMapItem
+        directionsRequest.transportType = .automobile
+        
+        let directions = MKDirections(request: directionsRequest)
+        directions.calculate { response, error in
+            guard (response?.routes.first) != nil else { return }
+            
+            let mapItem = MKMapItem(placemark: destinationPlacemark)
+            mapItem.name = name
+            mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        }
     }
 }

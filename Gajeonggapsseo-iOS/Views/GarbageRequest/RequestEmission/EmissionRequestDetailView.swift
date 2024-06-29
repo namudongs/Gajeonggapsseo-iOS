@@ -12,7 +12,7 @@ struct EmissionRequestDetailView: View {
     @State private var selectedCategories: [GarbageCategory: Int] = [.bottle:0, .can: 1, .clearPet: 2]
     @State private var memoText: String = ""
     @State private var selectedAddress: String = "대잠동"
-    @StateObject private var locationManager = LocationManager()
+    @EnvironmentObject var locationManager: LocationManager
     
     private let backgroundColor: Color = Color(hex: "F2F7FF")
     
@@ -31,9 +31,6 @@ struct EmissionRequestDetailView: View {
                 .padding(.horizontal, 27)
                 .padding(.top, 34)
             }
-            .onAppear(perform: {
-                locationManager.requestLocation()
-            })
             
         }
         //        .toolbarBackground(Color.gray, for: .navigationBar)

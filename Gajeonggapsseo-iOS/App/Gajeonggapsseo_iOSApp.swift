@@ -11,6 +11,7 @@ import Firebase
 @main
 struct Gajeonggapsseo_iOSApp: App {
     @StateObject private var manager = FirestoreManager()
+    @StateObject private var lm = LocationManager()
     @State private var centers: [any Center] = []
     @State private var isLoading = true  // 로딩 상태를 관리하는 변수
     
@@ -29,6 +30,7 @@ struct Gajeonggapsseo_iOSApp: App {
                 }
             }
             .onAppear {
+                lm.requestLocation()
                 manager.listenToGarbageRequests()
                 DataLoader.shared.loadAllData { result in
                     switch result {
@@ -41,6 +43,7 @@ struct Gajeonggapsseo_iOSApp: App {
                 }
             }
             .environmentObject(manager)
+            .environmentObject(lm)
         }
     }
 }
