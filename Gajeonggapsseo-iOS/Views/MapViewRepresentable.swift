@@ -21,7 +21,6 @@ struct MapViewRepresentable: UIViewRepresentable {
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.followWithHeading, animated: true)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(MKPointAnnotation.self))
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
         
         context.coordinator.checkLocationAuthorization()
         return mapView
@@ -29,15 +28,12 @@ struct MapViewRepresentable: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         if uiView.annotations.isEmpty {
-            let annotations = centers.compactMap { center -> MKPointAnnotation? in
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = center.coordinate
-                annotation.title = center.address
-                return annotation
+            let annotations = centers.compactMap { center -> CustomAnnotation in
+                CustomAnnotation(title: center.address, coordinate: center.coordinate, type: center.type)
             }
             uiView.addAnnotations(annotations)
         } else {
-            // centers 배열이 변경된 경우 업데이트 로직
+            
         }
         
         if !sheetPresent {
@@ -51,14 +47,14 @@ struct MapViewRepresentable: UIViewRepresentable {
         Coordinator(self)
     }
     
-    func colorForCenterType(_ type: CenterType) -> UIColor {
+    func ImageFromCenterType(_ type: CenterType) -> (String, CGSize, CGRect) {
         switch type {
         case .cleanHouse, .seogwipoCleanHouse:
-            return UIColor.blue
+            return ("LightblueMapPin", CGSize(width: 32, height: 40), CGRect(x: 0, y: 0, width: 32, height: 40))
         case .recycleCenter, .seogwipoRecycleCenter:
-            return UIColor.green
+            return ("BlueMapPin", CGSize(width: 32, height: 40), CGRect(x: 0, y: 0, width: 32, height: 40))
         case .garbageRequest:
-            return UIColor.systemPink
+            return ("PurpleMapPin", CGSize(width: 38, height: 39), CGRect(x: 0, y: 0, width: 38, height: 39))
         }
     }
     
@@ -98,41 +94,63 @@ struct MapViewRepresentable: UIViewRepresentable {
                 return nil
             }
             
-            let identifier = NSStringFromClass(MKPointAnnotation.self)
-            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
-            view?.canShowCallout = true
-            view?.titleVisibility = .hidden
-            view?.subtitleVisibility = .hidden
+            guard let customAnnotation = annotation as? CustomAnnotation else { return nil }
+            
+            let identifier = "CustomAnnotation"
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             
             if view == nil {
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = MKAnnotationView(annotation: customAnnotation, reuseIdentifier: identifier)
             } else {
-                view?.annotation = annotation
+                view?.annotation = customAnnotation
             }
             
-            if let title = annotation.title as? String, let center = parent.centers.first(where: { $0.address == title }) {
-                view?.markerTintColor = parent.colorForCenterType(center.type)
+            view?.canShowCallout = false
+            view?.isEnabled = true
+            
+            let pinConfig = parent.ImageFromCenterType(customAnnotation.type)
+            
+            if let pinImage = UIImage(named: pinConfig.0) {
+                let size = pinConfig.1
+                UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+                pinImage.draw(in: CGRect(origin: .zero, size: size))
+                let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                view?.image = resizedImage
             }
+            
+            view?.frame = pinConfig.2
+            view?.centerOffset = CGPoint(x: 0, y: -view!.frame.size.height / 2)
+            view?.isUserInteractionEnabled = true
             
             return view
         }
-        
+
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            if let annotation = view.annotation as? MKPointAnnotation {
-                if let title = annotation.title, let center = parent.centers.first(where: { $0.address == title }) {
+            if let customAnnotation = view.annotation as? CustomAnnotation {
+                if let center = parent.centers.first(where: { $0.address == customAnnotation.title }) {
                     parent.selectedCenter = center
                     parent.sheetPresent = true
                 }
-                mapView.setCenter(annotation.coordinate, animated: true)
+                let originalAnnotationSize = view.frame.size
+                
+                UIView.animate(withDuration: 0.3) {
+                    view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                    view.zPriority = .max
+                }
+                
+                mapView.setCenter(customAnnotation.coordinate, animated: true)
             }
         }
         
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            UIView.animate(withDuration: 0.3) {
+                view.transform = .identity
+                view.zPriority = .defaultUnselected
+            }
+            
             parent.sheetPresent = false
-        }
-        
-        func mapView(_ mapView: MKMapView, clusterAnnotationFor memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
-            return MKClusterAnnotation(memberAnnotations: memberAnnotations)
         }
         
         // MARK: - 제주도 밖으로 지도가 이동하지 않게 하는 메소드

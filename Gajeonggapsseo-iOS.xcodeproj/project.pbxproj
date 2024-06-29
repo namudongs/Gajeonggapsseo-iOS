@@ -146,6 +146,7 @@
 				1747B69F2C21A3C0009057D0 /* ContentView.swift */,
 				178ED90A2C24519A00EADD6D /* MapView.swift */,
 				178ED9262C24719600EADD6D /* MapViewRepresentable.swift */,
+				17EB419D2C3056D2005FFE5E /* CustomAnnotation.swift */,
 				17B600752C231C5900F55BCB /* GarbageRequest */,
 			);
 			path = Views;
@@ -232,9 +233,9 @@
 		E75955762C2E94C8004604BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				17EB419F2C305D09005FFE5E /* Date+Extension.swift */,
 				176C75792C2C7460001D3102 /* View+Extension.swift */,
 				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
-				17EB419B2C304292005FFE5E /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EB419C2C304292005FFE5E /* Date+Extension.swift in Sources */,
 				17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */,
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
@@ -367,12 +367,14 @@
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */,
+				17EB41A02C305D09005FFE5E /* Date+Extension.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
 				FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
+				17EB419E2C3056D2005FFE5E /* CustomAnnotation.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
 			);
