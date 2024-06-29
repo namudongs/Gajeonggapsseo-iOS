@@ -23,7 +23,9 @@ struct MapViewRepresentable: UIViewRepresentable {
         let mapView = MKMapView(frame: .zero)
         mapView.delegate = context.coordinator
         mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.isRotateEnabled = false
+        mapView.showsCompass = false
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(MKPointAnnotation.self))
         
         context.coordinator.checkLocationAuthorization()
@@ -139,13 +141,12 @@ struct MapViewRepresentable: UIViewRepresentable {
             
             return view
         }
-
+        
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let customAnnotation = view.annotation as? CustomAnnotation {
                 if let center = parent.centers.first(where: { $0.address == customAnnotation.title }) {
                     parent.selectedCenter = center
                     parent.sheetPresent = true
-                    print(parent.selectedCenter, parent.sheetPresent)
                 }
                 
                 UIView.animate(withDuration: 0.3) {
@@ -158,8 +159,6 @@ struct MapViewRepresentable: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-            print("deselect")
-            
             UIView.animate(withDuration: 0.3) {
                 view.transform = .identity
                 view.zPriority = .defaultUnselected
@@ -169,15 +168,15 @@ struct MapViewRepresentable: UIViewRepresentable {
         }
         
         // MARK: - 제주도 밖으로 지도가 이동하지 않게 하는 메소드
-//        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//            let jejuCenter = CLLocationCoordinate2D(latitude: 33.3628, longitude: 126.5334)
-//            let jejuRegionRadius: CLLocationDistance = 75000
-//            let jejuRegion = MKCoordinateRegion(center: jejuCenter, latitudinalMeters: jejuRegionRadius * 2, longitudinalMeters: jejuRegionRadius * 2)
-//            
-//            if !jejuRegion.contains(mapView.centerCoordinate) {
-//                mapView.setRegion(jejuRegion, animated: true)
-//            }
-//        }
+        //        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        //            let jejuCenter = CLLocationCoordinate2D(latitude: 33.3628, longitude: 126.5334)
+        //            let jejuRegionRadius: CLLocationDistance = 75000
+        //            let jejuRegion = MKCoordinateRegion(center: jejuCenter, latitudinalMeters: jejuRegionRadius * 2, longitudinalMeters: jejuRegionRadius * 2)
+        //
+        //            if !jejuRegion.contains(mapView.centerCoordinate) {
+        //                mapView.setRegion(jejuRegion, animated: true)
+        //            }
+        //        }
     }
 }
 

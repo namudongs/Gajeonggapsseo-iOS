@@ -68,7 +68,8 @@ struct GarbageRequestView: View {
                                  requestTime: Timestamp(date: Date()),
                                  preferredPickupTime: Timestamp(date: preferredPickupTime),
                                  status: .requested,
-                                 helperId: "Helper ID"
+                                 helperId: "Helper ID",
+                                 description: ""
         )
         
         manager.addGarbageRequest(newRequest)
