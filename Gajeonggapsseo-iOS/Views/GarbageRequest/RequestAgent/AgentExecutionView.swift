@@ -16,19 +16,8 @@ struct AgentExecutionView: View {
     
     var body: some View {
         VStack(spacing: 28) {
-            VStack (spacing: 7){
-                HStack {
-                    Text("현황")
-                        .padding(.leading, 12)
-                        .font(.caption)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(hex: "585858"))
-                    
-                    Spacer()
-                }
-                
-                ProgressStatusView(isAgentrequest: false, status: requestStatus)
-            }
+            // TODO: 정산 뷰 추가
+            progressRow
             
             sectionRow(header: "품목", content: "\(request.garbageType) \(request.amount)봉투")
             
@@ -41,7 +30,13 @@ struct AgentExecutionView: View {
             sectionRow(header: "근처 배출 장소", content: "\(request.address)")
             
 //            agentFeeRow
+            
             Spacer()
+            
+            if requestStatus == .accepted || requestStatus == .pickedUp {
+                bottomButton(isPickedUp: requestStatus == .pickedUp)
+                    .padding(.bottom)
+            }
         }
         .padding(.horizontal, 20)
         .navigationTitle("진행 중인 대행")
@@ -53,6 +48,22 @@ struct AgentExecutionView: View {
 }
 
 extension AgentExecutionView {
+    @ViewBuilder
+    private var progressRow: some View {
+        VStack (spacing: 7){
+            HStack {
+                Text("현황")
+                    .padding(.leading, 12)
+                    .font(.caption)
+                    .fontWeight(.regular)
+                    .foregroundColor(Color(hex: "585858"))
+                
+                Spacer()
+            }
+            
+            ProgressStatusView(isAgentrequest: false, status: requestStatus)
+        }
+    }
     @ViewBuilder
     private func sectionRow(header: String, content: String) -> some View {
         VStack(spacing: 7){
@@ -130,7 +141,22 @@ extension AgentExecutionView {
         }
     }
     
-    
+    @ViewBuilder
+    private func bottomButton(isPickedUp: Bool) -> some View {
+        Button(action: {
+            // TODO: 서버에 동작 보내기
+            if requestStatus == .accepted {
+                requestStatus = .pickedUp
+            } else if requestStatus == .pickedUp {
+                requestStatus = .completed
+            }
+        }, label: {
+            ButtonLabel(
+                content: !isPickedUp ? "수거 완료하기" : "배출 완료하기",
+                isAgentRequst: false,
+                isDisabled: false)
+        })
+    }
 }
 
 
