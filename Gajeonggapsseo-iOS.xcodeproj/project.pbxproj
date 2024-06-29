@@ -39,6 +39,7 @@
 		FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
+		FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E972C30554300143970 /* ProgressStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
+		FB7A5E972C30554300143970 /* ProgressStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		17B600752C231C5900F55BCB /* GarbageRequest */ = {
 			isa = PBXGroup;
 			children = (
+				FB7A5E962C30552A00143970 /* Components */,
 				E759557D2C2E95B3004604BE /* RequestAgent */,
 				E7650B6A2C2AD9CC001D9971 /* RequestEmission */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
@@ -254,6 +257,14 @@
 				176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */,
 			);
 			path = RequestEmission;
+			sourceTree = "<group>";
+		};
+		FB7A5E962C30552A00143970 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FB7A5E972C30554300143970 /* ProgressStatusView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 			files = (
 				17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */,
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
+				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
 				176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,

@@ -12,11 +12,24 @@ import CoreLocation
 struct AgentExecutionView: View {
     var request: Request
     
+    @State private var requestStatus: RequestStatus = .accepted
+    
     var body: some View {
         VStack(spacing: 28) {
+            VStack (spacing: 7){
+                HStack {
+                    Text("현황")
+                        .padding(.leading, 12)
+                        .font(.caption)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color(hex: "585858"))
+                    
+                    Spacer()
+                }
+                
+                ProgressStatusView(isAgentrequest: false, status: requestStatus)
+            }
             
-            
-            Spacer()
             sectionRow(header: "품목", content: "\(request.garbageType) \(request.amount)봉투")
             
             // TODO: 날짜 시간 변경
@@ -27,12 +40,15 @@ struct AgentExecutionView: View {
             // TODO: 위치 받아오기
             sectionRow(header: "근처 배출 장소", content: "\(request.address)")
             
-            agentFeeRow
+//            agentFeeRow
             Spacer()
         }
         .padding(.horizontal, 20)
         .navigationTitle("진행 중인 대행")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: {
+            self.requestStatus = request.status
+        })
     }
 }
 
@@ -113,7 +129,11 @@ extension AgentExecutionView {
             .padding()
         }
     }
+    
+    
 }
+
+
 #Preview {
     AgentExecutionView(request: Request(
         id: UUID(),
