@@ -10,7 +10,7 @@ import FirebaseFirestore
 import CoreLocation
 
 struct GarbageRequestView: View {
-    @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var manager: FirestoreManager
     
     @State private var geopoint: CLLocationCoordinate2D?
@@ -25,7 +25,7 @@ struct GarbageRequestView: View {
                 Section(header: Text("배출 위치")) {
                     Text("\(locationManager.currentPlace)")
                     NavigationLink {
-                        PickRequestAdress(locationManager: locationManager)
+                        PickRequestAdress()
                     } label: {
                         Text("위치 선택하기")
                     }.buttonStyle(.bordered)

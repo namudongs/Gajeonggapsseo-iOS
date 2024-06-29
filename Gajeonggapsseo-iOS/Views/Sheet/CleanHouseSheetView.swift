@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CleanHouseSheetView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @Binding var sheetPresent: Bool
     var center: (any Center)?
     
@@ -59,6 +60,11 @@ struct CleanHouseSheetView: View {
                         .foregroundColor(Color(hex: "0C4DF5"))
                 }
                 .padding(.horizontal, 30)
+                .onTapGesture {
+                    if let currentLocation = locationManager.currentLocation, let centerLocation = center?.coordinate {
+                        locationManager.openDirections(from: currentLocation.coordinate, to: centerLocation, for: center?.description ?? "")
+                    }
+                }
             Spacer()
         }
         .padding(.top)

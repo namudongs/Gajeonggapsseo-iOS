@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RequestSheetView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @Binding var sheetPresent: Bool
     var center: Request
     
@@ -57,6 +58,11 @@ struct RequestSheetView: View {
                     .overlay {
                         Text("길찾기").font(.system(size: 22, weight: .bold))
                             .foregroundColor(Color(hex: "8E66FF"))
+                    }
+                    .onTapGesture {
+                        if let currentLocation = locationManager.currentLocation {
+                            locationManager.openDirections(from: currentLocation.coordinate, to: center.coordinate, for: "배출 요청지")
+                        }
                     }
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color(hex: "8E66FF"))
