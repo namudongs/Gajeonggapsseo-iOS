@@ -59,7 +59,7 @@ extension ListAgentView {
             + Text(" \(manager.garbageRequests.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
-                .foregroundColor(.requestAgent)
+                .foregroundColor(.acceptanceAccent)
             Spacer()
         }
         .padding(.leading, 16)
@@ -88,7 +88,7 @@ extension ListAgentView {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .frame(height: 80)
-                .foregroundColor(.subRequestAgent)
+                .foregroundColor(.acceptanceSub)
         )
     }
     

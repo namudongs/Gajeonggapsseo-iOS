@@ -32,7 +32,7 @@ struct AgentAcceptanceView: View {
     
     var body: some View {
         ZStack {
-            Color(.listBackground).ignoresSafeArea()
+            Color(.acceptanceBackground).ignoresSafeArea()
             
             VStack(spacing: 28) {
                 garbageTypeRow
@@ -72,7 +72,7 @@ extension AgentAcceptanceView {
                         .font(.title3)
                         .fontWeight(.bold)
                     + Text("\(request.amount)")
-                        .foregroundColor(.requestAgent)
+                        .foregroundColor(.acceptanceAccent)
                         .font(.title3)
                         .fontWeight(.bold)
                     + Text("봉지")
@@ -100,7 +100,7 @@ extension AgentAcceptanceView {
                 HStack {
                     // TODO: 모델에서 시간 불러오기
                     Text("\(request.preferredPickupTime)")
-                        .foregroundColor(.requestAgent)
+                        .foregroundColor(.acceptanceAccent)
                         .font(.headline)
                         .fontWeight(.bold)
                         .lineLimit(1)
@@ -145,7 +145,7 @@ extension AgentAcceptanceView {
                     Text("\(request.address) ")
                         .font(.headline)
                         .fontWeight(.bold)
-                        .foregroundColor(.requestAgent)
+                        .foregroundColor(.acceptanceAccent)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                         .truncationMode(.tail)
@@ -228,7 +228,7 @@ extension AgentAcceptanceView {
                         Text("5,000원")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundStyle(.requestAgent)
+                            .foregroundStyle(.acceptanceAccent)
                         Spacer()
                     } // HStack
                     
@@ -237,14 +237,14 @@ extension AgentAcceptanceView {
                         Text("₩")
                             .font(.title2)
                             .fontWeight(.medium)
-                            .foregroundStyle(.requestAgent)
+                            .foregroundStyle(.acceptanceAccent)
                     }
                 }
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 68)
-                        .foregroundColor(.subRequestAgent)
+                        .foregroundColor(.acceptanceSub)
                 )
                 sectionCheckButton(for: $isAgentFeeChecked)
             } // HStack
@@ -258,7 +258,7 @@ extension AgentAcceptanceView {
         Text("요청 수락 후에는 취소할 수 없습니다.")
             .font(.callout)
             .fontWeight(.semibold)
-            .foregroundColor(.requestAgent)
+            .foregroundColor(.acceptanceAccent)
     }
     
     // MARK: - 배출 대행 수락 버튼
@@ -301,7 +301,7 @@ extension AgentAcceptanceView {
             .resizable()
             .frame(width: 22, height: 22)
             .foregroundColor(flag.wrappedValue
-                             ? .requestAgent
+                             ? .acceptanceAccent
                              :Color(hex: "C4C4C4")
             )
             // TODO: 색상 Asset에 추가
