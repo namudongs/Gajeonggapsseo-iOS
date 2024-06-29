@@ -7,67 +7,57 @@
 
 import SwiftUI
 
-// MARK: Custom View Extensions
-// MARK: Custom Bottom Sheet Extracting From Native SwiftUI
-extension View{
+extension View {
     @ViewBuilder
     func bottomSheet<Content: View>(
-        presentationDetents: Set<PresentationDetent>,
         isPresented: Binding<Bool>,
-        dragIndicator: Visibility = .visible,
+        dragIndicator: Visibility = .hidden,
         sheetCornerRadius: CGFloat?,
-        largestUndimmedIdentifier: UISheetPresentationController.Detent.Identifier = .large,
-        isTransparentBG: Bool = false,
+        isTransparentBG: Bool = true,
         interactiveDisabled: Bool = false,
-        @ViewBuilder content: @escaping ()->Content,
-        onDismiss: @escaping ()->()
-    )->some View{
+        @ViewBuilder content: @escaping () -> Content,
+        onDismiss: @escaping () -> ()
+    ) -> some View {
         self
             .sheet(isPresented: isPresented) {
                 onDismiss()
             } content: {
                 if #available(iOS 16.4, *) {
                     content()
-                        .presentationDetents(presentationDetents)
+                        .presentationDetents([.height(230)])
                         .presentationDragIndicator(dragIndicator)
                         .interactiveDismissDisabled(interactiveDisabled)
                         .presentationCornerRadius(sheetCornerRadius)
-                        .presentationBackgroundInteraction(.enabled)
-                        .presentationBackground {
-                            if isTransparentBG {
-                                Rectangle()
-                                    .fill(.clear)
-                            }
-                        }
+                        .presentationBackgroundInteraction(.enabled(upThrough: .height(230)))
+                        .presentationBackground(.clear)
                 } else {
                     content()
-                        .presentationDetents(presentationDetents)
+                        .presentationDetents([.height(230)])
                         .presentationDragIndicator(dragIndicator)
                         .interactiveDismissDisabled(interactiveDisabled)
                         .onAppear {
-                            // MARK: Custom Code For Bottom Sheet
-                            // Finding the Presented View Controller
-                            guard let windows = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
+                            guard let windows = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                                 return
                             }
                             
-                            
-                            if let controller = windows.windows.first?.rootViewController?.presentedViewController,let sheet = controller.presentationController as? UISheetPresentationController{
-                                
-                                // FOR TRANSPERNT BACKGROUND
-                                if isTransparentBG{
-                                    controller.view.backgroundColor = .clear
-                                }
-                                
-                                // FROM THIS EXTRACTING PRESENTATION CONTROLLER
-                                // SOME TIMES BUTTONS AND ACTIONS WILL BE TINTED IN HIDDEN FORM
-                                // TO AVOID THIS
+                            if let controller = windows.windows.first?.rootViewController?.presentedViewController,
+                               let sheet = controller.presentationController as? UISheetPresentationController {
+                                controller.view.backgroundColor = .clear
                                 controller.presentingViewController?.view.tintAdjustmentMode = .normal
                                 
-                                // MARK: As Usual Set Properties What Ever Your Wish Here With Sheet Controller
-                                sheet.largestUndimmedDetentIdentifier = largestUndimmedIdentifier
+                                let customDetent = UISheetPresentationController.Detent.custom { _ in
+                                    return 230
+                                }
+                                sheet.detents = [customDetent]
+                                sheet.largestUndimmedDetentIdentifier = customDetent.identifier
                                 sheet.preferredCornerRadius = sheetCornerRadius
-                            }else{
+                                
+                                // 시트 크기 조절 비활성화
+                                sheet.prefersGrabberVisible = false
+                                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                                sheet.prefersEdgeAttachedInCompactHeight = true
+                                sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+                            } else {
                                 print("NO CONTROLLER FOUND")
                             }
                         }
