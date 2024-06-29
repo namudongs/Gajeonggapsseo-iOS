@@ -18,7 +18,7 @@ extension View{
         sheetCornerRadius: CGFloat?,
         largestUndimmedIdentifier: UISheetPresentationController.Detent.Identifier = .large,
         isTransparentBG: Bool = false,
-        interactiveDisabled: Bool = true,
+        interactiveDisabled: Bool = false,
         @ViewBuilder content: @escaping ()->Content,
         onDismiss: @escaping ()->()
     )->some View{
@@ -32,7 +32,7 @@ extension View{
                         .presentationDragIndicator(dragIndicator)
                         .interactiveDismissDisabled(interactiveDisabled)
                         .presentationCornerRadius(sheetCornerRadius)
-                        .presentationBackgroundInteraction(.enabled(upThrough: largestUndimmedIdentifier == .large ? .large : .height(100)))
+                        .presentationBackgroundInteraction(.enabled)
                         .presentationBackground {
                             if isTransparentBG {
                                 Rectangle()

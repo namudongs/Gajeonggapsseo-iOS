@@ -13,6 +13,7 @@ struct MapViewRepresentable: UIViewRepresentable {
     @Binding var centers: [any Center]
     @Binding var region: MKCoordinateRegion
     @Binding var selectedCenter: (any Center)?
+    @Binding var sheetPresent: Bool
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -37,6 +38,12 @@ struct MapViewRepresentable: UIViewRepresentable {
             uiView.addAnnotations(annotations)
         } else {
             // centers 배열이 변경된 경우 업데이트 로직
+        }
+        
+        if !sheetPresent {
+            uiView.selectedAnnotations.forEach { annotation in
+                uiView.deselectAnnotation(annotation, animated: true)
+            }
         }
     }
     
@@ -114,13 +121,14 @@ struct MapViewRepresentable: UIViewRepresentable {
             if let annotation = view.annotation as? MKPointAnnotation {
                 if let title = annotation.title, let center = parent.centers.first(where: { $0.address == title }) {
                     parent.selectedCenter = center
+                    parent.sheetPresent = true
                 }
                 mapView.setCenter(annotation.coordinate, animated: true)
             }
         }
         
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-            
+            parent.sheetPresent = false
         }
         
         func mapView(_ mapView: MKMapView, clusterAnnotationFor memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
