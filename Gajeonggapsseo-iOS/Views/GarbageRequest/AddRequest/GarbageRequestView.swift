@@ -11,6 +11,7 @@ import CoreLocation
 
 struct GarbageRequestView: View {
     @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var manager: FirestoreManager
     
     @State private var geopoint: CLLocationCoordinate2D?
     @State private var garbageType: String = ""
@@ -57,20 +58,20 @@ struct GarbageRequestView: View {
     }
     
     func submitRequest() {
-        let newRequest = GarbageRequest(
-            userId: userId,
-            address: locationManager.currentPlace,
-            latitude: locationManager.currentGeoPoint?.latitude ?? 0.0,
-            longitude: locationManager.currentGeoPoint?.longitude ?? 0.0,
-            garbageType: garbageType,
-            amount: amount,
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: preferredPickupTime),
-            status: .requested,
-            helperId: nil
+        let newRequest = Request(id: UUID(),
+                                 type: .garbageRequest,
+                                 address: locationManager.currentPlace,
+                                 coordinate: CLLocationCoordinate2D(latitude: locationManager.currentGeoPoint?.latitude ?? 0.0,
+                                                                    longitude: locationManager.currentGeoPoint?.longitude ?? 0.0),
+                                 garbageType: garbageType,
+                                 amount: amount,
+                                 requestTime: Timestamp(date: Date()),
+                                 preferredPickupTime: Timestamp(date: preferredPickupTime),
+                                 status: .requested,
+                                 helperId: "Helper ID"
         )
         
-        FirestoreManager.shared.addGarbageRequest(newRequest)
+        manager.addGarbageRequest(newRequest)
     }
 }
 

@@ -10,9 +10,8 @@ import Firebase
 import FirebaseFirestore
 
 // MARK: - 파이어스토어 데이터를 관리하는 매니저
-class FirestoreManager {
-    static let shared = FirestoreManager()
-    var garbageRequests: [GarbageRequest] = []
+class FirestoreManager: ObservableObject {
+    @Published var garbageRequests: [Request] = []
     let db = Firestore.firestore()
     
     // MARK: - 불러오기
@@ -22,16 +21,17 @@ class FirestoreManager {
                     print("배출 요청 불러오기 실패: \(error)")
                 } else {
                     self.garbageRequests = snapshot?.documents.compactMap {
-                        try? $0.data(as: GarbageRequest.self)
+                        try? $0.data(as: Request.self)
                     } ?? []
                 }
             }
         }
     
     // MARK: - 요청, 수락, 픽업, 완료 플로우
-    func addGarbageRequest(_ request: GarbageRequest) {
+    func addGarbageRequest(_ request: Request) {
         do {
-            let _ = try db.collection("garbageRequests").addDocument(from: request)
+            let requestRef = db.collection("garbageRequests").document(request.id.uuidString)
+            try requestRef.setData(from: request)
             print("배출 요청이 성공적으로 등록되었습니다.")
         } catch let error {
             print("배출 요청 생성 실패: \(error)")
@@ -41,8 +41,7 @@ class FirestoreManager {
     func acceptGarbageRequest(_ requestId: String, helperId: String) {
         let requestRef = db.collection("garbageRequests").document(requestId)
         let updateData: [String: String] = [
-            "status": RequestStatus.accepted.rawValue,
-            "helperId": helperId
+            "status": RequestStatus.accepted.rawValue
         ]
         
         requestRef.updateData(updateData) { error in

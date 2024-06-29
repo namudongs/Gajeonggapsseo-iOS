@@ -9,8 +9,8 @@ import SwiftUI
 import FirebaseFirestore
 
 struct ContentView: View {
-    @State private var centers: [Center] = []
-    @State private var requests: [GarbageRequest] = []
+    @EnvironmentObject var manager: FirestoreManager
+    @State private var centers: [any Center] = []
     @State private var isLoading: Bool = true
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ContentView: View {
                 Text("지도에서 찾기")
             }
             .buttonStyle(.bordered)
-            .disabled(isLoading)
+//            .disabled(isLoading)
             NavigationLink {
                 GarbageRequestView()
             } label: {
@@ -40,11 +40,11 @@ struct ContentView: View {
             }.buttonStyle(.bordered)
         }
         .onAppear {
-            FirestoreManager.shared.listenToGarbageRequests()
+            manager.listenToGarbageRequests()
             DataLoader.shared.loadAllData { result in
                 switch result {
                 case .success(let centers):
-                    self.centers = centers.filter { $0.coordinate != nil }
+                    self.centers = centers + manager.garbageRequests
                     isLoading = false
                 case .failure(let error):
                     print(error.localizedDescription)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // MARK: - API를 불러오는 서비스 클래스
 class CleanHouseService: ApiService {
@@ -26,6 +27,7 @@ class CleanHouseService: ApiService {
                 let decodedResponse = try JSONDecoder().decode(CleanHouseWelcome.self, from: data)
                 completion(.success(decodedResponse))
             } catch let error {
+                print("Jeju CleanHouse Decoded Error")
                 completion(.failure(error))
             }
         }
@@ -51,6 +53,7 @@ class RecycleCenterService: ApiService {
                 let decodedResponse = try JSONDecoder().decode(RecycleCenterWelcome.self, from: data)
                 completion(.success(decodedResponse))
             } catch let error {
+                print("Jeju RecycleCenter Decoded Error")
                 completion(.failure(error))
             }
         }
@@ -72,6 +75,7 @@ class SeogwipoCleanHouseService: ApiService {
             let decodedResponse = try JSONDecoder().decode([SeogwipoCleanHouse].self, from: data)
             completion(.success(decodedResponse))
         } catch {
+            print("Seogwipo CleanHouse Decoded Error")
             completion(.failure(error))
         }
     }
@@ -95,6 +99,7 @@ class SeogwipoRecycleCenterService: ApiService {
                 let decodedResponse = try JSONDecoder().decode(SeogwipoRecycleCenterApiResponse.self, from: data)
                 completion(.success(decodedResponse))
             } catch let error {
+                print("Seogwipo RecycleCenter Decoded Error")
                 completion(.failure(error))
             }
         }
@@ -104,105 +109,50 @@ class SeogwipoRecycleCenterService: ApiService {
 
 // MARK: - API 응답을 Center 모델로 매핑
 extension CleanHouseWelcome {
-    func toCenters() -> [Center] {
+    func toCenters() -> [JejuClean] {
         return response.body.items.item.map {
-            Center(
-                type: .cleanHouse,
-                dataCd: $0.dataCd,
-                emdNm: $0.emdNm,
-                rnAdres: $0.rnAdres,
-                laCrdnt: $0.laCrdnt,
-                loCrdnt: $0.loCrdnt,
-                etcCn: $0.etcCn,
-                regDt: $0.regDt,
-                pysygClctnbxCnt: $0.pysygClctnbxCnt,
-                recycleClctnbxCnt: $0.recycleClctnbxCnt,
-                glsbtlClctnbxCnt: $0.glsbtlClctnbxCnt,
-                strfClctnbxCnt: $0.strfClctnbxCnt,
-                dscdBatteryClctnbxCnt: $0.dscdBatteryClctnbxCnt,
-                dscdFlrsclmpClctnbxCnt: $0.dscdFlrsclmpClctnbxCnt,
-                fddrnkClctnbxCnt: $0.dscdFlrsclmpClctnbxCnt,
-                fddrnkClctnbxMeterCnt: $0.fddrnkClctnbxMeterCnt,
-                uumtCn: $0.uumtCn
+            JejuClean(id: UUID(),
+                           type: .cleanHouse,
+                           address: $0.rnAdres,
+                           coordinate: CLLocationCoordinate2D(latitude: Double($0.laCrdnt) ?? 0, longitude: Double($0.loCrdnt) ?? 0),
+                           description: "제주시 클린하우스입니다."
             )
         }
     }
 }
 
 extension RecycleCenterWelcome {
-    func toCenters() -> [Center] {
+    func toCenters() -> [JejuRecycle] {
         return response.body.items.item.map {
-            Center(
-                type: .recycleCenter,
-                dataCd: $0.dataCd,
-                emdNm: $0.emdNm,
-                rnAdres: $0.rnAdres,
-                laCrdnt: $0.laCrdnt,
-                loCrdnt: $0.loCrdnt,
-                etcCn: $0.etcCn,
-                regDt: $0.regDt,
-                pysygClctnbxCnt: nil,
-                recycleClctnbxCnt: nil,
-                glsbtlClctnbxCnt: nil,
-                strfClctnbxCnt: nil,
-                dscdBatteryClctnbxCnt: nil,
-                dscdFlrsclmpClctnbxCnt: nil,
-                fddrnkClctnbxCnt: nil,
-                fddrnkClctnbxMeterCnt: nil,
-                uumtCn: $0.operTimeInfo
-            )
+            JejuRecycle(id: UUID(),
+                        type: .recycleCenter,
+                        address: $0.rnAdres,
+                        coordinate: CLLocationCoordinate2D(latitude: Double($0.laCrdnt) ?? 0, longitude: Double($0.loCrdnt) ?? 0),
+                        description: "제주시 재활용도움센터입니다.")
         }
     }
 }
 
 extension SeogwipoCleanHouse {
-    static func toCenters(from data: [SeogwipoCleanHouse]) -> [Center] {
+    static func toCenters(from data: [SeogwipoCleanHouse]) -> [SeogwipoClean] {
         return data.map {
-            Center(
-                type: .seogwipoCleanHouse,
-                dataCd: UUID().uuidString,
-                emdNm: $0.읍면동,
-                rnAdres: $0.인근주소,
-                laCrdnt: String($0.위도),
-                loCrdnt: String($0.경도),
-                etcCn: nil,
-                regDt: nil,
-                pysygClctnbxCnt: nil,
-                recycleClctnbxCnt: nil,
-                glsbtlClctnbxCnt: nil,
-                strfClctnbxCnt: nil,
-                dscdBatteryClctnbxCnt: nil,
-                dscdFlrsclmpClctnbxCnt: nil,
-                fddrnkClctnbxCnt: nil,
-                fddrnkClctnbxMeterCnt: nil,
-                uumtCn: nil
-            )
+            SeogwipoClean(id: UUID(),
+                          type: .seogwipoCleanHouse,
+                          address: $0.인근주소,
+                          coordinate: CLLocationCoordinate2D(latitude: Double($0.위도), longitude: Double($0.경도)),
+                          description: "서귀포시 클린하우스입니다.")
         }
     }
 }
 
 extension SeogwipoRecycleCenterApiResponse {
-    func toCenters() -> [Center] {
+    func toCenters() -> [SeogwipoRecycle] {
         return data.map {
-            Center(
-                type: .seogwipoRecycleCenter,
-                dataCd: UUID().uuidString,
-                emdNm: $0.township,
-                rnAdres: $0.address,
-                laCrdnt: $0.latitude,
-                loCrdnt: $0.longitude,
-                etcCn: nil,
-                regDt: $0.dataStandardDate,
-                pysygClctnbxCnt: nil,
-                recycleClctnbxCnt: nil,
-                glsbtlClctnbxCnt: nil,
-                strfClctnbxCnt: nil,
-                dscdBatteryClctnbxCnt: nil,
-                dscdFlrsclmpClctnbxCnt: nil,
-                fddrnkClctnbxCnt: nil,
-                fddrnkClctnbxMeterCnt: nil,
-                uumtCn: nil
-            )
+            SeogwipoRecycle(id: UUID(),
+                            type: .seogwipoRecycleCenter,
+                            address: $0.address,
+                            coordinate: CLLocationCoordinate2D(latitude: Double($0.latitude) ?? 0, longitude: Double($0.longitude) ?? 0),
+                            description: "서귀포시 재활용도움센터입니다.")
         }
     }
 }
