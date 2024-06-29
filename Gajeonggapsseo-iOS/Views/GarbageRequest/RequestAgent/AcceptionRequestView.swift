@@ -6,9 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import CoreLocation
 
 struct AcceptionRequestView: View {
-    var garbageRequest: Request
+    var garbageRequest: Request =
+        Request(id: UUID(),
+                type: .garbageRequest,
+                address: "주소",
+                coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                garbageType: "플라스틱",
+                amount: "0",
+                requestTime: Timestamp(date: Date()),
+                preferredPickupTime: Timestamp(date: Date()),
+                status: .accepted)
     
     // Section Row
     @State private var isGarbageTypeChecked: Bool = false
