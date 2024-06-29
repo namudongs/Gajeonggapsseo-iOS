@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				FB7A5E962C30552A00143970 /* Components */,
-				E759557D2C2E95B3004604BE /* RequestAgent */,
+				E759557D2C2E95B3004604BE /* AgentAcceptance */,
 				E7650B6A2C2AD9CC001D9971 /* RequestEmission */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
 				17B600772C231C8900F55BCB /* RequestList */,
@@ -238,14 +238,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E759557D2C2E95B3004604BE /* RequestAgent */ = {
+		E759557D2C2E95B3004604BE /* AgentAcceptance */ = {
 			isa = PBXGroup;
 			children = (
 				FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */,
 				FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */,
 				FB7A5E942C302AD700143970 /* AgentExecutionView.swift */,
 			);
-			path = RequestAgent;
+			path = AgentAcceptance;
 			sourceTree = "<group>";
 		};
 		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
