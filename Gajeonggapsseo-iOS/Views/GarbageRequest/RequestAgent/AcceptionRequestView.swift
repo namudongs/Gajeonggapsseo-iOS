@@ -36,7 +36,7 @@ struct AcceptionRequestView: View {
             false
         case .accepted:
             true
-        case .pickuped:
+        case .pickedUp:
             true
         case .completed:
             true
@@ -59,7 +59,7 @@ struct AcceptionRequestView: View {
             false
         case .accepted:
             false
-        case .pickuped:
+        case .pickedUp:
             true
         case .completed:
             true
@@ -83,7 +83,7 @@ struct AcceptionRequestView: View {
             false
         case .accepted:
             false
-        case .pickuped:
+        case .pickedUp:
             false
         case .completed:
             true
@@ -124,7 +124,7 @@ struct AcceptionRequestView: View {
                         if !isDisplayedPickUpDetail {
                             Spacer().frame(height: 260)
                         }
-                    } else if requestStatus == .pickuped {
+                    } else if requestStatus == .pickedUp {
                         pickUpView
                         
                         disposalView
@@ -619,7 +619,7 @@ extension AcceptionRequestView {
         // 수거 완료하기
         Button {
             // TODO: 서버에 요청 보내는 동작 추가
-            self.requestStatus = .pickuped
+            self.requestStatus = .pickedUp
         } label: {
             HStack {
                 Spacer()
@@ -668,7 +668,7 @@ extension AcceptionRequestView {
                     .foregroundColor(disposalButtonColor)
             )
         }
-        .disabled(requestStatus != .pickuped)
+        .disabled(requestStatus != .pickedUp)
     }
     
     
