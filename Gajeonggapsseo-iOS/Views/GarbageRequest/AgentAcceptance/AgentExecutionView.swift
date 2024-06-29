@@ -170,6 +170,7 @@ extension AgentExecutionView {
         amount: "0",
         requestTime: Timestamp(date: Date()),
         preferredPickupTime: Timestamp(date: Date()),
-        status: .accepted)
+        status: .accepted,
+        description: "")
     )
 }
