@@ -16,12 +16,19 @@
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373AF2C2E9C4700F7514D /* Color+Extension.swift */; };
 		176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */; };
 		176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchView.swift */; };
 		176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */; };
 		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
 		176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* View+Extension.swift */; };
+		17807CCD2C30A7D100067B18 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CCC2C30A7D100067B18 /* CustomAnnotation.swift */; };
+		17807CCF2C30A7E500067B18 /* AcceptionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */; };
+		17807CD42C30A7FD00067B18 /* RequestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD02C30A7FD00067B18 /* RequestSheetView.swift */; };
+		17807CD52C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */; };
+		17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */; };
+		17807CD72C30A7FD00067B18 /* CleanHouseSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD32C30A7FD00067B18 /* CleanHouseSheetView.swift */; };
+		17807CD92C30A84A00067B18 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD82C30A84A00067B18 /* Color+Extension.swift */; };
+		17807CDB2C30A84E00067B18 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CDA2C30A84E00067B18 /* Date+Extension.swift */; };
 		178ED90B2C24519A00EADD6D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED90A2C24519A00EADD6D /* MapView.swift */; };
 		178ED9162C24612100EADD6D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9152C24612100EADD6D /* ApiService.swift */; };
 		178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9172C24624E00EADD6D /* JejuResponse.swift */; };
@@ -52,12 +59,19 @@
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176373AF2C2E9C4700F7514D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
 		176373B52C2E9C6E00F7514D /* AddressSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
 		176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		176C75792C2C7460001D3102 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		17807CCC2C30A7D100067B18 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptionRequestView.swift; sourceTree = "<group>"; };
+		17807CD02C30A7FD00067B18 /* RequestSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSheetView.swift; sourceTree = "<group>"; };
+		17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeogwipoRecycleSheetView.swift; sourceTree = "<group>"; };
+		17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JejuRecycleSheetView.swift; sourceTree = "<group>"; };
+		17807CD32C30A7FD00067B18 /* CleanHouseSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanHouseSheetView.swift; sourceTree = "<group>"; };
+		17807CD82C30A84A00067B18 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		17807CDA2C30A84E00067B18 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		178ED90A2C24519A00EADD6D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		178ED9152C24612100EADD6D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		178ED9172C24624E00EADD6D /* JejuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuResponse.swift; sourceTree = "<group>"; };
@@ -147,7 +161,7 @@
 				1747B69F2C21A3C0009057D0 /* ContentView.swift */,
 				178ED90A2C24519A00EADD6D /* MapView.swift */,
 				178ED9262C24719600EADD6D /* MapViewRepresentable.swift */,
-				17EB419D2C3056D2005FFE5E /* CustomAnnotation.swift */,
+				17807CCC2C30A7D100067B18 /* CustomAnnotation.swift */,
 				17B600752C231C5900F55BCB /* GarbageRequest */,
 			);
 			path = Views;
@@ -234,10 +248,10 @@
 		17EB41A12C307EC3005FFE5E /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				17EB41A22C307ED8005FFE5E /* CleanHouseSheetView.swift */,
-				17EB41A42C307F11005FFE5E /* JejuRecycleSheetView.swift */,
-				17EB41A82C308305005FFE5E /* SeogwipoRecycleSheetView.swift */,
-				17EB41A62C307F18005FFE5E /* RequestSheetView.swift */,
+				17807CD32C30A7FD00067B18 /* CleanHouseSheetView.swift */,
+				17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */,
+				17807CD02C30A7FD00067B18 /* RequestSheetView.swift */,
+				17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -245,9 +259,9 @@
 		E75955762C2E94C8004604BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				17EB419F2C305D09005FFE5E /* Date+Extension.swift */,
+				17807CD82C30A84A00067B18 /* Color+Extension.swift */,
 				176C75792C2C7460001D3102 /* View+Extension.swift */,
-				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
+				17807CDA2C30A84E00067B18 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +272,7 @@
 				FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */,
 				FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */,
 				FB7A5E942C302AD700143970 /* AgentExecutionView.swift */,
+				17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */,
 			);
 			path = AgentAcceptance;
 			sourceTree = "<group>";
@@ -361,7 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */,
-				17EB41A92C308305005FFE5E /* SeogwipoRecycleSheetView.swift in Sources */,
+				17807CD52C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift in Sources */,
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
@@ -369,30 +384,31 @@
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
+				17807CDB2C30A84E00067B18 /* Date+Extension.swift in Sources */,
 				FB7A5E9C2C3078D900143970 /* ButtonLabel.swift in Sources */,
+				17807CD42C30A7FD00067B18 /* RequestSheetView.swift in Sources */,
 				FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */,
 				FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
-				176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */,
-				17EB41A32C307ED8005FFE5E /* CleanHouseSheetView.swift in Sources */,
+				17807CD72C30A7FD00067B18 /* CleanHouseSheetView.swift in Sources */,
+				17807CCF2C30A7E500067B18 /* AcceptionRequestView.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */,
-				17EB41A52C307F11005FFE5E /* JejuRecycleSheetView.swift in Sources */,
-				17EB41A02C305D09005FFE5E /* Date+Extension.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
+				17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
-				17EB41A72C307F18005FFE5E /* RequestSheetView.swift in Sources */,
 				FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
-				17EB419E2C3056D2005FFE5E /* CustomAnnotation.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
+				17807CD92C30A84A00067B18 /* Color+Extension.swift in Sources */,
+				17807CCD2C30A7D100067B18 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
