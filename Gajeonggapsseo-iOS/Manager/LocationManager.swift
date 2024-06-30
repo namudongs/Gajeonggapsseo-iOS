@@ -110,6 +110,20 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
         }
     }
     
+    // MARK: - 도로명 주소를 좌표로 변환해주는 메서드
+    func getCoordinateFrom(address: String, completion: @escaping (_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> ()) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if let error = error {
+                completion(nil, error)
+            } else if let placemarks = placemarks, let placemark = placemarks.first {
+                let location = placemark.location
+                completion(location?.coordinate, nil)
+            } else {
+                completion(nil, nil)
+            }
+        }
+    }
     func requestLocation() {
         manager.startUpdatingLocation()
         
