@@ -16,7 +16,6 @@
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373AF2C2E9C4700F7514D /* Color+Extension.swift */; };
 		176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */; };
 		176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */; };
 		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
@@ -296,14 +295,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		FB7A5EA12C315D5C00143970 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
+		
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
