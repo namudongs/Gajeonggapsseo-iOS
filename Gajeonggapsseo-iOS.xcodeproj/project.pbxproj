@@ -16,8 +16,8 @@
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
 		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
 		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */; };
-		176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchView.swift */; };
+		176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373AF2C2E9C4700F7514D /* Color+Extension.swift */; };
+		176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */; };
 		176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */; };
 		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
 		176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* View+Extension.swift */; };
@@ -41,12 +41,13 @@
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
-		17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB41992C301718005FFE5E /* EmissionRequestDetailView.swift */; };
-		FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */; };
+		FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
 		FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E972C30554300143970 /* ProgressStatusView.swift */; };
 		FB7A5E9C2C3078D900143970 /* ButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */; };
+		FB7A5E9E2C30978800143970 /* ListAgentRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E9D2C30978800143970 /* ListAgentRequestView.swift */; };
+		FB7A5EA02C309F8300143970 /* AgentRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E9F2C309F8300143970 /* AgentRequestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,8 +60,8 @@
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmissionRequestView.swift; sourceTree = "<group>"; };
-		176373B52C2E9C6E00F7514D /* AddressSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchView.swift; sourceTree = "<group>"; };
+		176373AF2C2E9C4700F7514D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchSheetView.swift; sourceTree = "<group>"; };
 		176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		176C75792C2C7460001D3102 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -85,12 +86,13 @@
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		17EB41992C301718005FFE5E /* EmissionRequestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmissionRequestDetailView.swift; sourceTree = "<group>"; };
-		FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentView.swift; sourceTree = "<group>"; };
+		FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
 		FB7A5E972C30554300143970 /* ProgressStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStatusView.swift; sourceTree = "<group>"; };
 		FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLabel.swift; sourceTree = "<group>"; };
+		FB7A5E9D2C30978800143970 /* ListAgentRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentRequestView.swift; sourceTree = "<group>"; };
+		FB7A5E9F2C309F8300143970 /* AgentRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentRequestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,7 +271,7 @@
 		E759557D2C2E95B3004604BE /* AgentAcceptance */ = {
 			isa = PBXGroup;
 			children = (
-				FB29CA4F2C2FE92600A612F0 /* ListAgentView.swift */,
+				FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */,
 				FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */,
 				FB7A5E942C302AD700143970 /* AgentExecutionView.swift */,
 				17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */,
@@ -280,9 +282,9 @@
 		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
 			isa = PBXGroup;
 			children = (
-				176373B52C2E9C6E00F7514D /* AddressSearchView.swift */,
-				17EB41992C301718005FFE5E /* EmissionRequestDetailView.swift */,
-				176373B42C2E9C6E00F7514D /* EmissionRequestView.swift */,
+				FB7A5E9D2C30978800143970 /* ListAgentRequestView.swift */,
+				FB7A5E9F2C309F8300143970 /* AgentRequestView.swift */,
+				176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */,
 			);
 			path = RequestEmission;
 			sourceTree = "<group>";
@@ -375,12 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EB419A2C301718005FFE5E /* EmissionRequestDetailView.swift in Sources */,
 				17807CD52C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift in Sources */,
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
-				176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */,
+				176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
 				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
@@ -393,15 +394,16 @@
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
+				176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */,
+				FB7A5E9E2C30978800143970 /* ListAgentRequestView.swift in Sources */,
 				17807CD72C30A7FD00067B18 /* CleanHouseSheetView.swift in Sources */,
-				17807CCF2C30A7E500067B18 /* AcceptionRequestView.swift in Sources */,
 				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
-				176373B72C2E9C6E00F7514D /* EmissionRequestView.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */,
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
-				FB29CA502C2FE92600A612F0 /* ListAgentView.swift in Sources */,
+				FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */,
+				FB7A5EA02C309F8300143970 /* AgentRequestView.swift in Sources */,
 				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AddressSearchView.swift
+//  AddressSearchSheetView.swift
 //  Gajeonggapsseo-iOS
 //
 //  Created by Damin on 6/27/24.
@@ -8,18 +8,37 @@
 import MapKit
 import SwiftUI
 
-struct AddressSearchView: View {
+struct AddressSearchSheetView: View {
     @Binding var selectedAddress: String
+    @Binding var showAddressSearchSheet: Bool
     @State private var searchQuery: String = ""
     @State private var searchResults: [MKMapItem] = []
     
     var body: some View {
         VStack {
-            TextField("주소를 입력하세요", text: $searchQuery, onCommit: {
-                performSearch()
-            })
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                TextField("주소를 입력하세요", text: $searchQuery, onCommit: {
+                    performSearch()
+                })
+                .foregroundColor(.primary)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                if !searchQuery.isEmpty {
+                    Button(action: {
+                        self.searchQuery = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+            .background(Color(.systemGray6))
+            .cornerRadius(10.0)
+            
+            
             
             List(searchResults, id: \.self) { item in
                 VStack(alignment: .leading) {
@@ -34,7 +53,12 @@ struct AddressSearchView: View {
                     }
                 }
             }
+            .padding(.horizontal, -20)
         }
+        .padding(20)
+        .onAppear(perform: {
+            searchQuery = selectedAddress
+        })
     }
     
     private func performSearch() {
@@ -51,5 +75,7 @@ struct AddressSearchView: View {
     }
 }
 #Preview {
-    AddressSearchView(selectedAddress: .constant("대잠동LocationManager"))
+    AddressSearchSheetView(
+        selectedAddress: .constant("대잠동"),
+        showAddressSearchSheet: .constant(true))
 }
