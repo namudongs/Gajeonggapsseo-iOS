@@ -139,7 +139,7 @@ struct MapView: View {
                     // 대행 수행, 배출 요청 컴포넌트
                     HStack(spacing: 9) {
                         NavigationLink {
-                            ListAgentView()
+                            ListAgentAcceptanceView()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)

@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseFirestore
 
-struct ListAgentView: View {
+struct ListAgentAcceptanceView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: FirestoreManager
     
@@ -208,7 +208,7 @@ extension ListAgentAcceptanceView {
 //}
 
 #Preview {
-    ListAgentView()
+    ListAgentAcceptanceView()
         .environmentObject(LocationManager())
         .environmentObject(FirestoreManager())
 }
