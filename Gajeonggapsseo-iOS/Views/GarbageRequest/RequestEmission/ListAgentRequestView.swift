@@ -10,7 +10,7 @@ import FirebaseFirestore
 import CoreLocation
 
 struct ListAgentRequestView: View {
-//    @EnvironmentObject var manager: FirestoreManager
+    @EnvironmentObject var manager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
     //    @State private var selectedYear: Int = 2024
@@ -20,22 +20,12 @@ struct ListAgentRequestView: View {
     //    let years: [Int] = Array(2000...2030)
     //    let months: [String] = Calendar.current.monthSymbols.map { $0.localizedCapitalized }
     
-    var list: [Request] = [Request(
-        id: UUID(),
-        type: .garbageRequest,
-        address: "주소",
-        coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-        garbageType: "플라스틱",
-        amount: "0",
-        requestTime: Timestamp(date: Date()),
-        preferredPickupTime: Timestamp(date: Date()),
-        status: .accepted)]
     var body: some View {
         ScrollView {
             VStack {
                 requestCountView
                 
-                ForEach(list, id: \.id) { request in
+                ForEach(manager.garbageRequests, id: \.id) { request in
                     requestAgentRow(for: request)
                         .padding(.bottom, 7)
                 }
@@ -44,7 +34,7 @@ struct ListAgentRequestView: View {
                 NavigationLink {
                     AgentRequestView()
                 } label: {
-                    // TODO: 버튼 레이블 -> 커스텀 레이블로 변경
+                    // TODO: 버튼 레이블 -> 커스텀 레이블로 이름 변경
                     ButtonLabel(content: "새로운 대행 요청하기", isAgentRequst: true, isDisabled: false)
                 }
                 
@@ -53,7 +43,7 @@ struct ListAgentRequestView: View {
                 
                 datePickerView
                 
-                ForEach(list, id: \.id) { request in
+                ForEach(manager.garbageRequests, id: \.id) { request in
                     completedRequestRow(for: request)
                         .padding(.vertical, 10)
                     Divider()
@@ -75,7 +65,7 @@ extension ListAgentRequestView {
             Text("진행 중인 요청")
                 .font(.title3)
                 .fontWeight(.medium)
-            + Text(" \(list.count)건")
+            + Text(" \(manager.garbageRequests.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(.requestAccent)
@@ -204,6 +194,6 @@ extension ListAgentRequestView {
 //    }
 //}
 //
-#Preview {
-    ListAgentRequestView()
-}
+//#Preview {
+//    ListAgentRequestView()
+//}
