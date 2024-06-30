@@ -97,7 +97,7 @@ struct GarbageRequestView: View {
                 Section(header: Text("배출 위치")) {
                     Text("\(locationManager.currentPlace)")
                     NavigationLink {
-                        PickRequestAdress()
+//                        PickRequestAdress()
                     } label: {
                         Text("위치 선택하기")
                     }.buttonStyle(.bordered)
