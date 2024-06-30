@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import MapKit
 
-class Request: Center, Codable {
+class Request: Center, Codable, Equatable {
     var description: String
     
     var id: UUID
@@ -112,6 +112,21 @@ class Request: Center, Codable {
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(helperId, forKey: .helperId)
     }
+    
+    static func == (lhs: Request, rhs: Request) -> Bool {
+            return lhs.id == rhs.id &&
+                   lhs.type == rhs.type &&
+                   lhs.address == rhs.address &&
+                   lhs.coordinate.latitude == rhs.coordinate.latitude &&
+                   lhs.coordinate.longitude == rhs.coordinate.longitude &&
+                   lhs.garbageType == rhs.garbageType &&
+                   lhs.amount == rhs.amount &&
+                   lhs.requestTime == rhs.requestTime &&
+                   lhs.preferredPickupTime == rhs.preferredPickupTime &&
+                   lhs.status == rhs.status &&
+                   lhs.helperId == rhs.helperId &&
+                   lhs.description == rhs.description
+        }
 }
 
 enum GarbageType: String, Codable {

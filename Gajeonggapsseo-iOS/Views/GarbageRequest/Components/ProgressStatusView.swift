@@ -70,24 +70,24 @@ extension ProgressStatusView {
         Image(systemName: "arrowtriangle.right.fill")
             .resizable()
             .frame(width: 11, height: 11)
-            .foregroundColor(.requestAgent)
+            .foregroundColor(Color(hex: "FF881B"))
     }
 
     @ViewBuilder
     private func stageRectangle(content: String, isDone: Bool, isCurrentStage: Bool) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(isDone ? .subRequestAgent :Color(hex: "EEEEEE"))
+                .fill(isDone ? Color(hex: "FFEBB9") : Color(hex: "EEEEEE"))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             RoundedRectangle(cornerRadius: 10)
-                .stroke(isCurrentStage ? .requestAgent : .clear,
+                .stroke(isCurrentStage ? Color(hex: "FF881B") : .clear,
                         lineWidth: isCurrentStage ? 3 : 0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             Text(content)
                 .font(.headline)
-                .foregroundColor(isDone ? .requestAgent : .black)
+                .foregroundColor(isDone ? Color(hex: "FF881B") : .black)
         }
     }
 }

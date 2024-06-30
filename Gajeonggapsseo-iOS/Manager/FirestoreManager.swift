@@ -12,9 +12,7 @@ import FirebaseFirestore
 // MARK: - 파이어스토어 데이터를 관리하는 매니저
 class FirestoreManager: ObservableObject {
     @Published var garbageRequests: [Request] = []
-    @Published var selectedRequest: Request?
     let db = Firestore.firestore()
-    private var selectedRequestListener: ListenerRegistration?
     
     // MARK: - 불러오기
     func listenToGarbageRequests() {
@@ -29,24 +27,41 @@ class FirestoreManager: ObservableObject {
             }
         }
     
-    func listenToSelectedRequest(_ requestId: String) {
-            let requestRef = db.collection("garbageRequests").document(requestId)
+    func checkAndUpdateRequestStatus(_ request: Request) -> Request {
+        let ref = db.collection("garbageRequests").document(request.id.uuidString)
+        
+        var updatedRequest = request
+        
+        ref.getDocument { (snapshot, error) in
+            if let error = error {
+                print("Error fetching document: \(error)")
+                return
+            }
             
-            selectedRequestListener = requestRef.addSnapshotListener { (snapshot, error) in
-                if let error = error {
-                    print("선택된 요청 불러오기 실패: \(error)")
-                } else if let snapshot = snapshot, snapshot.exists {
-                    self.selectedRequest = try? snapshot.data(as: Request.self)
-                } else {
-                    self.selectedRequest = nil
+            guard let snapshot = snapshot, snapshot.exists else {
+                print("Document does not exist")
+                return
+            }
+            
+            do {
+                let serverRequest = try snapshot.data(as: Request.self)
+                
+                if serverRequest.status != request.status {
+                    // 서버의 문서와 현재 모델의 상태가 다른 경우, 서버 문서로 모델을 업데이트합니다.
+                    updatedRequest = serverRequest
+                    
+                    if let index = self.garbageRequests.firstIndex(where: { $0.id == serverRequest.id }) {
+                        // 배열에서 일치하는 요청을 찾아 서버 문서의 데이터로 업데이트합니다.
+                        self.garbageRequests[index] = serverRequest
+                    }
                 }
+            } catch {
+                print("Error decoding document: \(error)")
             }
         }
         
-        func stopListeningToSelectedRequest() {
-            selectedRequestListener?.remove()
-            selectedRequestListener = nil
-        }
+        return updatedRequest
+    }
     
     // MARK: - 요청, 수락, 픽업, 완료 플로우
     func addGarbageRequest(_ request: Request) {
@@ -62,6 +77,7 @@ class FirestoreManager: ObservableObject {
     func acceptGarbageRequest(_ requestId: String, helperId: String) {
         let requestRef = db.collection("garbageRequests").document(requestId)
         let updateData: [String: String] = [
+            "type": CenterType.requestInProgress.rawValue,
             "status": RequestStatus.accepted.rawValue
         ]
         

@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomSheetView: View {
     @Binding var sheetPresent: Bool
     @Binding var selectedCenter: (any Center)?
+    @Binding var navigateAcceptanceData: (Request?, Bool)
+    @Binding var navigateProgressData: (Request?, Bool)
     
     var body: some View {
         ZStack {
@@ -30,7 +32,11 @@ struct CustomSheetView: View {
             }
             if selectedCenter is Request {
                 if let request = selectedCenter as? Request {
-                    RequestSheetView(sheetPresent: $sheetPresent, center: request)
+                    if request.status == .requested {
+                        RequestSheetView(sheetPresent: $sheetPresent, navigateAcceptanceData: $navigateAcceptanceData, center: request)
+                    } else {
+                        AcceptedRequestSheetView(sheetPresent: $sheetPresent, navigateProgressData: $navigateProgressData, center: request)
+                    }
                 }
             }
         }

@@ -10,7 +10,8 @@ import FirebaseFirestore
 import CoreLocation
 
 struct AgentAcceptanceView: View {
-//    @EnvironmentObject var manager: FirestoreManager
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var firestoreManager: FirestoreManager
     
     var request: Request
     
@@ -34,29 +35,46 @@ struct AgentAcceptanceView: View {
         ZStack {
             Color(.acceptanceBackground).ignoresSafeArea()
             
-            VStack(spacing: 28) {
-                garbageTypeRow
-                
-                requestTimeRow
-                
-                adressRow
-                
-                nearbyCenterRow
-                
-//                agentFeeRow
-                Spacer()
-                
-                if isPossibleToAcceptRequest {
-                    alertText
+            VStack {
+                HStack(spacing: 20) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12)
+                        .foregroundColor(.gray.opacity(0.5))
+                        .onTapGesture {
+                            dismiss()
+                        }
+                    Text("대행 수행")
+                        .font(.system(size: 24, weight: .bold))
+                    Spacer()
                 }
-                
-                acceptanceButton
-                    .padding(.bottom)
+                .padding(.top, 10)
+                .padding(.leading, 26)
+                .padding(.bottom, 28)
+                VStack(spacing: 28) {
+                    garbageTypeRow
+                    
+                    requestTimeRow
+                    
+                    adressRow
+                    
+                    nearbyCenterRow
+                    
+                    //                agentFeeRow
+                    Spacer()
+                    
+                    if isPossibleToAcceptRequest {
+                        alertText
+                    }
+                    
+                    acceptanceButton
+                        .padding(.bottom)
+                }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
+            .navigationBarBackButtonHidden()
         }
-        .navigationTitle("대행 수락하기")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -72,7 +90,7 @@ extension AgentAcceptanceView {
                         .font(.title3)
                         .fontWeight(.bold)
                     + Text("\(request.amount)")
-                        .foregroundColor(.acceptanceAccent)
+                        .foregroundColor(Color(hex: "FF881B"))
                         .font(.title3)
                         .fontWeight(.bold)
                     + Text("봉지")
@@ -100,11 +118,11 @@ extension AgentAcceptanceView {
                 HStack {
                     // TODO: 모델에서 시간 불러오기
                     Text("\(request.preferredPickupTime.dateValue().toYearMonthDayString())")
-                        .foregroundColor(.acceptanceAccent)
+                        .foregroundColor(Color(hex: "FF881B"))
                         .font(.headline)
                         .fontWeight(.bold)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)       
+                        .minimumScaleFactor(0.7)
                         .truncationMode(.tail)
                     Spacer()
                 } // HStack
@@ -145,7 +163,7 @@ extension AgentAcceptanceView {
                     Text("\(request.address) ")
                         .font(.headline)
                         .fontWeight(.bold)
-                        .foregroundColor(.acceptanceAccent)
+                        .foregroundColor(Color(hex: "FF881B"))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                         .truncationMode(.tail)
@@ -258,7 +276,7 @@ extension AgentAcceptanceView {
         Text("요청 수락 후에는 취소할 수 없습니다.")
             .font(.callout)
             .fontWeight(.semibold)
-            .foregroundColor(.acceptanceAccent)
+            .foregroundColor(Color(hex: "FF881B"))
     }
     
     // MARK: - 배출 대행 수락 버튼
@@ -266,6 +284,8 @@ extension AgentAcceptanceView {
     private var acceptanceButton: some View {
         Button {
             // TODO: 서버에 요청 보내는 동작 추가
+            firestoreManager.acceptGarbageRequest(request.id.uuidString, helperId: "")
+            dismiss()
         } label: {
             ButtonLabel(content: "배출 대행 수락하기", isAgentRequst: false, isDisabled: !isPossibleToAcceptRequest)
         }
@@ -301,7 +321,7 @@ extension AgentAcceptanceView {
             .resizable()
             .frame(width: 22, height: 22)
             .foregroundColor(flag.wrappedValue
-                             ? .acceptanceAccent
+                             ? Color(hex: "FF881B")
                              :Color(hex: "C4C4C4")
             )
             // TODO: 색상 Asset에 추가

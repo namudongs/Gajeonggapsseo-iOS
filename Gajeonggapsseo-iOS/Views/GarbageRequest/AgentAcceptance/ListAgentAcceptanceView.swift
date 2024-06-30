@@ -84,7 +84,7 @@ extension ListAgentAcceptanceView {
             + Text(" \(requested.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
-                .foregroundColor(.acceptanceAccent)
+                .foregroundColor(Color(hex: "FF881B"))
             Spacer()
         }
         .padding(.leading, 16)
@@ -95,7 +95,7 @@ extension ListAgentAcceptanceView {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 // TODO: 아이콘 추가
-                Image("PurpleMapPin")
+                Image("OrangeMapPinV")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .padding(.top, 3)
@@ -107,10 +107,10 @@ extension ListAgentAcceptanceView {
             
             HStack {
                 // TODO: 품목과 상태에 따른 텍스트 수정
-                Text("플라스틱이 수거를 기다리는 중이에요")
+                Text("\(request.garbageType.rawValue)이 수거를 기다리는 중이에요")
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor(.requestAgent)
+                    .foregroundColor(Color(hex: "FF881B"))
                 Spacer()
             }
         }
@@ -118,7 +118,7 @@ extension ListAgentAcceptanceView {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .frame(height: 80)
-                .foregroundColor(.acceptanceSub)
+                .foregroundColor(Color(hex: "FFEBB9"))
         )
     }
     

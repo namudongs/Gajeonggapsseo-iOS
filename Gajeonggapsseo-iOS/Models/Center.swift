@@ -184,4 +184,5 @@ enum CenterType: String, Codable {
     case seogwipoCleanHouse = "서귀포시 클린하우스"
     case seogwipoRecycleCenter = "서귀포시 재활용도움센터"
     case garbageRequest = "배출 요청"
+    case requestInProgress = "배출 대행 중"
 }
