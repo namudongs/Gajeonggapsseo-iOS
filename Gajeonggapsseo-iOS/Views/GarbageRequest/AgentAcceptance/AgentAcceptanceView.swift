@@ -68,7 +68,7 @@ extension AgentAcceptanceView {
             
             HStack(spacing: 15) {
                 HStack {
-                    Text("\(request.garbageType) ")
+                    Text("\(request.garbageType.rawValue) ")
                         .font(.title3)
                         .fontWeight(.bold)
                     + Text("\(request.amount)")
@@ -99,7 +99,7 @@ extension AgentAcceptanceView {
             HStack(spacing: 15) {
                 HStack {
                     // TODO: 모델에서 시간 불러오기
-                    Text("\(request.preferredPickupTime)")
+                    Text("\(request.preferredPickupTime.dateValue().toYearMonthDayString())")
                         .foregroundColor(.acceptanceAccent)
                         .font(.headline)
                         .fontWeight(.bold)
@@ -314,11 +314,11 @@ extension AgentAcceptanceView {
             type: .garbageRequest,
             address: "주소",
             coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-            garbageType: "플라스틱",
+            garbageType: .plastic,
             amount: "0",
             requestTime: Timestamp(date: Date()),
             preferredPickupTime: Timestamp(date: Date()),
-            status: .accepted,
+            status: .requested,
             description: "")
     )
 }

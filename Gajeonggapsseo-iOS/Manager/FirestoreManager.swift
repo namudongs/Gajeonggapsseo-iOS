@@ -12,7 +12,9 @@ import FirebaseFirestore
 // MARK: - 파이어스토어 데이터를 관리하는 매니저
 class FirestoreManager: ObservableObject {
     @Published var garbageRequests: [Request] = []
+    @Published var selectedRequest: Request?
     let db = Firestore.firestore()
+    private var selectedRequestListener: ListenerRegistration?
     
     // MARK: - 불러오기
     func listenToGarbageRequests() {
@@ -25,6 +27,25 @@ class FirestoreManager: ObservableObject {
                     } ?? []
                 }
             }
+        }
+    
+    func listenToSelectedRequest(_ requestId: String) {
+            let requestRef = db.collection("garbageRequests").document(requestId)
+            
+            selectedRequestListener = requestRef.addSnapshotListener { (snapshot, error) in
+                if let error = error {
+                    print("선택된 요청 불러오기 실패: \(error)")
+                } else if let snapshot = snapshot, snapshot.exists {
+                    self.selectedRequest = try? snapshot.data(as: Request.self)
+                } else {
+                    self.selectedRequest = nil
+                }
+            }
+        }
+        
+        func stopListeningToSelectedRequest() {
+            selectedRequestListener?.remove()
+            selectedRequestListener = nil
         }
     
     // MARK: - 요청, 수락, 픽업, 완료 플로우
