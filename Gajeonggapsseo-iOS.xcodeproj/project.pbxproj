@@ -65,7 +65,6 @@
 		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		176C75792C2C7460001D3102 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		17807CCC2C30A7D100067B18 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
-		17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptionRequestView.swift; sourceTree = "<group>"; };
 		17807CD02C30A7FD00067B18 /* RequestSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSheetView.swift; sourceTree = "<group>"; };
 		17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeogwipoRecycleSheetView.swift; sourceTree = "<group>"; };
 		17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JejuRecycleSheetView.swift; sourceTree = "<group>"; };
@@ -274,7 +273,6 @@
 				FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */,
 				FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */,
 				FB7A5E942C302AD700143970 /* AgentExecutionView.swift */,
-				17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */,
 			);
 			path = AgentAcceptance;
 			sourceTree = "<group>";
