@@ -37,7 +37,7 @@ class Request: Center, Codable, Equatable {
                                           type: .garbageRequest,
                                           address: "",
                                           coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-                                          garbageType: .canAndScrapMetal,
+                                          garbageType: .can,
                                           amount: "2",
                                           requestTime: Timestamp(date: Date()),
                                           preferredPickupTime: Timestamp(date: Date()),
@@ -111,6 +111,7 @@ class Request: Center, Codable, Equatable {
         try container.encode(preferredPickupTime.seconds, forKey: .preferredPickupTime)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(helperId, forKey: .helperId)
+        try container.encode(description, forKey: .description)
     }
     
     static func == (lhs: Request, rhs: Request) -> Bool {
@@ -129,16 +130,16 @@ class Request: Center, Codable, Equatable {
         }
 }
 
-enum GarbageType: String, Codable {
-    case whiteBag = "흰색 종량제 봉투"
-    case vinyl = "비닐"
-    case canAndScrapMetal = "캔 · 고철"
-    case glassBottle = "유리병"
-    case styrofoam = "스티로폼"
-    case plastic = "플라스틱"
-    case clearPETBottle = "투명 페트병"
-    case paper = "종이"
-}
+//enum GarbageType: String, Codable {
+//    case whiteBag = "흰색 종량제 봉투"
+//    case vinyl = "비닐"
+//    case canAndScrapMetal = "캔 · 고철"
+//    case glassBottle = "유리병"
+//    case styrofoam = "스티로폼"
+//    case plastic = "플라스틱"
+//    case clearPETBottle = "투명 페트병"
+//    case paper = "종이"
+//}
 
 enum RequestStatus: String, Codable {
     case requested = "requested"

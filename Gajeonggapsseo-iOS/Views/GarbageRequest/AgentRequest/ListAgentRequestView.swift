@@ -10,6 +10,7 @@ import FirebaseFirestore
 import CoreLocation
 
 struct ListAgentRequestView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
@@ -21,38 +22,60 @@ struct ListAgentRequestView: View {
     //    let months: [String] = Calendar.current.monthSymbols.map { $0.localizedCapitalized }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                requestCountView
-                
-                ForEach(manager.garbageRequests, id: \.id) { request in
-                    requestAgentRow(for: request)
-                        .padding(.bottom, 7)
-                }
-                Spacer().frame(height: 40)
-                
-                NavigationLink {
-                    AgentRequestView()
-                } label: {
-                    // TODO: 버튼 레이블 -> 커스텀 레이블로 이름 변경
-                    ButtonLabel(content: "새로운 대행 요청하기", isAgentRequst: true, isDisabled: false)
-                }
-                
-                Spacer().frame(height: 80)
-                completedRequestHeaderView
-                
-                datePickerView
-                
-                ForEach(manager.garbageRequests, id: \.id) { request in
-                    completedRequestRow(for: request)
-                        .padding(.vertical, 10)
-                    Divider()
-                }
-                .padding(.horizontal, 16)
-            } // VStack
-            .padding(.horizontal, 20)
-            .navigationTitle("배출 대행 요청")
-            .navigationBarTitleDisplayMode(.inline)
+        let requested = manager.garbageRequests.filter({
+            $0.status == .requested
+        })
+        let completed = manager.garbageRequests.filter({ $0.status == .completed })
+        
+        VStack {
+            HStack(spacing: 20) {
+                Image(systemName: "chevron.backward")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12)
+                    .foregroundColor(.gray.opacity(0.5))
+                    .onTapGesture {
+                        dismiss()
+                    }
+                Text("대행 수행")
+                    .font(.system(size: 24, weight: .bold))
+                Spacer()
+            }
+            .padding(.top, 10)
+            .padding(.leading, 26)
+            .padding(.bottom, 28)
+            ScrollView {
+                VStack {
+                    requestCountView
+                    
+                    ForEach(requested, id: \.id) { request in
+                        requestAgentRow(for: request)
+                            .padding(.bottom, 7)
+                    }
+                    Spacer().frame(height: 40)
+                    
+                    NavigationLink {
+                        AgentRequestView()
+                    } label: {
+                        // TODO: 버튼 레이블 -> 커스텀 레이블로 이름 변경
+                        ButtonLabel(content: "새로운 대행 요청하기", isAgentRequst: true, isDisabled: false)
+                    }
+                    
+                    Spacer().frame(height: 80)
+                    completedRequestHeaderView
+                    
+//                    datePickerView
+                    
+                    ForEach(completed, id: \.id) { request in
+                        completedRequestRow(for: request)
+                            .padding(.vertical, 10)
+                        Divider()
+                    }
+                    .padding(.horizontal, 16)
+                } // VStack
+                .padding(.horizontal, 20)
+                .navigationBarBackButtonHidden()
+            }
         }
     }
 }
@@ -61,11 +84,12 @@ extension ListAgentRequestView {
     // MARK: - 진행 중인 대행 뷰
     @ViewBuilder
     private var requestCountView: some View {
+        let requested = manager.garbageRequests.filter({ $0.status == .requested })
         HStack {
             Text("진행 중인 요청")
                 .font(.title3)
                 .fontWeight(.medium)
-            + Text(" \(manager.garbageRequests.count)건")
+            + Text(" \(requested.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(.requestAccent)
@@ -154,12 +178,12 @@ extension ListAgentRequestView {
     private func completedRequestRow(for request: Request) -> some View {
         // TODO: 값 불러와서 띄우기
         HStack {
-            Text("클린하우스 01")
+            Text("\(request.address)")
                 .font(.caption)
                 .fontWeight(.regular)
             Spacer()
             
-            Text("2024.06.17")
+            Text("\(request.preferredPickupTime.dateValue().toYearMonthDayString())")
                 .font(.caption)
                 .fontWeight(.regular)
         }

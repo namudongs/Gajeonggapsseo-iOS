@@ -10,7 +10,7 @@ import MapKit
 
 // MARK: - 지도에서 필요한 위치 정보를 관리하는 매니저
 class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocationManagerDelegate {
-    @Published var mapView: MKMapView = .init()
+    var mapView: MKMapView = .init()
     @Published var isChanging: Bool = false // 지도의 움직임 여부를 저장하는 프로퍼티
     @Published var currentPlace: String = "위치를 선택해주세요" // 현재 위치의 도로명 주소를 저장하는 프로퍼티
     @Published var currentGeoPoint: CLLocationCoordinate2D? // 현재 위치를 저장하는 프로퍼티
@@ -43,7 +43,10 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     
     // MARK: - MapView에서 화면이 이동하면 호출되는 메서드
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
+//            self.isChanging = true
+//        }
+        Task { @MainActor in
             self.isChanging = true
         }
     }
@@ -52,9 +55,10 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated: Bool) {
         let location: CLLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         
+        self.currentGeoPoint = location.coordinate
         self.convertLocationToAddress(location: location)
         
-        DispatchQueue.main.async {
+        Task { @MainActor in
             self.isChanging = false
         }
     }
@@ -124,6 +128,7 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
             }
         }
     }
+    
     func requestLocation() {
         manager.startUpdatingLocation()
         

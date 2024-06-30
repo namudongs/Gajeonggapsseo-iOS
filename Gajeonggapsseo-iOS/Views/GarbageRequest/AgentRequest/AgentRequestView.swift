@@ -10,6 +10,7 @@ import FirebaseFirestore
 import CoreLocation
 
 struct AgentRequestView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: FirestoreManager
     @EnvironmentObject var lm: LocationManager
     
@@ -19,7 +20,7 @@ struct AgentRequestView: View {
     
     @State private var selectedDate: Date = Date.now
     
-    @State private var selectedCategories: Set<GarbageCategory> = []
+    @State private var selectedCategories: Set<GarbageType> = []
     @State private var garbageBagCount: Int = 1
     @State private var plasticBagCount: Int = 1
     @State private var canCount: Int = 1
@@ -35,191 +36,208 @@ struct AgentRequestView: View {
         ZStack{
             Color(.requestBackground).ignoresSafeArea()
             
-            ScrollView {
-                VStack(spacing: 30) {
-                    VStack(spacing: 8) {
-                        HStack {
-                            Text("수거 장소")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                            Spacer()
+            VStack {
+                HStack(spacing: 20) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12)
+                        .foregroundColor(.gray.opacity(0.5))
+                        .onTapGesture {
+                            dismiss()
                         }
-                        .padding(.leading, 16)
-                        
-                        HStack {
-                            Text("\(selectedAddress)")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .foregroundColor(Color(hex: "303030"))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                                .truncationMode(.tail)
-                            Spacer()
-                            
-                        }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(height: 40)
-                                .foregroundStyle(.white)
-                        )
-                        HStack {
-                            Button {
-                                showPickRequestAddressSheet = true
-                            } label: {
-                                HStack {
-                                    Spacer()
-                                    Text("현재 위치로 찾기")
-                                        .font(.subheadline)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.requestAccent)
-                                    Spacer()
-                                }
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(height: 50)
-                                        .foregroundStyle(.requestSub)
-                                )
-                            }
-                            Button {
-                                showAddressSearchSheet = true
-                            } label: {
-                                HStack {
-                                    Spacer()
-                                    Text("주소 검색하기")
-                                        .font(.subheadline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color(hex: "303030"))
-                                    Spacer()
-                                }
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(.requestAccent, lineWidth: 2)
-                                        .frame(height: 50)
-                                )
-                            }
-                        }
-                    } // VStack; 수거 장소
-                    
-                    VStack(spacing: 18) {
-                        HStack {
-                            Text("수거 요청 시간")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                            Spacer()
-                        }
-                        .padding(.leading, 16)
-                        
-                        PickUpTimeView(selectedDate: $selectedDate)
-                    } // VStack; 수거 요청 시간
-                    
-                    NewRequestSelectionView(selectedCategories: $selectedCategories)
-                    
-                    if !selectedCategories.isEmpty {
-                        VStack(spacing: 18) {
+                    Text("대행 수행")
+                        .font(.system(size: 24, weight: .bold))
+                    Spacer()
+                }
+                .padding(.top, 10)
+                .padding(.leading, 26)
+                .padding(.bottom, 28)
+                ScrollView {
+                    VStack(spacing: 30) {
+                        VStack(spacing: 8) {
                             HStack {
-                                Text("품목")
+                                Text("수거 장소")
                                     .font(.headline)
                                     .fontWeight(.semibold)
                                 Spacer()
                             }
                             .padding(.leading, 16)
                             
-                            ForEach(selectedCategories.sorted(), id: \.self) { category in
+                            HStack {
+                                Text("\(selectedAddress)")
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(Color(hex: "303030"))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                                    .truncationMode(.tail)
+                                Spacer()
                                 
-                                HStack {
-                                    Text(category.rawValue)
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(hex: "1F1F1F"))
-                                    Spacer()
-                                    
-                                    Text("\(getCount(for: category)) 봉투")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.requestAccent)
-                                    
-                                    GarbageStepper(category: category, count: getCounter(for: category))
+                            }
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(height: 40)
+                                    .foregroundStyle(.white)
+                            )
+                            HStack {
+                                Button {
+                                    showPickRequestAddressSheet = true
+                                } label: {
+                                    HStack {
+                                        Spacer()
+                                        Text("현재 위치로 찾기")
+                                            .font(.subheadline)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(.requestAccent)
+                                        Spacer()
+                                    }
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(height: 50)
+                                            .foregroundStyle(.requestSub)
+                                    )
                                 }
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(height: 60)
-                                        .foregroundStyle(.white)
+                                Button {
+                                    showAddressSearchSheet = true
+                                } label: {
+                                    HStack {
+                                        Spacer()
+                                        Text("주소 검색하기")
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(Color(hex: "303030"))
+                                        Spacer()
+                                    }
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.requestAccent, lineWidth: 2)
+                                            .frame(height: 50)
+                                    )
+                                }
+                            }
+                        } // VStack; 수거 장소
+                        
+                        VStack(spacing: 18) {
+                            HStack {
+                                Text("수거 요청 시간")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                Spacer()
+                            }
+                            .padding(.leading, 16)
+                            
+                            PickUpTimeView(selectedDate: $selectedDate)
+                        } // VStack; 수거 요청 시간
+                        
+                        NewRequestSelectionView(selectedCategories: $selectedCategories)
+                        
+                        if !selectedCategories.isEmpty {
+                            VStack(spacing: 18) {
+                                HStack {
+                                    Text("품목")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                }
+                                .padding(.leading, 16)
+                                
+                                ForEach(selectedCategories.sorted(), id: \.self) { category in
+                                    
+                                    HStack {
+                                        Text(category.rawValue)
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(Color(hex: "1F1F1F"))
+                                        Spacer()
+                                        
+                                        Text("\(getCount(for: category)) 봉투")
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(.requestAccent)
+                                        
+                                        GarbageStepper(category: category, count: getCounter(for: category))
+                                    }
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(height: 60)
+                                            .foregroundStyle(.white)
+                                    )
+                                }
+                                
+                            } // VStack; 품목
+                            
+                            Spacer().frame(height: 20)
+                            //                        NavigationLink {
+                            //                            // TODO: 메인화면으로 돌아가기
+                            //                        } label: {
+                            //                            ButtonLabel(
+                            //                                content: "요청하기",
+                            //                                isAgentRequst: true,
+                            //                                isDisabled: selectedCategories.isEmpty
+                            //                            )
+                            //                        }
+                            
+                            Button {
+                                lm.getCoordinateFrom(address: selectedAddress) { coordinate, error in
+                                    if let error = error {
+                                        print("Error:", error)
+                                    } else if let coordinate = coordinate {
+                                        let request = Request(
+                                            id: UUID(),
+                                            type: .garbageRequest,
+                                            address: selectedAddress,
+                                            coordinate: lm.currentGeoPoint ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                                            garbageType: selectedCategories.first ?? .plastic,
+                                            amount: getCount(for: selectedCategories.first ?? .plastic).description,
+                                            requestTime: Timestamp(),
+                                            preferredPickupTime: Timestamp(date: selectedDate),
+                                            status: .requested,
+                                            helperId: "shuwn",
+                                            description: "전달"
+                                        )
+                                        manager.addGarbageRequest(request)
+                                        isDone = true
+                                    } else {
+                                        print("No coordinate found")
+                                    }
+                                }
+                            } label: {
+                                ButtonLabel(
+                                    content: isDone ? "요청 완료" : "요청하기",
+                                    isAgentRequst: true,
+                                    isDisabled: selectedCategories.isEmpty || isDone
                                 )
                             }
-                                
-                        } // VStack; 품목
-                        
-                        Spacer().frame(height: 20)
-//                        NavigationLink {
-//                            // TODO: 메인화면으로 돌아가기
-//                        } label: {
-//                            ButtonLabel(
-//                                content: "요청하기",
-//                                isAgentRequst: true,
-//                                isDisabled: selectedCategories.isEmpty
-//                            )
-//                        }
-                        
-                        Button {
-                            lm.getCoordinateFrom(address: selectedAddress) { coordinate, error in
-                                if let error = error {
-                                    print("Error:", error)
-                                } else if let coordinate = coordinate {
-                                    let request = Request(
-                                        id: UUID(),
-                                        type: .garbageRequest,
-                                        address: selectedAddress,
-                                        coordinate: coordinate,
-                                        garbageType: (selectedCategories.first ?? .plastic).rawValue,
-                                        amount: getCount(for: selectedCategories.first ?? .plastic).description,
-                                        requestTime: Timestamp(),
-                                        preferredPickupTime: Timestamp(date: selectedDate),
-                                        status: .requested,
-                                        helperId: "shuwn",
-                                        description: ""
-                                    )
-                                    manager.addGarbageRequest(request)
-                                    isDone = true
-                                } else {
-                                    print("No coordinate found")
-                                }
-                            }
-                        } label: {
-                            ButtonLabel(
-                                content: isDone ? "요청 완료" : "요청하기",
-                                isAgentRequst: true,
-                                isDisabled: selectedCategories.isEmpty || isDone
-                            )
                         }
                     }
+                    .padding(.horizontal, 20)
+                    .navigationBarBackButtonHidden()
                 }
-                .padding(.horizontal, 20)
-                .navigationTitle("새로운 대행 요청")
-                .navigationBarTitleDisplayMode(.inline)
             }
-        }
-        .sheet(isPresented: $showAddressSearchSheet) {
-            AddressSearchSheetView(
-                selectedAddress: $selectedAddress,
-                showAddressSearchSheet: $showAddressSearchSheet)
-            .presentationDetents([.height(500)])
-            .presentationDragIndicator(.visible)
-        }
-        .sheet(isPresented: $showPickRequestAddressSheet) {
-            PickRequestAdress(
-                selectedAddress: $selectedAddress,
-                showPickRequestAddressSheet: $showPickRequestAddressSheet
-            )
-            .presentationDetents([.large])
-            .presentationDragIndicator(.visible)
+            .sheet(isPresented: $showAddressSearchSheet) {
+                AddressSearchSheetView(
+                    selectedAddress: $selectedAddress,
+                    showAddressSearchSheet: $showAddressSearchSheet)
+                .presentationDetents([.height(500)])
+                .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $showPickRequestAddressSheet) {
+                PickRequestAdress(
+                    selectedAddress: $selectedAddress,
+                    showPickRequestAddressSheet: $showPickRequestAddressSheet
+                )
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+            }
         }
     }
     
-    private func getCount(for category: GarbageCategory) -> Int {
+    private func getCount(for category: GarbageType) -> Int {
         switch category {
         case .garbageBag:
             return garbageBagCount
@@ -241,7 +259,7 @@ struct AgentRequestView: View {
     }
     
     
-    private func getCounter(for category: GarbageCategory) -> Binding<Int> {
+    private func getCounter(for category: GarbageType) -> Binding<Int> {
         switch category {
         case .garbageBag:
             return $garbageBagCount
@@ -264,7 +282,7 @@ struct AgentRequestView: View {
 
 }
 
-enum GarbageCategory: String, Comparable {
+enum GarbageType: String, Comparable, Codable {
     case garbageBag = "종량제"
     case plasticBag = "비닐"
     case can = "캔"
@@ -294,15 +312,15 @@ enum GarbageCategory: String, Comparable {
             return 8
         }
     }
-    static func < (lhs: GarbageCategory, rhs: GarbageCategory) -> Bool {
+    static func < (lhs: GarbageType, rhs: GarbageType) -> Bool {
         return lhs.order < rhs.order
     }
 }
 
 fileprivate struct NewRequestSelectionView: View {
-    @Binding var selectedCategories: Set<GarbageCategory>
+    @Binding var selectedCategories: Set<GarbageType>
     
-    let garbageCategoryList: [GarbageCategory] = [
+    let garbageCategoryList: [GarbageType] = [
         .garbageBag,
         .plasticBag,
         .can,
@@ -329,7 +347,7 @@ fileprivate struct NewRequestSelectionView: View {
     }
     
     @ViewBuilder
-    private func showGarbageCategory(item: GarbageCategory) -> some View {
+    private func showGarbageCategory(item: GarbageType) -> some View {
         let isSelected = selectedCategories.contains(item)
         
         RoundedRectangle(cornerRadius: 10)
@@ -397,7 +415,7 @@ fileprivate struct PickUpTimeView: View {
 
 
 fileprivate struct GarbageStepper: View {
-    let category: GarbageCategory
+    let category: GarbageType
     @Binding var count: Int
 
     var body: some View {
