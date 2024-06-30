@@ -43,7 +43,7 @@ struct CleanHouseSheetView: View {
                 }
                 .padding(.trailing, 22)
                 VStack(alignment: .leading, spacing: 9) {
-                    Text("06:00 ~ 24:00").font(.system(size: 18, weight: .regular))
+                    Text("15:00 ~ 04:00").font(.system(size: 18, weight: .regular))
                     Text("\(center?.address ?? "")".replacingOccurrences(of: "제주특별자치도 ", with: ""))
                         .font(.system(size: 18, weight: .regular))
                     Spacer()
