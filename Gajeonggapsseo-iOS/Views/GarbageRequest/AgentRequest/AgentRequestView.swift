@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import CoreLocation
 
 struct AgentRequestView: View {
+    @EnvironmentObject var manager: FirestoreManager
+    @EnvironmentObject var lm: LocationManager
+    
     @State private var selectedAddress: String = ""
     @State private var showAddressSearchSheet = false
-    
     @State private var showPickRequestAddressSheet = false
+    
+    @State private var selectedDate: Date = Date.now
     
     @State private var selectedCategories: Set<GarbageCategory> = []
     @State private var garbageBagCount: Int = 1
@@ -23,6 +29,7 @@ struct AgentRequestView: View {
     @State private var clearPetCount: Int = 1
     @State private var paperCount: Int = 1
 
+    @State private var isDone: Bool = false
     
     var body: some View {
         ZStack{
@@ -105,7 +112,7 @@ struct AgentRequestView: View {
                         }
                         .padding(.leading, 16)
                         
-                        PickUpTimeView()
+                        PickUpTimeView(selectedDate: $selectedDate)
                     } // VStack; 수거 요청 시간
                     
                     NewRequestSelectionView(selectedCategories: $selectedCategories)
@@ -147,13 +154,45 @@ struct AgentRequestView: View {
                         } // VStack; 품목
                         
                         Spacer().frame(height: 20)
-                        NavigationLink {
-                            // TODO: 결제 뷰로 이동 현재는 메인 화면으로 이동
+//                        NavigationLink {
+//                            // TODO: 메인화면으로 돌아가기
+//                        } label: {
+//                            ButtonLabel(
+//                                content: "요청하기",
+//                                isAgentRequst: true,
+//                                isDisabled: selectedCategories.isEmpty
+//                            )
+//                        }
+                        
+                        Button {
+                            lm.getCoordinateFrom(address: selectedAddress) { coordinate, error in
+                                if let error = error {
+                                    print("Error:", error)
+                                } else if let coordinate = coordinate {
+                                    let request = Request(
+                                        id: UUID(),
+                                        type: .garbageRequest,
+                                        address: selectedAddress,
+                                        coordinate: coordinate,
+                                        garbageType: (selectedCategories.first ?? .plastic).rawValue,
+                                        amount: getCount(for: selectedCategories.first ?? .plastic).description,
+                                        requestTime: Timestamp(),
+                                        preferredPickupTime: Timestamp(date: selectedDate),
+                                        status: .requested,
+                                        helperId: "shuwn",
+                                        description: ""
+                                    )
+                                    manager.addGarbageRequest(request)
+                                    isDone = true
+                                } else {
+                                    print("No coordinate found")
+                                }
+                            }
                         } label: {
                             ButtonLabel(
-                                content: "요청하기",
+                                content: isDone ? "요청 완료" : "요청하기",
                                 isAgentRequst: true,
-                                isDisabled: selectedCategories.isEmpty
+                                isDisabled: selectedCategories.isEmpty || isDone
                             )
                         }
                     }
@@ -331,7 +370,7 @@ fileprivate struct NewRequestSelectionView: View {
 }
 
 fileprivate struct PickUpTimeView: View {
-    @State private var selectedDate = Date()
+    @Binding var selectedDate: Date
     
     var body: some View {
         HStack {
