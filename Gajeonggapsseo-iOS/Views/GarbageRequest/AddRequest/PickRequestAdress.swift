@@ -13,6 +13,9 @@ import CoreLocation
 struct PickRequestAdress: View {
     @EnvironmentObject var locationManager: LocationManager
     
+    @Binding var selectedAddress: String
+    @Binding var showPickRequestAddressSheet: Bool
+    
     var body: some View {
         VStack {
             MapViewCoordinator()
@@ -47,7 +50,8 @@ struct PickRequestAdress: View {
                 }
             
             Button(action: {
-                
+                selectedAddress = locationManager.currentPlace
+                showPickRequestAddressSheet = false
             }) {
                 Text("위치 선택하기")
                     .padding()

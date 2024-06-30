@@ -50,6 +50,7 @@ struct AddressSearchSheetView: View {
                 .onTapGesture {
                     if let name = item.name, let title = item.placemark.title {
                         selectedAddress = "\(name), \(title)"
+                        showAddressSearchSheet = false
                     }
                 }
             }

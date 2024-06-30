@@ -11,6 +11,8 @@ struct AgentRequestView: View {
     @State private var selectedAddress: String = ""
     @State private var showAddressSearchSheet = false
     
+    @State private var showPickRequestAddressSheet = false
+    
     @State private var selectedCategories: Set<GarbageCategory> = []
     @State private var garbageBagCount: Int = 1
     @State private var plasticBagCount: Int = 1
@@ -56,7 +58,7 @@ struct AgentRequestView: View {
                         )
                         HStack {
                             Button {
-                                // TODO: 검색 옵션 추가
+                                showPickRequestAddressSheet = true
                             } label: {
                                 HStack {
                                     Spacer()
@@ -166,6 +168,14 @@ struct AgentRequestView: View {
                 selectedAddress: $selectedAddress,
                 showAddressSearchSheet: $showAddressSearchSheet)
             .presentationDetents([.height(500)])
+            .presentationDragIndicator(.visible)
+        }
+        .sheet(isPresented: $showPickRequestAddressSheet) {
+            PickRequestAdress(
+                selectedAddress: $selectedAddress,
+                showPickRequestAddressSheet: $showPickRequestAddressSheet
+            )
+            .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
     }
