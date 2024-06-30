@@ -39,6 +39,7 @@
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 		17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB162C3168310088FBA2 /* Color+Extension.swift */; };
+		17B7DB1B2C3184190088FBA2 /* AcceptedRequestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB1A2C3184190088FBA2 /* AcceptedRequestSheetView.swift */; };
 		FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
@@ -82,6 +83,7 @@
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		17B7DB162C3168310088FBA2 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		17B7DB1A2C3184190088FBA2 /* AcceptedRequestSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedRequestSheetView.swift; sourceTree = "<group>"; };
 		FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */,
 				17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */,
 				17807CD02C30A7FD00067B18 /* RequestSheetView.swift */,
+				17B7DB1A2C3184190088FBA2 /* AcceptedRequestSheetView.swift */,
 				1798B2942C314E6A00929C0F /* CustomSheet.swift */,
 			);
 			path = Sheet;
@@ -385,6 +388,7 @@
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
 				176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */,
+				17B7DB1B2C3184190088FBA2 /* AcceptedRequestSheetView.swift in Sources */,
 				1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,

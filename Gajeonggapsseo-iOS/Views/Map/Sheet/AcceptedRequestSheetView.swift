@@ -1,5 +1,5 @@
 //
-//  RequestSheetView.swift
+//  AcceptedRequestSheetView.swift
 //  Gajeonggapsseo-iOS
 //
 //  Created by namdghyun on 6/30/24.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct RequestSheetView: View {
+struct AcceptedRequestSheetView: View {
     @EnvironmentObject var locationManager: LocationManager
     @Binding var sheetPresent: Bool
-    @Binding var navigateAcceptanceData: (Request?, Bool)
+    @Binding var navigateProgressData: (Request?, Bool)
     var center: Request
     
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Image("OrangeMapPinV")
+                Image("OrangeMapPin")
                     .resizable()
                     .frame(width: 41, height: 41)
                     .padding(.top, 5)
@@ -66,17 +66,16 @@ struct RequestSheetView: View {
                         }
                     }
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(hex: "FF881B"))
+                    .fill(Color(hex: "FFEBB9"))
                     .frame(width: 190, height: 66)
                     .overlay {
-                        Text("대행 수행").font(.system(size: 22, weight: .bold))
-                            .foregroundColor(Color(hex: "FFFFFF"))
+                        Text(center.status == .completed ? "완료된 대행" : "대행 수행 중").font(.system(size: 22, weight: .bold))
+                            .foregroundColor(Color(hex: "FF881B"))
                     }
                     .onTapGesture {
-                        print(center.status)
-                        if center.status == .requested {
-                            navigateAcceptanceData.0 = center
-                            navigateAcceptanceData.1 = true
+                        if center.status != .requested && center.status != .completed {
+                            navigateProgressData.0 = center
+                            navigateProgressData.1 = true
                         }
                     }
             }

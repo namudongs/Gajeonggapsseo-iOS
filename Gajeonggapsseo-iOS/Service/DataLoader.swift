@@ -58,7 +58,7 @@ class DataLoader {
                     break
                 }
             }
-        case .garbageRequest:
+        case .garbageRequest, .requestInProgress:
             break
         }
     }
