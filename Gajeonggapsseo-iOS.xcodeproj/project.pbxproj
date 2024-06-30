@@ -24,7 +24,6 @@
 		17807CD52C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */; };
 		17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */; };
 		17807CD72C30A7FD00067B18 /* CleanHouseSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD32C30A7FD00067B18 /* CleanHouseSheetView.swift */; };
-		17807CD92C30A84A00067B18 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD82C30A84A00067B18 /* Color+Extension.swift */; };
 		17807CDB2C30A84E00067B18 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CDA2C30A84E00067B18 /* Date+Extension.swift */; };
 		178ED90B2C24519A00EADD6D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED90A2C24519A00EADD6D /* MapView.swift */; };
 		178ED9162C24612100EADD6D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9152C24612100EADD6D /* ApiService.swift */; };
@@ -39,6 +38,7 @@
 		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
+		17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB162C3168310088FBA2 /* Color+Extension.swift */; };
 		FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
@@ -57,7 +57,6 @@
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
 		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
 		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176373AF2C2E9C4700F7514D /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchSheetView.swift; sourceTree = "<group>"; };
 		176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -67,7 +66,6 @@
 		17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeogwipoRecycleSheetView.swift; sourceTree = "<group>"; };
 		17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JejuRecycleSheetView.swift; sourceTree = "<group>"; };
 		17807CD32C30A7FD00067B18 /* CleanHouseSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanHouseSheetView.swift; sourceTree = "<group>"; };
-		17807CD82C30A84A00067B18 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		17807CDA2C30A84E00067B18 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		178ED90A2C24519A00EADD6D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		178ED9152C24612100EADD6D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -83,6 +81,7 @@
 		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		17B7DB162C3168310088FBA2 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
@@ -109,7 +108,6 @@
 			children = (
 				1747B69C2C21A3C0009057D0 /* Gajeonggapsseo-iOS */,
 				1747B69B2C21A3C0009057D0 /* Products */,
-				FB7A5EA12C315D5C00143970 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,7 +265,7 @@
 		E75955762C2E94C8004604BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				17807CD82C30A84A00067B18 /* Color+Extension.swift */,
+				17B7DB162C3168310088FBA2 /* Color+Extension.swift */,
 				176C75792C2C7460001D3102 /* View+Extension.swift */,
 				17807CDA2C30A84E00067B18 /* Date+Extension.swift */,
 			);
@@ -303,7 +301,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -387,7 +384,7 @@
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
-				176373B82C2E9C6E00F7514D /* AddressSearchView.swift in Sources */,
+				176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */,
 				1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
@@ -401,11 +398,8 @@
 				1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */,
 				178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */,
 				178ED90B2C24519A00EADD6D /* MapView.swift in Sources */,
-				176373B02C2E9C4700F7514D /* Color+Extension.swift in Sources */,
 				FB7A5E9E2C30978800143970 /* ListAgentRequestView.swift in Sources */,
 				17807CD72C30A7FD00067B18 /* CleanHouseSheetView.swift in Sources */,
-				17807CCF2C30A7E500067B18 /* AcceptionRequestView.swift in Sources */,
-				1747B6A02C21A3C0009057D0 /* ContentView.swift in Sources */,
 				17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */,
 				1747B69E2C21A3C0009057D0 /* Gajeonggapsseo_iOSApp.swift in Sources */,
 				17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */,
@@ -417,7 +411,7 @@
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
 				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
-				17807CD92C30A84A00067B18 /* Color+Extension.swift in Sources */,
+				17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */,
 				17807CCD2C30A7D100067B18 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
