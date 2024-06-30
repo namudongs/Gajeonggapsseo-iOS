@@ -22,7 +22,6 @@
 		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
 		176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* View+Extension.swift */; };
 		17807CCD2C30A7D100067B18 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CCC2C30A7D100067B18 /* CustomAnnotation.swift */; };
-		17807CCF2C30A7E500067B18 /* AcceptionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CCE2C30A7E500067B18 /* AcceptionRequestView.swift */; };
 		17807CD42C30A7FD00067B18 /* RequestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD02C30A7FD00067B18 /* RequestSheetView.swift */; };
 		17807CD52C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD12C30A7FD00067B18 /* SeogwipoRecycleSheetView.swift */; };
 		17807CD62C30A7FD00067B18 /* JejuRecycleSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17807CD22C30A7FD00067B18 /* JejuRecycleSheetView.swift */; };
@@ -112,6 +111,7 @@
 			children = (
 				1747B69C2C21A3C0009057D0 /* Gajeonggapsseo-iOS */,
 				1747B69B2C21A3C0009057D0 /* Products */,
+				FB7A5EA12C315D5C00143970 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,7 +222,7 @@
 			children = (
 				FB7A5E962C30552A00143970 /* Components */,
 				E759557D2C2E95B3004604BE /* AgentAcceptance */,
-				E7650B6A2C2AD9CC001D9971 /* RequestEmission */,
+				E7650B6A2C2AD9CC001D9971 /* AgentRequest */,
 				17B600762C231C7B00F55BCB /* AddRequest */,
 				17B600772C231C8900F55BCB /* RequestList */,
 			);
@@ -279,14 +279,14 @@
 			path = AgentAcceptance;
 			sourceTree = "<group>";
 		};
-		E7650B6A2C2AD9CC001D9971 /* RequestEmission */ = {
+		E7650B6A2C2AD9CC001D9971 /* AgentRequest */ = {
 			isa = PBXGroup;
 			children = (
 				FB7A5E9D2C30978800143970 /* ListAgentRequestView.swift */,
 				FB7A5E9F2C309F8300143970 /* AgentRequestView.swift */,
 				176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */,
 			);
-			path = RequestEmission;
+			path = AgentRequest;
 			sourceTree = "<group>";
 		};
 		FB7A5E962C30552A00143970 /* Components */ = {
@@ -296,6 +296,14 @@
 				FB7A5E9B2C3078D900143970 /* ButtonLabel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FB7A5EA12C315D5C00143970 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				176373AF2C2E9C4700F7514D /* Color+Extension.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
