@@ -8,7 +8,8 @@
 import SwiftUI
 import FirebaseFirestore
 
-struct ListAgentAcceptanceView: View {
+struct ListAgentView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
@@ -20,30 +21,53 @@ struct ListAgentAcceptanceView: View {
     //    let months: [String] = Calendar.current.monthSymbols.map { $0.localizedCapitalized }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                requestCountView
-                
-                ForEach(manager.garbageRequests, id: \.id) { request in
-                    requestAgentRow(for: request)
-                        .padding(.bottom, 7)
-                }
-                Spacer().frame(height: 64)
-                
-                completedRequestHeaderView
-                
-                datePickerView
-                
-                ForEach(manager.garbageRequests, id: \.id) { request in
-                    completedRequestRow(for: request)
-                        .padding(.vertical, 10)
-                    Divider()
-                }
-                .padding(.horizontal, 16)
-            } // VStack
-            .padding(.horizontal, 20)
-            .navigationTitle("대행 수행")
-            .navigationBarTitleDisplayMode(.inline)
+        let requested = manager.garbageRequests.filter({
+            $0.status == .accepted || $0.status == .pickedUp
+        })
+        let completed = manager.garbageRequests.filter({ $0.status == .completed })
+        VStack {
+            HStack(spacing: 20) {
+                Image(systemName: "chevron.backward")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12)
+                    .foregroundColor(.gray.opacity(0.5))
+                    .onTapGesture {
+                        dismiss()
+                    }
+                Text("대행 수행")
+                    .font(.system(size: 24, weight: .bold))
+                Spacer()
+            }
+            .padding(.top, 10)
+            .padding(.leading, 26)
+            .padding(.bottom, 28)
+            ScrollView {
+                VStack {
+                    requestCountView
+                    
+                    ForEach(requested, id: \.id) { request in
+                        NavigationLink {
+                            AgentExecutionView(request: request)
+                        } label: {
+                            requestAgentRow(for: request)
+                                .padding(.bottom, 7)
+                        }
+                    }
+                    Spacer().frame(height: 64)
+                    
+                    completedRequestHeaderView
+                    
+                    ForEach(completed, id: \.id) { completed in
+                        completedRequestRow(for: completed)
+                            .padding(.vertical, 10)
+                        Divider()
+                    }
+                    .padding(.horizontal, 16)
+                } // VStack
+                .padding(.horizontal, 18)
+                .navigationBarBackButtonHidden()
+            }
         }
     }
 }
@@ -52,11 +76,12 @@ extension ListAgentAcceptanceView {
     // MARK: - 진행 중인 대행 뷰
     @ViewBuilder
     private var requestCountView: some View {
+        let requested = manager.garbageRequests.filter({ $0.status == .accepted })
         HStack {
-            Text("진행 중인 요청")
+            Text("진행 중인 대행")
                 .font(.title3)
                 .fontWeight(.medium)
-            + Text(" \(manager.garbageRequests.count)건")
+            + Text(" \(requested.count)건")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(.acceptanceAccent)
@@ -70,9 +95,14 @@ extension ListAgentAcceptanceView {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 // TODO: 아이콘 추가
+                Image("PurpleMapPin")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.top, 3)
                 Text("\(request.address)")
                     .font(.caption)
                     .fontWeight(.semibold)
+                    .foregroundColor(.black)
             }
             
             HStack {
@@ -137,12 +167,12 @@ extension ListAgentAcceptanceView {
     private func completedRequestRow(for request: Request) -> some View {
         // TODO: 값 불러와서 띄우기
         HStack {
-            Text("클린하우스 01")
+            Text("\(request.address)")
                 .font(.caption)
                 .fontWeight(.regular)
             Spacer()
             
-            Text("2024.06.17")
+            Text("\(request.preferredPickupTime.dateValue().toYearMonthDayString())")
                 .font(.caption)
                 .fontWeight(.regular)
         }
@@ -178,5 +208,7 @@ extension ListAgentAcceptanceView {
 //}
 
 #Preview {
-    ListAgentAcceptanceView()
+    ListAgentView()
+        .environmentObject(LocationManager())
+        .environmentObject(FirestoreManager())
 }

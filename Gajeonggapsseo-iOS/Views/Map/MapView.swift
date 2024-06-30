@@ -138,8 +138,8 @@ struct MapView: View {
                     .padding(.bottom, 23)
                     // 대행 수행, 배출 요청 컴포넌트
                     HStack(spacing: 9) {
-                        Button {
-                            
+                        NavigationLink {
+                            ListAgentView()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)

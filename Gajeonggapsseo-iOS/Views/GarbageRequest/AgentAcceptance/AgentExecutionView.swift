@@ -10,40 +10,59 @@ import FirebaseFirestore
 import CoreLocation
 
 struct AgentExecutionView: View {
-    var request: Request
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var firestoreManager: FirestoreManager
     
+    var request: Request
     @State private var requestStatus: RequestStatus = .accepted
     
     var body: some View {
-        VStack(spacing: 28) {
-            // TODO: 정산 뷰 추가
-            progressRow
-            
-            sectionRow(header: "품목", content: "\(request.garbageType) \(request.amount)봉투")
-            
-            // TODO: 날짜 시간 변경
-            sectionRow(header: "요청 시간", content: "\(request.preferredPickupTime)")
-            
-            sectionRow(header: "위치 정보", content: "\(request.address)")
-            
-            // TODO: 위치 받아오기
-            sectionRow(header: "근처 배출 장소", content: "\(request.address)")
-            
-//            agentFeeRow
-            
-            Spacer()
-            
-            if requestStatus == .accepted || requestStatus == .pickedUp {
-                bottomButton(isPickedUp: requestStatus == .pickedUp)
-                    .padding(.bottom)
+        VStack {
+            HStack(spacing: 20) {
+                Image(systemName: "chevron.backward")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12)
+                    .foregroundColor(.gray.opacity(0.5))
+                    .onTapGesture {
+                        dismiss()
+                    }
+                Text("진행중인 대행")
+                    .font(.system(size: 24, weight: .bold))
+                Spacer()
             }
+            .padding(.top, 10)
+            .padding(.leading, 26)
+            .padding(.bottom, 28)
+            VStack(spacing: 28) {
+                // TODO: 정산 뷰 추가
+                progressRow
+                
+                sectionRow(header: "품목", content: "\(request.garbageType.rawValue) \(request.amount)봉투")
+                
+                // TODO: 날짜 시간 변경
+                sectionRow(header: "요청 시간", content: "\(request.preferredPickupTime.dateValue().toYearMonthDayString())")
+                
+                sectionRow(header: "위치 정보", content: "\(request.address)")
+                
+                // TODO: 위치 받아오기
+                sectionRow(header: "근처 배출 장소", content: "\(request.address)")
+                
+                //            agentFeeRow
+                
+                Spacer()
+                
+                if requestStatus == .accepted || requestStatus == .pickedUp {
+                    bottomButton(isPickedUp: requestStatus == .pickedUp)
+                        .padding(.bottom)
+                }
+            }
+            .padding(.horizontal, 20)
+            .navigationBarBackButtonHidden()
+            .onAppear(perform: {
+                self.requestStatus = request.status
+            })
         }
-        .padding(.horizontal, 20)
-        .navigationTitle("진행 중인 대행")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear(perform: {
-            self.requestStatus = request.status
-        })
     }
 }
 
@@ -147,8 +166,10 @@ extension AgentExecutionView {
             // TODO: 서버에 동작 보내기
             if requestStatus == .accepted {
                 requestStatus = .pickedUp
+                firestoreManager.pickUpGarbageRequest(request.id.uuidString)
             } else if requestStatus == .pickedUp {
                 requestStatus = .completed
+                firestoreManager.completeGarbageRequest(request.id.uuidString)
             }
         }, label: {
             ButtonLabel(
@@ -166,7 +187,7 @@ extension AgentExecutionView {
         type: .garbageRequest,
         address: "주소",
         coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-        garbageType: "플라스틱",
+        garbageType: .plastic,
         amount: "0",
         requestTime: Timestamp(date: Date()),
         preferredPickupTime: Timestamp(date: Date()),

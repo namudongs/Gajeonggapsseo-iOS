@@ -16,14 +16,36 @@ class Request: Center, Codable {
     var type: CenterType
     var address: String
     var coordinate: CLLocationCoordinate2D
-    var garbageType: String
+    var garbageType: GarbageType
     var amount: String
     var requestTime: Timestamp
     var preferredPickupTime: Timestamp
     var status: RequestStatus
     var helperId: String?
+    
+    static let mock: [Request] = [Request(id: UUID(),
+                                          type: .garbageRequest,
+                                          address: "",
+                                          coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                                          garbageType: .plastic,
+                                          amount: "3",
+                                          requestTime: Timestamp(date: Date()),
+                                          preferredPickupTime: Timestamp(date: Date()),
+                                          status: .requested,
+                                          description: ""),
+                                  Request(id: UUID(),
+                                          type: .garbageRequest,
+                                          address: "",
+                                          coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                                          garbageType: .canAndScrapMetal,
+                                          amount: "2",
+                                          requestTime: Timestamp(date: Date()),
+                                          preferredPickupTime: Timestamp(date: Date()),
+                                          status: .requested,
+                                          description: "")
+    ]
 
-    init(id: UUID, type: CenterType, address: String, coordinate: CLLocationCoordinate2D, garbageType: String, amount: String, requestTime: Timestamp, preferredPickupTime: Timestamp, status: RequestStatus, helperId: String? = nil, description: String) {
+    init(id: UUID, type: CenterType, address: String, coordinate: CLLocationCoordinate2D, garbageType: GarbageType, amount: String, requestTime: Timestamp, preferredPickupTime: Timestamp, status: RequestStatus, helperId: String? = nil, description: String) {
         self.id = id
         self.type = type
         self.address = address
@@ -62,7 +84,7 @@ class Request: Center, Codable {
         let longitude = try container.decode(CLLocationDegrees.self, forKey: .longitude)
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
-        self.garbageType = try container.decode(String.self, forKey: .garbageType)
+        self.garbageType = try container.decode(GarbageType.self, forKey: .garbageType)
         self.amount = try container.decode(String.self, forKey: .amount)
         
         let requestTimeDouble = try container.decode(Double.self, forKey: .requestTime)
@@ -83,7 +105,7 @@ class Request: Center, Codable {
         try container.encode(address, forKey: .address)
         try container.encode(coordinate.latitude, forKey: .latitude)
         try container.encode(coordinate.longitude, forKey: .longitude)
-        try container.encode(garbageType, forKey: .garbageType)
+        try container.encode(garbageType.rawValue, forKey: .garbageType)
         try container.encode(amount, forKey: .amount)
         try container.encode(requestTime.seconds, forKey: .requestTime)
         try container.encode(preferredPickupTime.seconds, forKey: .preferredPickupTime)
@@ -92,7 +114,7 @@ class Request: Center, Codable {
     }
 }
 
-enum GarbageType: String {
+enum GarbageType: String, Codable {
     case whiteBag = "흰색 종량제 봉투"
     case vinyl = "비닐"
     case canAndScrapMetal = "캔 · 고철"
@@ -108,4 +130,6 @@ enum RequestStatus: String, Codable {
     case accepted = "accepted"
     case pickedUp = "pickedUp"
     case completed = "completed"
+    case paying = "paying"
+    case paid = "paid"
 }

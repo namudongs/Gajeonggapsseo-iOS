@@ -53,7 +53,7 @@ struct ProgressStatusView: View {
                 
                 // TODO: 정산 과정이 포함되면 수정
                 stageRectangle(
-                    content: isAgentrequest ? "완료" : "정산",
+                    content: isAgentrequest ? "완료" : "완료",
                     isDone: isCompletedDone,
                     isCurrentStage: false
                 )

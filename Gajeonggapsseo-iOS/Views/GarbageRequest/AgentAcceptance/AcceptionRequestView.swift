@@ -15,11 +15,11 @@ struct AcceptionRequestView: View {
                 type: .garbageRequest,
                 address: "주소",
                 coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-                garbageType: "플라스틱",
-                amount: "0",
+                garbageType: .plastic,
+                amount: "1",
                 requestTime: Timestamp(date: Date()),
                 preferredPickupTime: Timestamp(date: Date()),
-                status: .accepted,
+                status: .requested,
                 description: ""
         )
     
@@ -53,6 +53,10 @@ struct AcceptionRequestView: View {
             true
         case .completed:
             true
+        case .paying:
+            true
+        case .paid:
+            true
         }
     }
     var acceptButtonColor: Color {
@@ -75,6 +79,10 @@ struct AcceptionRequestView: View {
         case .pickedUp:
             true
         case .completed:
+            true
+        case .paying:
+            true
+        case .paid:
             true
         }
     }
@@ -99,6 +107,10 @@ struct AcceptionRequestView: View {
         case .pickedUp:
             false
         case .completed:
+            true
+        case .paying:
+            true
+        case .paid:
             true
         }
     }
@@ -380,8 +392,8 @@ extension AcceptionRequestView {
     private var pickUpView: some View {
         HStack {
             Text(!isPickedUpComplete
-                 ? "플라스틱이 수거를 기다리는 중이에요"
-                 : "플라스틱이 수거 완료되었어요!")
+                 ? "\(garbageRequest.garbageType.rawValue)이 수거를 기다리는 중이에요"
+                 : "\(garbageRequest.garbageType.rawValue)이 수거 완료되었어요!")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(!isPickedUpComplete
@@ -407,7 +419,7 @@ extension AcceptionRequestView {
                 Spacer()
                 
                 // TODO: 날짜 받아오기
-                Text("6월 26일 수요일 20:29")
+                Text("\(garbageRequest.requestTime.dateValue().toYearMonthDayString())")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.requestAgent)
@@ -456,7 +468,7 @@ extension AcceptionRequestView {
                         Spacer()
                     }
                     
-                    sectionBody(content: "\(garbageRequest.garbageType) \(garbageRequest.amount) 봉지")
+                    sectionBody(content: "\(garbageRequest.garbageType.rawValue) \(garbageRequest.amount)봉지")
                 }
                 
                 VStack {
@@ -466,7 +478,7 @@ extension AcceptionRequestView {
                     }
                     
                     // TODO: 날짜 받아오기
-                    sectionBody(content: "6월 26일 수요일 20:29")
+                    sectionBody(content: "\(garbageRequest.requestTime.dateValue().toYearMonthDayString())")
                 }
                 
                 VStack {
@@ -507,7 +519,7 @@ extension AcceptionRequestView {
                     }
                     
                     // TODO: 근처 주소 받아오기
-                    sectionBody(content: "\(garbageRequest.address)")
+                    sectionBody(content: "근처 배출 장소")
                 }
                 
 //                HStack {
