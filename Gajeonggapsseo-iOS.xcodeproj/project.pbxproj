@@ -13,9 +13,7 @@
 		1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C02C21A98D009057D0 /* FirestoreManager.swift */; };
 		1747B6C42C21AB2C009057D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1747B6C32C21AB2C009057D0 /* FirebaseFirestore */; };
 		1747B6CA2C21B73B009057D0 /* GarbageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6C92C21B73B009057D0 /* GarbageRequest.swift */; };
-		1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */; };
-		1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */; };
-		176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */; };
+		174F84342C342C6800D54926 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F84332C342C6800D54926 /* SplashView.swift */; };
 		176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */; };
 		176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 176373BA2C2E9C8E00F7514D /* Config.xcconfig */; };
 		176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C75792C2C7460001D3102 /* View+Extension.swift */; };
@@ -35,7 +33,6 @@
 		178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9262C24719600EADD6D /* MapViewRepresentable.swift */; };
 		178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */; };
 		1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1798B2942C314E6A00929C0F /* CustomSheet.swift */; };
-		17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 		17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB162C3168310088FBA2 /* Color+Extension.swift */; };
@@ -56,9 +53,7 @@
 		1747B6A42C21A3C1009057D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1747B6C02C21A98D009057D0 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		1747B6C92C21B73B009057D0 /* GarbageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequest.swift; sourceTree = "<group>"; };
-		1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestView.swift; sourceTree = "<group>"; };
-		1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageRequestListView.swift; sourceTree = "<group>"; };
-		176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchSheetView.swift; sourceTree = "<group>"; };
+		174F84332C342C6800D54926 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		176373BA2C2E9C8E00F7514D /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		176C75792C2C7460001D3102 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -79,7 +74,6 @@
 		178ED9262C24719600EADD6D /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwipoCleanHouse.json; sourceTree = "<group>"; };
 		1798B2942C314E6A00929C0F /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
-		17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbagePickupListView.swift; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		17B7DB162C3168310088FBA2 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -225,31 +219,12 @@
 		17B600752C231C5900F55BCB /* GarbageRequest */ = {
 			isa = PBXGroup;
 			children = (
+				174F84332C342C6800D54926 /* SplashView.swift */,
 				FB7A5E962C30552A00143970 /* Components */,
 				E759557D2C2E95B3004604BE /* AgentAcceptance */,
 				E7650B6A2C2AD9CC001D9971 /* AgentRequest */,
-				17B600762C231C7B00F55BCB /* AddRequest */,
-				17B600772C231C8900F55BCB /* RequestList */,
 			);
 			path = GarbageRequest;
-			sourceTree = "<group>";
-		};
-		17B600762C231C7B00F55BCB /* AddRequest */ = {
-			isa = PBXGroup;
-			children = (
-				1747B6CD2C21BEE9009057D0 /* GarbageRequestView.swift */,
-				17B600712C23067900F55BCB /* PickRequestAdress.swift */,
-			);
-			path = AddRequest;
-			sourceTree = "<group>";
-		};
-		17B600772C231C8900F55BCB /* RequestList */ = {
-			isa = PBXGroup;
-			children = (
-				1747B6CF2C21BFA3009057D0 /* GarbageRequestListView.swift */,
-				17B6006F2C22F9CE00F55BCB /* GarbagePickupListView.swift */,
-			);
-			path = RequestList;
 			sourceTree = "<group>";
 		};
 		17EB41A12C307EC3005FFE5E /* Sheet */ = {
@@ -290,7 +265,7 @@
 			children = (
 				FB7A5E9D2C30978800143970 /* ListAgentRequestView.swift */,
 				FB7A5E9F2C309F8300143970 /* AgentRequestView.swift */,
-				176373B52C2E9C6E00F7514D /* AddressSearchSheetView.swift */,
+				17B600712C23067900F55BCB /* PickRequestAdress.swift */,
 			);
 			path = AgentRequest;
 			sourceTree = "<group>";
@@ -387,15 +362,14 @@
 				1747B6C12C21A98D009057D0 /* FirestoreManager.swift in Sources */,
 				FB7A5E982C30554300143970 /* ProgressStatusView.swift in Sources */,
 				176C757A2C2C7460001D3102 /* View+Extension.swift in Sources */,
-				176373B82C2E9C6E00F7514D /* AddressSearchSheetView.swift in Sources */,
 				17B7DB1B2C3184190088FBA2 /* AcceptedRequestSheetView.swift in Sources */,
 				1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */,
 				178ED91C2C2462CC00EADD6D /* DataService.swift in Sources */,
 				178ED91A2C24627200EADD6D /* SeogwipoResponse.swift in Sources */,
-				17B600702C22F9CE00F55BCB /* GarbagePickupListView.swift in Sources */,
 				17807CDB2C30A84E00067B18 /* Date+Extension.swift in Sources */,
 				FB7A5E9C2C3078D900143970 /* ButtonLabel.swift in Sources */,
 				17807CD42C30A7FD00067B18 /* RequestSheetView.swift in Sources */,
+				174F84342C342C6800D54926 /* SplashView.swift in Sources */,
 				FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */,
 				FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */,
 				178ED9162C24612100EADD6D /* ApiService.swift in Sources */,
@@ -410,10 +384,8 @@
 				178ED91E2C24631B00EADD6D /* Center.swift in Sources */,
 				FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */,
 				FB7A5EA02C309F8300143970 /* AgentRequestView.swift in Sources */,
-				1747B6CE2C21BEE9009057D0 /* GarbageRequestView.swift in Sources */,
 				178ED9212C24651A00EADD6D /* DataLoader.swift in Sources */,
 				178ED9182C24624E00EADD6D /* JejuResponse.swift in Sources */,
-				1747B6D02C21BFA3009057D0 /* GarbageRequestListView.swift in Sources */,
 				17B600742C2307D600F55BCB /* LocationManager.swift in Sources */,
 				17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */,
 				17807CCD2C30A7D100067B18 /* CustomAnnotation.swift in Sources */,

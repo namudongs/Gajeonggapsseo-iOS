@@ -12,9 +12,9 @@ import CoreLocation
 struct AgentRequestView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var manager: FirestoreManager
-    @EnvironmentObject var lm: LocationManager
     
     @State private var selectedAddress: String = ""
+    @State private var selectedGeoPoint: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @State private var showAddressSearchSheet = false
     @State private var showPickRequestAddressSheet = false
     
@@ -100,24 +100,6 @@ struct AgentRequestView: View {
                                             .foregroundStyle(.requestSub)
                                     )
                                 }
-                                Button {
-                                    showAddressSearchSheet = true
-                                } label: {
-                                    HStack {
-                                        Spacer()
-                                        Text("주소 검색하기")
-                                            .font(.subheadline)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color(hex: "303030"))
-                                        Spacer()
-                                    }
-                                    .padding()
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(.requestAccent, lineWidth: 2)
-                                            .frame(height: 50)
-                                    )
-                                }
                             }
                         } // VStack; 수거 장소
                         
@@ -172,39 +154,25 @@ struct AgentRequestView: View {
                             } // VStack; 품목
                             
                             Spacer().frame(height: 20)
-                            //                        NavigationLink {
-                            //                            // TODO: 메인화면으로 돌아가기
-                            //                        } label: {
-                            //                            ButtonLabel(
-                            //                                content: "요청하기",
-                            //                                isAgentRequst: true,
-                            //                                isDisabled: selectedCategories.isEmpty
-                            //                            )
-                            //                        }
                             
                             Button {
-                                lm.getCoordinateFrom(address: selectedAddress) { coordinate, error in
-                                    if let error = error {
-                                        print("Error:", error)
-                                    } else if let coordinate = coordinate {
-                                        let request = Request(
-                                            id: UUID(),
-                                            type: .garbageRequest,
-                                            address: selectedAddress,
-                                            coordinate: lm.currentGeoPoint ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-                                            garbageType: selectedCategories.first ?? .plastic,
-                                            amount: getCount(for: selectedCategories.first ?? .plastic).description,
-                                            requestTime: Timestamp(),
-                                            preferredPickupTime: Timestamp(date: selectedDate),
-                                            status: .requested,
-                                            helperId: "shuwn",
-                                            description: "전달"
-                                        )
-                                        manager.addGarbageRequest(request)
-                                        isDone = true
-                                    } else {
-                                        print("No coordinate found")
-                                    }
+                                let request = Request(
+                                    id: UUID(),
+                                    type: .garbageRequest,
+                                    address: selectedAddress,
+                                    coordinate: selectedGeoPoint,
+                                    garbageType: selectedCategories.first ?? .plastic,
+                                    amount: getCount(for: selectedCategories.first ?? .plastic).description,
+                                    requestTime: Timestamp(),
+                                    preferredPickupTime: Timestamp(date: selectedDate),
+                                    status: .requested,
+                                    helperId: "shuwn",
+                                    description: "전달"
+                                )
+                                manager.addGarbageRequest(request)
+                                withAnimation {
+                                    dismiss()
+                                    isDone = true
                                 }
                             } label: {
                                 ButtonLabel(
@@ -219,16 +187,9 @@ struct AgentRequestView: View {
                     .navigationBarBackButtonHidden()
                 }
             }
-            .sheet(isPresented: $showAddressSearchSheet) {
-                AddressSearchSheetView(
-                    selectedAddress: $selectedAddress,
-                    showAddressSearchSheet: $showAddressSearchSheet)
-                .presentationDetents([.height(500)])
-                .presentationDragIndicator(.visible)
-            }
             .sheet(isPresented: $showPickRequestAddressSheet) {
                 PickRequestAdress(
-                    selectedAddress: $selectedAddress,
+                    selectedAddress: $selectedAddress, selectedGeoPoint: $selectedGeoPoint,
                     showPickRequestAddressSheet: $showPickRequestAddressSheet
                 )
                 .presentationDetents([.large])
@@ -368,11 +329,8 @@ fileprivate struct NewRequestSelectionView: View {
                     HStack {
                         Spacer()
                         // TODO: 아이콘 넣기
-                        Text("아이콘 이미지")
-                            .font(.system(size: 11))
-                            .padding(.trailing, 10)
-                            .padding(.bottom, 10)
-                            .foregroundColor(isSelected ? .white : .black)
+                        Image("\(item.rawValue)")
+                            .padding(10)
                     }
                 }
                 .padding(.top, 10)
