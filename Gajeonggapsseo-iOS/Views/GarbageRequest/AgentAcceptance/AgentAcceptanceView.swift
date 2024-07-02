@@ -12,6 +12,7 @@ import CoreLocation
 struct AgentAcceptanceView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var firestoreManager: FirestoreManager
+    @EnvironmentObject var locationManager: LocationManager
     
     var request: Request
     
@@ -144,17 +145,17 @@ extension AgentAcceptanceView {
                 sectionHeader(title: "위치 정보")
                 Spacer()
                 
-                Image(systemName: "location")
-                    .resizable()
-                    .frame(width: 9,height: 9)
-                    .foregroundColor(Color(hex: "9C9C9C"))
-                
-                // TODO: 지도로 이동 동작 추가
-                Text("지도에서 찾기")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(hex: "9C9C9C"))
-                    .padding(.trailing, 48)
+//                Image(systemName: "location")
+//                    .resizable()
+//                    .frame(width: 9,height: 9)
+//                    .foregroundColor(Color(hex: "9C9C9C"))
+//                
+//                // TODO: 지도로 이동 동작 추가
+//                Text("지도에서 찾기")
+//                    .font(.caption)
+//                    .fontWeight(.semibold)
+//                    .foregroundColor(Color(hex: "9C9C9C"))
+//                    .padding(.trailing, 48)
                 
             }
             
@@ -185,20 +186,20 @@ extension AgentAcceptanceView {
     private var nearbyCenterRow: some View {
         VStack(alignment: .leading){
             HStack {
-                sectionHeader(title: "근처 배출 장소")
+                sectionHeader(title: "요청지 근처 배출 장소")
                 Spacer()
                 
-                Image(systemName: "location")
-                    .resizable()
-                    .frame(width: 9,height: 9)
-                    .foregroundColor(Color(hex: "9C9C9C"))
-                
-                // TODO: 지도로 이동 동작 추가
-                Text("지도에서 찾기")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(hex: "9C9C9C"))
-                    .padding(.trailing, 48)
+//                Image(systemName: "location")
+//                    .resizable()
+//                    .frame(width: 9,height: 9)
+//                    .foregroundColor(Color(hex: "9C9C9C"))
+//                
+//                // TODO: 지도로 이동 동작 추가
+//                Text("지도에서 찾기")
+//                    .font(.caption)
+//                    .fontWeight(.semibold)
+//                    .foregroundColor(Color(hex: "9C9C9C"))
+//                    .padding(.trailing, 48)
                 
             }
             
@@ -206,7 +207,7 @@ extension AgentAcceptanceView {
                 HStack {
                     // TODO: 근처 배출 장소 찾기
                     // TODO: 텍스트 길이에 따라 동적으로 바꾸기
-                    Text("\(request.address) ")
+                    Text("\(String(describing: locationManager.findNearestCenter(from: request.coordinate)?.0 ?? "")) ")
                         .font(.headline)
                         .fontWeight(.medium)
                         .foregroundColor(Color(hex: "878787"))
@@ -216,7 +217,7 @@ extension AgentAcceptanceView {
                     Spacer()
                     
                     // TODO: 거리 계산 추가
-                    Text("300m")
+                    Text("\(locationManager.findNearestCenter(from: request.coordinate)?.2 ?? "")")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(Color(hex: "727272"))
@@ -327,18 +328,4 @@ extension AgentAcceptanceView {
             // TODO: 색상 Asset에 추가
         }
     }
-}
-#Preview {
-    AgentAcceptanceView(request: Request(
-            id: UUID(),
-            type: .garbageRequest,
-            address: "주소",
-            coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
-            garbageType: .plastic,
-            amount: "0",
-            requestTime: Timestamp(date: Date()),
-            preferredPickupTime: Timestamp(date: Date()),
-            status: .requested,
-            description: "")
-    )
 }

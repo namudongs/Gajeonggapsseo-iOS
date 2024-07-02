@@ -46,7 +46,7 @@ struct AgentRequestView: View {
                         .onTapGesture {
                             dismiss()
                         }
-                    Text("대행 수행")
+                    Text("새로운 요청")
                         .font(.system(size: 24, weight: .bold))
                     Spacer()
                 }
@@ -166,8 +166,8 @@ struct AgentRequestView: View {
                                     requestTime: Timestamp(),
                                     preferredPickupTime: Timestamp(date: selectedDate),
                                     status: .requested,
-                                    helperId: "shuwn",
-                                    description: "전달"
+                                    helperId: "",
+                                    description: ""
                                 )
                                 manager.addGarbageRequest(request)
                                 withAnimation {

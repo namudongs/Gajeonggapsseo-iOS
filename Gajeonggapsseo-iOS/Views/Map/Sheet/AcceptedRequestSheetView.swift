@@ -16,7 +16,7 @@ struct AcceptedRequestSheetView: View {
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Image("OrangeMapPin")
+                Image(center.status == .completed ? "GrayMapPin" : "OrangeMapPin")
                     .resizable()
                     .frame(width: 41, height: 41)
                     .padding(.top, 5)
@@ -66,11 +66,11 @@ struct AcceptedRequestSheetView: View {
                         }
                     }
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(hex: "FFEBB9"))
+                    .fill(center.status == .completed ? Color(hex: "B7B7B7") : Color(hex: "FFEBB9"))
                     .frame(width: 190, height: 66)
                     .overlay {
                         Text(center.status == .completed ? "완료된 대행" : "대행 수행 중").font(.system(size: 22, weight: .bold))
-                            .foregroundColor(Color(hex: "FF881B"))
+                            .foregroundColor(center.status == .completed ? Color(hex: "FFFFFF") : Color(hex: "FF881B"))
                     }
                     .onTapGesture {
                         if center.status != .requested && center.status != .completed {
