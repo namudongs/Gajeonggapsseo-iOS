@@ -13,6 +13,7 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     @Published var currentLocation: CLLocation? = nil
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
+    var centers: [any Center] = []
     var manager: CLLocationManager = .init()
     
     
@@ -62,6 +63,52 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
                 completion(nil, nil)
             }
         }
+    }
+    
+    // MARK: - 파라미터로 받은 위치와 가장 가까운 센터를 반환해주는 메서드
+    func findNearestCenter(from requestLocation: CLLocationCoordinate2D) -> (String, String, String)? {
+        guard !centers.isEmpty else { return nil }
+        
+        var centerName = ""
+        var centerAddress = ""
+        var centerDistance = ""
+        
+        
+        let nearestCenter = centers.min {
+            let request = CLLocation(latitude: requestLocation.latitude, longitude: requestLocation.longitude)
+            guard $0.coordinate.latitude < 40 else { return false }
+            
+            let location1 = CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
+            let location2 = CLLocation(latitude: $1.coordinate.latitude, longitude: $1.coordinate.longitude)
+            
+            let location1Distance = request.distance(from: location1)
+            let location2Distance = request.distance(from: location2)
+            
+            return location1Distance < location2Distance
+        }
+        
+        let requestCenterCL = CLLocation(latitude: requestLocation.latitude, longitude: requestLocation.longitude)
+        let nearestCenterCL = CLLocation(latitude: nearestCenter?.coordinate.latitude ?? 0, longitude: nearestCenter?.coordinate.longitude ?? 0)
+        centerDistance = requestCenterCL.distance(from: nearestCenterCL).formattedDistance()
+        
+        switch nearestCenter {
+        case let jejuClean as JejuClean:
+            centerName = "\(jejuClean.description) 클린하우스"
+            centerAddress = jejuClean.address.replacingOccurrences(of: "제주특별자치도", with: "")
+        case let jejuRecycle as JejuRecycle:
+            centerName = "제주시 재활용도움센터\(jejuRecycle.dataCode)"
+            centerAddress = jejuRecycle.address.replacingOccurrences(of: "제주특별자치도", with: "")
+        case let seogwipoClean as SeogwipoClean:
+            centerName = "\(seogwipoClean.description) 클린하우스"
+            centerAddress = seogwipoClean.address.replacingOccurrences(of: "제주특별자치도", with: "")
+        case let seogwipoRecycle as SeogwipoRecycle:
+            centerName = "\(seogwipoRecycle.townName) 재활용도움센터"
+            centerAddress = seogwipoRecycle.address.replacingOccurrences(of: "제주특별자치도", with: "")
+        default:
+            return nil
+        }
+        
+        return (centerName, centerAddress, centerDistance)
     }
     
     // MARK: - 위치 권한 요청

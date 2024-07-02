@@ -11,7 +11,7 @@ import CoreLocation
 
 struct ListAgentRequestView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var manager: FirestoreManager
+    @EnvironmentObject var firestoreManager: FirestoreManager
     
     // TODO: 날짜 설정하게 하기
     //    @State private var selectedYear: Int = 2024
@@ -22,10 +22,10 @@ struct ListAgentRequestView: View {
     //    let months: [String] = Calendar.current.monthSymbols.map { $0.localizedCapitalized }
     
     var body: some View {
-        let requested = manager.garbageRequests.filter({
+        let requested = firestoreManager.garbageRequests.filter({
             $0.status == .requested
         })
-        let completed = manager.garbageRequests.filter({ $0.status == .completed })
+        let completed = firestoreManager.garbageRequests.filter({ $0.status == .completed })
         
         VStack {
             HStack(spacing: 20) {
@@ -37,7 +37,7 @@ struct ListAgentRequestView: View {
                     .onTapGesture {
                         dismiss()
                     }
-                Text("대행 수행")
+                Text("배출 요청")
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
             }
@@ -84,7 +84,7 @@ extension ListAgentRequestView {
     // MARK: - 진행 중인 대행 뷰
     @ViewBuilder
     private var requestCountView: some View {
-        let requested = manager.garbageRequests.filter({ $0.status == .requested })
+        let requested = firestoreManager.garbageRequests.filter({ $0.status == .requested })
         HStack {
             Text("진행 중인 요청")
                 .font(.title3)

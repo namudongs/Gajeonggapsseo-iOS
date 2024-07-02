@@ -102,6 +102,7 @@ class FirestoreManager: ObservableObject {
     func completeGarbageRequest(_ requestId: String) {
         let requestRef = db.collection("garbageRequests").document(requestId)
         let updateData: [String: String] = [
+            "type": CenterType.requestComplete.rawValue,
             "status": RequestStatus.completed.rawValue
         ]
         

@@ -35,6 +35,7 @@ struct Gajeonggapsseo_iOSApp: App {
                     switch result {
                     case .success(let centers):
                         self.centers = centers + manager.garbageRequests
+                        lm.centers = centers
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
