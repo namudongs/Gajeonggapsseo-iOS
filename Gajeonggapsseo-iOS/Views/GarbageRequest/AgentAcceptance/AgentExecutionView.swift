@@ -11,6 +11,7 @@ import CoreLocation
 
 struct AgentExecutionView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var firestoreManager: FirestoreManager
     
     var request: Request
@@ -46,7 +47,7 @@ struct AgentExecutionView: View {
                 sectionRow(header: "위치 정보", content: "\(request.address)")
                 
                 // TODO: 위치 받아오기
-                sectionRow(header: "근처 배출 장소", content: "\(request.address)")
+                sectionRow(header: "근처 배출 장소", content: "\(locationManager.findNearestCenter(from: request.coordinate)?.0 ?? "")")
                 
                 //            agentFeeRow
                 
@@ -95,17 +96,17 @@ extension AgentExecutionView {
                 Spacer()
                 
                 // TODO: 지도로 이동 동작 추가
-                if header == "위치 정보" || header == "근처 배출 장소" {
-                    Image(systemName: "location")
-                        .resizable()
-                        .frame(width: 9,height: 9)
-
-                    Text("지도에서 찾기")
-                        .font(.caption)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(hex: "585858"))
-                        .padding(.trailing, 10)
-                }
+//                if header == "위치 정보" || header == "근처 배출 장소" {
+//                    Image(systemName: "location")
+//                        .resizable()
+//                        .frame(width: 9,height: 9)
+//
+//                    Text("지도에서 찾기")
+//                        .font(.caption)
+//                        .fontWeight(.regular)
+//                        .foregroundColor(Color(hex: "585858"))
+//                        .padding(.trailing, 10)
+//                }
             }
             
             HStack {
@@ -120,7 +121,7 @@ extension AgentExecutionView {
                 Spacer()
                 if header == "근처 배출 장소" {
                     // TODO: 거리 계산
-                    Text("300m")
+                    Text("\(locationManager.findNearestCenter(from: request.coordinate)?.2 ?? "")")
                         .font(.subheadline)
                         .fontWeight(.regular)
                         .foregroundColor(Color(hex: "727272"))

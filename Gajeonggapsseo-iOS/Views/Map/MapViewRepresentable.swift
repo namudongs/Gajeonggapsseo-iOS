@@ -47,7 +47,7 @@ struct MapViewRepresentable: UIViewRepresentable {
                     return selectedCleanHouse
                 case .recycleCenter, .seogwipoRecycleCenter:
                     return selectedRecycleCenter
-                case .garbageRequest, .requestInProgress:
+                case .garbageRequest, .requestInProgress, .requestComplete:
                     return selectedGarbageRequest
                 }
             }.compactMap { center -> CustomAnnotation in
@@ -72,6 +72,8 @@ struct MapViewRepresentable: UIViewRepresentable {
             return ("OrangeMapPinV", CGSize(width: 38, height: 39), CGRect(x: 0, y: 0, width: 38, height: 39))
         case .requestInProgress:
             return ("OrangeMapPin", CGSize(width: 38, height: 39), CGRect(x: 0, y: 0, width: 38, height: 39))
+        case .requestComplete:
+            return ("GrayMapPin", CGSize(width: 38, height: 39), CGRect(x: 0, y: 0, width: 38, height: 39))
         }
     }
     
