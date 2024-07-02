@@ -34,6 +34,9 @@
 		178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9262C24719600EADD6D /* MapViewRepresentable.swift */; };
 		178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */; };
 		1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1798B2942C314E6A00929C0F /* CustomSheet.swift */; };
+		17A192562C34783300892F38 /* JejuRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192532C34783300892F38 /* JejuRecycleCenter.json */; };
+		17A192572C34783300892F38 /* JejuCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192542C34783300892F38 /* JejuCleanHouse.json */; };
+		17A192582C34783300892F38 /* SeogwippoRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 		17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB162C3168310088FBA2 /* Color+Extension.swift */; };
@@ -76,6 +79,9 @@
 		178ED9262C24719600EADD6D /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwipoCleanHouse.json; sourceTree = "<group>"; };
 		1798B2942C314E6A00929C0F /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
+		17A192532C34783300892F38 /* JejuRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuRecycleCenter.json; path = ../../../../Desktop/jejujson/JejuRecycleCenter.json; sourceTree = "<group>"; };
+		17A192542C34783300892F38 /* JejuCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuCleanHouse.json; path = ../../../../Desktop/jejujson/JejuCleanHouse.json; sourceTree = "<group>"; };
+		17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwippoRecycleCenter.json; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		17B7DB162C3168310088FBA2 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -181,7 +187,10 @@
 			children = (
 				176373BA2C2E9C8E00F7514D /* Config.xcconfig */,
 				176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */,
+				17A192542C34783300892F38 /* JejuCleanHouse.json */,
+				17A192532C34783300892F38 /* JejuRecycleCenter.json */,
 				178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */,
+				17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */,
 				1747B6A12C21A3C1009057D0 /* Assets.xcassets */,
 				1747B6A32C21A3C1009057D0 /* Preview Content */,
 			);
@@ -346,6 +355,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A192582C34783300892F38 /* SeogwippoRecycleCenter.json in Resources */,
+				17A192562C34783300892F38 /* JejuRecycleCenter.json in Resources */,
+				17A192572C34783300892F38 /* JejuCleanHouse.json in Resources */,
 				1747B6A52C21A3C1009057D0 /* Preview Assets.xcassets in Resources */,
 				176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */,
 				176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */,
@@ -534,6 +546,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gajeonggapsseo-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "가정갑써";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "근처에 있는 클린하우스, 재활용도움센터와 배출 요청, 대행을 수행하기 위해서는 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "근처에 있는 클린하우스, 재활용도움센터와 배출 요청, 대행을 수행하기 위해서는 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -572,6 +585,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gajeonggapsseo-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "가정갑써";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "근처에 있는 클린하우스, 재활용도움센터와 배출 요청, 대행을 수행하기 위해서는 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "근처에 있는 클린하우스, 재활용도움센터와 배출 요청, 대행을 수행하기 위해서는 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
