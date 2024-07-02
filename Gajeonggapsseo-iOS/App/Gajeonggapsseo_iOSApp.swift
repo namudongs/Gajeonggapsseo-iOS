@@ -23,8 +23,7 @@ struct Gajeonggapsseo_iOSApp: App {
         WindowGroup {
             NavigationStack {
                 if isLoading {
-                    ProgressView("데이터를 불러오는 중입니다..")
-                        .progressViewStyle(DefaultProgressViewStyle())
+                    SplashView()
                 } else {
                     MapView(centers: $centers)
                 }
