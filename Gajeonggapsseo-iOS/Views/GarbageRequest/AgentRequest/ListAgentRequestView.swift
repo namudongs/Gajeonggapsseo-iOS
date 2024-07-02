@@ -108,7 +108,7 @@ extension ListAgentRequestView {
                     .foregroundColor(Color(hex: "747474"))
                 
                 // TODO: 날짜 형식 수정
-                Text("\(request.requestTime.dateValue().description)")
+                Text("\(request.requestTime.dateValue().toYearMonthDayString())")
                     .font(.caption)
                     .fontWeight(.regular)
                 
@@ -117,7 +117,7 @@ extension ListAgentRequestView {
             
             HStack {
                 // TODO: 품목과 상태에 따른 텍스트 수정
-                Text("플라스틱이 수거를 기다리는 중이에요")
+                Text("\(request.garbageType.rawValue) 수거를 기다리는 중이에요")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(.requestAccent)
