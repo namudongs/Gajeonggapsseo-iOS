@@ -19,6 +19,8 @@ struct MapViewRepresentable: UIViewRepresentable {
     @Binding var selectedRecycleCenter: Bool
     @Binding var selectedGarbageRequest: Bool
     
+    @Binding var centerCoordinate: CLLocationCoordinate2D
+    
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
         mapView.delegate = context.coordinator
@@ -56,6 +58,9 @@ struct MapViewRepresentable: UIViewRepresentable {
             
             uiView.addAnnotations(filteredAnnotations)
         }
+        
+//        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+//        uiView.setRegion(region, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -97,7 +102,7 @@ struct MapViewRepresentable: UIViewRepresentable {
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let location = locations.last else { return }
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
             parent.region = region
             locationManager.stopUpdatingLocation()
         }

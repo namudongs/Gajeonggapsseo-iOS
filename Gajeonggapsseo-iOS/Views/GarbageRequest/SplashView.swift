@@ -9,17 +9,23 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            Image("Splash")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80, height: 80)
+        ZStack {
+            Color(hex: "2260FE")
+                .ignoresSafeArea()
             
-            Spacer()
-            Text("데이터를 불러오고 있습니다...")
-                .font(.system(size: 15))
-                .foregroundColor(.black.opacity(0.2))
+            VStack {
+                Spacer()
+                Image("Splash")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                
+                Spacer()
+                Text("데이터를 불러오고 있습니다...")
+                    .font(.system(size: 15))
+                    .foregroundColor(.white.opacity(0.2))
+                    .padding(.bottom, 15)
+            }
         }
     }
 }

@@ -53,26 +53,30 @@ struct AgentAcceptanceView: View {
                 .padding(.top, 10)
                 .padding(.leading, 26)
                 .padding(.bottom, 28)
-                VStack(spacing: 28) {
-                    garbageTypeRow
-                    
-                    requestTimeRow
-                    
-                    adressRow
-                    
-                    nearbyCenterRow
-                    
-                    //                agentFeeRow
-                    Spacer()
-                    
-                    if isPossibleToAcceptRequest {
-                        alertText
+                ScrollView {
+                    VStack(spacing: 28) {
+                        garbageTypeRow
+                        
+                        requestTimeRow
+                        
+                        adressRow
+                        
+                        nearbyCenterRow
+                        
+                        //                agentFeeRow
+                        
+                        Spacer()
+                        
+                        if isPossibleToAcceptRequest {
+                            alertText
+                        }
+                        
+                        acceptanceButton
+                        
+                        Spacer()
                     }
-                    
-                    acceptanceButton
-                        .padding(.bottom)
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
             }
             .navigationBarBackButtonHidden()
         }
@@ -208,17 +212,17 @@ extension AgentAcceptanceView {
                     // TODO: 근처 배출 장소 찾기
                     // TODO: 텍스트 길이에 따라 동적으로 바꾸기
                     Text("\(String(describing: locationManager.findNearestCenter(from: request.coordinate)?.0 ?? "")) ")
-                        .font(.headline)
+                        .font(.system(size: 15, weight: .semibold))
                         .fontWeight(.medium)
                         .foregroundColor(Color(hex: "878787"))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .truncationMode(.tail)
+//                        .lineLimit(1)
+//                        .minimumScaleFactor(0.7)
+//                        .truncationMode(.tail)
                     Spacer()
                     
                     // TODO: 거리 계산 추가
                     Text("\(locationManager.findNearestCenter(from: request.coordinate)?.2 ?? "")")
-                        .font(.headline)
+                        .font(.system(size: 15, weight: .semibold))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(hex: "727272"))
                 } // HStack

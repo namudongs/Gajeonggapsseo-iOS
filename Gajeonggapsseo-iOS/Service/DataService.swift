@@ -75,7 +75,7 @@ class SeogwipoRecycleCenterService: ApiService {
     typealias ResponseType = SeogwipoRecycleCenterApiResponse
     
     func fetchData(completion: @escaping (Result<SeogwipoRecycleCenterApiResponse, Error>) -> Void) {
-        guard let url = Bundle.main.url(forResource: "SeogwippoRecycleCenter", withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: "SeogwipoRecycleCenter", withExtension: "json") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }

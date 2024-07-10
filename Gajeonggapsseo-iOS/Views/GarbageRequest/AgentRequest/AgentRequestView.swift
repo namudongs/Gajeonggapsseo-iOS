@@ -181,6 +181,7 @@ struct AgentRequestView: View {
                                     isDisabled: selectedCategories.isEmpty || isDone
                                 )
                             }
+                            .padding(.bottom, 40)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -250,7 +251,7 @@ enum GarbageType: String, Comparable, Codable {
     case bottle = "병류"
     case polystyrene = "스티로폼"
     case plastic = "플라스틱"
-    case clearPet = "투명 페트병"
+    case clearPet = "페트병"
     case paper = "종이"
     
     var order: Int {

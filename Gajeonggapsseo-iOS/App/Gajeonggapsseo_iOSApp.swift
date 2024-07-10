@@ -25,7 +25,7 @@ struct Gajeonggapsseo_iOSApp: App {
                 if isLoading {
                     SplashView()
                 } else {
-                    MapView(centers: $centers)
+                    MapView(lm: lm, centers: $centers)
                 }
             }
             .onAppear {
