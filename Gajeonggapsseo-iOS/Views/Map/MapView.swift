@@ -10,6 +10,7 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
+    @StateObject var lm: LocationManager
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 33.4996213, longitude: 126.5311884),
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -23,6 +24,9 @@ struct MapView: View {
     @State var navigateAcceptanceData: (Request?, Bool) = (nil, false)
     @State var navigateProgressData: (Request?, Bool) = (nil, false)
     
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    private let locationManager = CLLocationManager()
+    
     var body: some View {
         ZStack {
             MapViewRepresentable(centers: $centers,
@@ -31,7 +35,8 @@ struct MapView: View {
                                  sheetPresent: $sheetPresent, 
                                  selectedCleanHouse: $selectedCleanHouse,
                                  selectedRecycleCenter: $selectedRecycleCenter,
-                                 selectedGarbageRequest: $selectedGarbageRequest)
+                                 selectedGarbageRequest: $selectedGarbageRequest, 
+                                 centerCoordinate: $centerCoordinate)
             .edgesIgnoringSafeArea(.all)
             .bottomSheet(isPresented: $sheetPresent,
                          sheetCornerRadius: 15,
@@ -88,6 +93,22 @@ struct MapView: View {
                     HStack(spacing: 0) {
                         Spacer()
                         VStack(spacing: 12) {
+//                            RoundedRectangle(cornerRadius: 18)
+//                                .foregroundColor(.white)
+//                                .frame(width: 51, height: 51)
+//                                .padding(.trailing, 16)
+//                                .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
+//                                .overlay {
+//                                    Image(systemName: "scope")
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 30)
+//                                        .foregroundColor(.blue)
+//                                        .padding(.trailing, 15)
+//                                }
+//                                .onTapGesture {
+//                                    centerCoordinate = lm.currentLocation!.coordinate
+//                                }
                             RoundedRectangle(cornerRadius: 18)
                                 .foregroundColor(selectedCleanHouse ? Color(hex: "B3C8FF") : .white)
                                 .frame(width: 51, height: 51)
@@ -191,6 +212,9 @@ struct MapView: View {
                         }
                     }
                 }
+            }
+            .onAppear {
+                centerCoordinate = lm.currentLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
             }
         }
     }

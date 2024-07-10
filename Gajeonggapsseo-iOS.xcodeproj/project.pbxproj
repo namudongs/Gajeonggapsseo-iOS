@@ -34,13 +34,13 @@
 		178ED9272C24719600EADD6D /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178ED9262C24719600EADD6D /* MapViewRepresentable.swift */; };
 		178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */; };
 		1798B2952C314E6A00929C0F /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1798B2942C314E6A00929C0F /* CustomSheet.swift */; };
-		17A192562C34783300892F38 /* JejuRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192532C34783300892F38 /* JejuRecycleCenter.json */; };
-		17A192572C34783300892F38 /* JejuCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192542C34783300892F38 /* JejuCleanHouse.json */; };
-		17A192582C34783300892F38 /* SeogwippoRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */; };
 		17B600722C23067900F55BCB /* PickRequestAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600712C23067900F55BCB /* PickRequestAdress.swift */; };
 		17B600742C2307D600F55BCB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B600732C2307D600F55BCB /* LocationManager.swift */; };
 		17B7DB172C3168310088FBA2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB162C3168310088FBA2 /* Color+Extension.swift */; };
 		17B7DB1B2C3184190088FBA2 /* AcceptedRequestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7DB1A2C3184190088FBA2 /* AcceptedRequestSheetView.swift */; };
+		17C950CA2C3E4AA0004A274E /* JejuCleanHouse.json in Resources */ = {isa = PBXBuildFile; fileRef = 17C950C82C3E4AA0004A274E /* JejuCleanHouse.json */; };
+		17C950CB2C3E4AA0004A274E /* JejuRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17C950C92C3E4AA0004A274E /* JejuRecycleCenter.json */; };
+		17C950CD2C3E4D5C004A274E /* SeogwipoRecycleCenter.json in Resources */ = {isa = PBXBuildFile; fileRef = 17C950CC2C3E4D5C004A274E /* SeogwipoRecycleCenter.json */; };
 		FB29CA502C2FE92600A612F0 /* ListAgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */; };
 		FB7A5E932C30211A00143970 /* AgentAcceptanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */; };
 		FB7A5E952C302AD700143970 /* AgentExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A5E942C302AD700143970 /* AgentExecutionView.swift */; };
@@ -79,13 +79,13 @@
 		178ED9262C24719600EADD6D /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwipoCleanHouse.json; sourceTree = "<group>"; };
 		1798B2942C314E6A00929C0F /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
-		17A192532C34783300892F38 /* JejuRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuRecycleCenter.json; path = ../../../../Desktop/jejujson/JejuRecycleCenter.json; sourceTree = "<group>"; };
-		17A192542C34783300892F38 /* JejuCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuCleanHouse.json; path = ../../../../Desktop/jejujson/JejuCleanHouse.json; sourceTree = "<group>"; };
-		17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwippoRecycleCenter.json; sourceTree = "<group>"; };
 		17B600712C23067900F55BCB /* PickRequestAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickRequestAdress.swift; sourceTree = "<group>"; };
 		17B600732C2307D600F55BCB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		17B7DB162C3168310088FBA2 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		17B7DB1A2C3184190088FBA2 /* AcceptedRequestSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedRequestSheetView.swift; sourceTree = "<group>"; };
+		17C950C82C3E4AA0004A274E /* JejuCleanHouse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuCleanHouse.json; path = ../../../../ProjectAssets/Gajeonggapsseo/jsondata/JejuCleanHouse.json; sourceTree = "<group>"; };
+		17C950C92C3E4AA0004A274E /* JejuRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JejuRecycleCenter.json; path = ../../../../ProjectAssets/Gajeonggapsseo/jsondata/JejuRecycleCenter.json; sourceTree = "<group>"; };
+		17C950CC2C3E4D5C004A274E /* SeogwipoRecycleCenter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeogwipoRecycleCenter.json; sourceTree = "<group>"; };
 		FB29CA4F2C2FE92600A612F0 /* ListAgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E922C30211A00143970 /* AgentAcceptanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAcceptanceView.swift; sourceTree = "<group>"; };
 		FB7A5E942C302AD700143970 /* AgentExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentExecutionView.swift; sourceTree = "<group>"; };
@@ -187,10 +187,10 @@
 			children = (
 				176373BA2C2E9C8E00F7514D /* Config.xcconfig */,
 				176373B92C2E9C8E00F7514D /* GoogleService-Info.plist */,
-				17A192542C34783300892F38 /* JejuCleanHouse.json */,
-				17A192532C34783300892F38 /* JejuRecycleCenter.json */,
+				17C950C82C3E4AA0004A274E /* JejuCleanHouse.json */,
+				17C950C92C3E4AA0004A274E /* JejuRecycleCenter.json */,
 				178ED9282C248F6600EADD6D /* SeogwipoCleanHouse.json */,
-				17A192552C34783300892F38 /* SeogwippoRecycleCenter.json */,
+				17C950CC2C3E4D5C004A274E /* SeogwipoRecycleCenter.json */,
 				1747B6A12C21A3C1009057D0 /* Assets.xcassets */,
 				1747B6A32C21A3C1009057D0 /* Preview Content */,
 			);
@@ -355,14 +355,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A192582C34783300892F38 /* SeogwippoRecycleCenter.json in Resources */,
-				17A192562C34783300892F38 /* JejuRecycleCenter.json in Resources */,
-				17A192572C34783300892F38 /* JejuCleanHouse.json in Resources */,
+				17C950CA2C3E4AA0004A274E /* JejuCleanHouse.json in Resources */,
 				1747B6A52C21A3C1009057D0 /* Preview Assets.xcassets in Resources */,
 				176373BC2C2E9C8E00F7514D /* Config.xcconfig in Resources */,
+				17C950CB2C3E4AA0004A274E /* JejuRecycleCenter.json in Resources */,
 				176373BB2C2E9C8E00F7514D /* GoogleService-Info.plist in Resources */,
 				1747B6A22C21A3C1009057D0 /* Assets.xcassets in Resources */,
 				178ED9292C248F6600EADD6D /* SeogwipoCleanHouse.json in Resources */,
+				17C950CD2C3E4D5C004A274E /* SeogwipoRecycleCenter.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gajeonggapsseo-iOS/Assets/Preview Content\"";
@@ -561,6 +562,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.namudi.Gajeonggapsseo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -577,6 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gajeonggapsseo-iOS/Assets/Preview Content\"";
@@ -600,6 +603,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.namudi.Gajeonggapsseo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
